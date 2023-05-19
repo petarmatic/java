@@ -5,8 +5,7 @@
 
 # c:\xampp\mysql\bin\mysql -uroot < C:\Users\Petar\Desktop\java\edunovajp28.sql
  -- putanju  C:\Users\Katedra\D... prilagoditi svojoj datoteci na disku
-# c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\Katedra\Documents\GitHub\EdunovaJP28\edunovajp28.sql
-
+# c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\Petar\Desktop\java\edunovajp28.sql
 -- I ovo je komentar
 
 drop database if exists edunovajp28;
@@ -161,21 +160,13 @@ insert into osoba (ime,prezime,oib,email) values ('Ivan','Franjić',null,'ivan@p
 
 insert into polaznik (osoba) values (27),(28),(29);
 
-insert into clan (grupa,polaznik) values (3,29),(3,30),(3,31);
-
-
-
--- vježbanje:
--- 1. Unijeti smjer Serviser
--- 2. Na Serviseru definirati dvije grupe (S1 i S2)
--- 3. Na S2 postaviti 3 nova polaznika (koje ste prethodno unijeli)
-
--- Domaća zadaća:
--- U sve baze koje ste kreirali na osnovu zadatka ERA osnovno unijeti u svaku tablicu po 3 - 5 redova
-
 update smjer set naziv='Java programiranje' where sifra=1;
 update smjer set  cijena=1000, upisnina=50 where sifra=2;
 update smjer set cijena=cijena*0.9;
 update smjer set cijena=cijena+10;
-
 UPDATE osoba set prezime='Novoselić' where sifra=5;
+
+-- delete from predavac where osoba=1;
+ -- delete from grupa where naziv='JP28';
+
+
