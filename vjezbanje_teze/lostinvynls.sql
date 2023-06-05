@@ -1,4 +1,4 @@
-c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\Petar\Desktop\java\vjezbanje_teze\lostinvynls.sql
+-- c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\Petar\Desktop\java\vjezbanje_teze\lostinvynls.sql
 drop database if exists lostinvynls;
 CREATE database lostinvynls;
 use lostinvynls;
