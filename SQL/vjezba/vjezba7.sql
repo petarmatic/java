@@ -1,18 +1,20 @@
 drop schema if exists vjezba7 cascade;
 create schema vjezba7;
 
-ALTER TABLE zarucnik_mladic DROP CONSTRAINT IF EXISTS zarucnik_mladic_zarucnik;
-ALTER TABLE zarucnik_mladic DROP CONSTRAINT IF EXISTS zarucnik_mladic_mladic;
+
+
 ALTER TABLE ostavljen DROP CONSTRAINT IF EXISTS ostavljen_zarucnik;
 ALTER TABLE sestra DROP CONSTRAINT IF EXISTS sestra_prijateljica;
 ALTER TABLE prijateljica DROP CONSTRAINT IF EXISTS prijateljica_ostavljen;
 ALTER TABLE punica DROP CONSTRAINT IF EXISTS punica_cura;
 
-
-CREATE TABLE if not exists zarucnik_mladic (
-    sifra SERIAL PRIMARY KEY,
-    zarucnik INT NOT NULL,
-    mladic INT NOT NULL
+create table if not exists zarucnik(
+	sifra serial primary key,
+	vesta varchar(34),
+	asocijalno bit not null,
+	modelnaocala varchar(43),
+	narukvica int not null,
+	novcica decimal(15,5)
 );
 
 create table if not exists mladic(
@@ -23,6 +25,15 @@ create table if not exists mladic(
 	drugiputa timestamp not null
 );
 
+CREATE TABLE if not exists zarucnik_mladic (
+    sifra SERIAL PRIMARY KEY,
+    zarucnik INT NOT NULL,
+    mladic INT NOT null,
+    CONSTRAINT zarucnik_mladic_zarucnik FOREIGN KEY (zarucnik) REFERENCES zarucnik (sifra),
+    CONSTRAINT zarucnik_mladic_mladic FOREIGN KEY (mladic) REFERENCES mladic (sifra)
+);
+
+
 create table if not exists ostavljen(
 	sifra serial primary key,
 	lipa decimal(14,6),
@@ -32,14 +43,6 @@ create table if not exists ostavljen(
 	zarucnik int
 );
 
-create table if not exists zarucnik(
-	sifra serial primary key,
-	vesta varchar(34),
-	asocijalno bit not null,
-	modelnaocala varchar(43),
-	narukvica int not null,
-	novcica decimal(15,5)
-);
 
 create table if not exists sestra(
 	sifra serial primary key,
@@ -71,20 +74,13 @@ create  table if not exists punica(
 create  table if not exists cura(
 	sifra serial primary key,
 	lipa decimal(12,9) not null,
-	introvertno booelan,
+	introvertno boolean,
 	modelnaocala varchar(40),
 	narukvica boolean,
 	treciputa timestamp,
 	kuna decimal(14,9)
 );
 
-ALTER TABLE zarucnik_mladic
-ADD CONSTRAINT zarucnik_mladic_zarucnik
-FOREIGN KEY (zarucnik) REFERENCES zarucnik (sifra);
-
-ALTER TABLE zarucnik_mladic
-ADD CONSTRAINT zarucnik_mladic_mladic
-FOREIGN KEY (mladic) REFERENCES mladic (sifra);
 
 ALTER TABLE ostavljen
 ADD CONSTRAINT ostavljen_zarucnik
@@ -102,21 +98,28 @@ ALTER TABLE punica
 ADD CONSTRAINT punica_cura
 FOREIGN KEY (cura) REFERENCES cura (sifra);
 
-insert  into zarucnik(vesta,asocijalno,modelnaocala,narukvica,novcica)
-values 
-	('plava','0','plave','narukvica 1','2,2'), 
-	('crna','1','crna','narukvica 2','22,2'),
-	('žuta','1','žuta','narukvica 3','23,2');
+INSERT INTO zarucnik (vesta, asocijalno, modelnaocala, narukvica, novcica)
+VALUES 
+    ('plava', '0', 'plave', '0', '2.2'),
+    ('crna', '1', 'crna', '1', '22.2'),
+    ('žuta', '1', 'žuta', '0', '23.2');
+   
 INSERT INTO ostavljen (lipa, introvertno, kratkamajica, prstena, zarucnik)
 values 
-	('12.345', true, 'Majica A', '1', 1),
-    ('98.765', false, 'Majica B', '2', 2),
-    ('65.43', true, 'Majica C', '3', 3);
+	('12.345', B'1', 'Majica A', '1', 1),
+    ('98.765', B'1', 'Majica B', '0', 2),
+    ('65.43', B'0', 'Majica C', '1', 3);
 
 INSERT INTO prijateljica (haljina, gustoca, ogrlica, novcica, ostavljen)
 values ('Haljina A', 0.12345, 1, 10.5, 1),
     ('Haljina B', 0.98765, 2, 15.2, 2),
     ('Haljina C', 0.65432, 3, 20.8, 3);
+   
+INSERT INTO mladic (prstena, lipa, narukvica, drugiputa)
+VALUES 
+    (123, 45.678, true, '2023-06-15 10:30:00'),
+    (456, 78.912, false, '2023-06-16 14:45:00'),
+    (789, 10.111, true, '2023-06-17 09:15:00');
 
 
 INSERT INTO zarucnik_mladic (zarucnik, mladic)
@@ -124,3 +127,35 @@ VALUES
     (1, 1),
     (2, 2),
     (3, 3);
+   
+   
+   
+update punica set eura='15.77';
+
+delete from sestra  where hlace<'AB';  
+
+select kratkamajica from ostavljen where introvertno is null;
+
+select a.narukvica, f.stilfrizura, e.gustoca
+from mladic a
+inner join zarucnik_mladic b on b.mladic=a.sifra 
+inner join zarucnik c on c.sifra=b.zarucnik
+inner join ostavljen d on c.sifra=d.zarucnik 
+inner join prijateljica e on d.sifra=e.ostavljen 
+inner join sestra f on e.sifra=f.prijateljica 
+where d.introvertno is not null and c.asocijalno is not null 
+order by e.gustoca desc;
+
+select asocijalno, modelnaocala from zarucnik
+where sifra not in (select zarucnik from zarucnik_mladic);
+
+
+
+
+
+
+
+
+
+
+
