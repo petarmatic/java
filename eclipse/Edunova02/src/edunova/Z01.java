@@ -15,10 +15,5 @@ public class Z01 {
 		System.out.println(znak);
 		
 	}
-	
-	// Deklarirajte 4 varijable različitih
-		// primitivnih tipova podataka
-		// dodjelite im vrijednosti
-		// te ispišite te vrijednosti
 
 }

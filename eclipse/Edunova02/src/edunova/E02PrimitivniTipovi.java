@@ -1,7 +1,6 @@
 package edunova;
 
 public class E02PrimitivniTipovi {
-
 	public static void main(String[] args) {
 		boolean aktivan = true;
 		System.out.println(aktivan);
@@ -32,5 +31,6 @@ public class E02PrimitivniTipovi {
 
 		
 	}
+
 
 }
