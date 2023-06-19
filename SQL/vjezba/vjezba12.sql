@@ -110,7 +110,7 @@ update decko set asocijalno='false';
 
 DELETE FROM prijatelj where ascocijalno=false;
 
-select vesta from svekrva where kuna !='8','13','20','28'.'35';
+select vesta from svekrva where kuna not in (8,13,20,28,35);
 
 select a.kratkamajica,f.kuna,e.vesta
 from sestra a
