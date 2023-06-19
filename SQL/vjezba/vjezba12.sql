@@ -1,4 +1,4 @@
---
+-- c:\xampp\mysql\bin\mysql -uroot --default_character_set=utf8 < C:\Users\Petar\Desktop\java\SQL\vjezba\vjezba12.sql
 drop DATABASE if exists vjezba12;
 create database vjezba12;
 use vjezba12;
