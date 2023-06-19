@@ -116,3 +116,16 @@ update neprijatelj set novcica='13,77';
 delete from cura where hlace !='AB';
 
 select asocijalno from ostavljen where drugiputa is null;
+
+
+select a.gustoca, f.majica,e.carape 
+from svekar a
+inner join svekrva_svekar b on a.sifra=b.svekar 
+inner join svekrva c on c.sifra=b.svekrva 
+inner join ostavljen d on c.sifra=d.svekrva 
+inner join mladic e on d.sifra=e.ostavljen 
+inner join cura f on e.sifra=f.mladic 
+where d.drugiputa is not null and c.ogrlica ='193'
+order by e.carape desc;
+
+select ogrlica, ekstroventno from svekrva where sifra not in(select svekrva from svekrva_svekar);
