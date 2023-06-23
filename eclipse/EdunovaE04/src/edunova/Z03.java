@@ -1,6 +1,9 @@
 package edunova;
 
+import java.awt.FlowLayout;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 public class Z03 {
 
 	public static void main(String[] args) {
@@ -26,11 +29,58 @@ public class Z03 {
 //			Umjesto "Ime" treba ispisati ime uneseno s konzole i 
 		// pri tome pripaziti da zadnje slovo imena bude poravnato s desnim rubom tablice.
 		
-
+		
         
-	}
+        int sirinaTablice = 31;
+        System.out.println("-".repeat(sirinaTablice));
+        System.out.println(": : :  TABLICA  MNOZENJA  : : :");
+        System.out.println("-".repeat(sirinaTablice));
+        
+        System.out.print(" * |");
+        for (int i = 1; i <= 9; i++) {
+            System.out.printf("%3d", i);
+        }
+        System.out.println();
+        System.out.println("-".repeat(sirinaTablice));
+
+        for (int i = 1; i <= 9; i++) {
+            System.out.printf("%2d |", i);
+            for (int j = 1; j <= 9; j++) {
+                int rezultat = i * j;
+                System.out.printf("%3d", rezultat);
+            }
+            System.out.println();
+        }
+        
+        System.out.println("-".repeat(sirinaTablice));
+   
+        
+        String ime = JOptionPane.showInputDialog("Unesite ime");
+        System.out.println(": : : : : :"+ len.ime+ FlowLayout.RIGHT);
+        
 
 
+        System.out.println("-".repeat(sirinaTablice));
+        
+            
+
+
+       
+        }
+	
 }
+
+        	
+        
+        
+        
+            
+  
+		
+        
+
+
+
+
 
 
