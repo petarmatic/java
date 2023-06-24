@@ -27,14 +27,14 @@ public class E02IncrementDecrement {
 		// ++i prvo ućeva pa onda koristi vrijednost isto i --
 		System.out.println(++i); //3
 		
-		int t=-1,k=0;
+		int t=-2,k=0;
 		
 		t= ++k -t;// k=1, t=0
 		System.out.println("k=" +k + ",t=" +t);
 		k=--t - t++; // k=0 t=0
 		System.out.println("k=" + k + ",t=" + t);
 		
-		
+		 
 	}
 
 }

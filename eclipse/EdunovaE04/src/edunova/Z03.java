@@ -56,7 +56,7 @@ public class Z03 {
    
         
         String ime = JOptionPane.showInputDialog("Unesite ime");
-        System.out.println(": : : : : :"+ len.ime+ FlowLayout.RIGHT);
+        
         
 
 
