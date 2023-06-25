@@ -47,26 +47,28 @@ public class Z03 {
             System.out.printf("%2d |", i);
             for (int j = 1; j <= 9; j++) {
                 int rezultat = i * j;
-                System.out.printf("%3d", rezultat);
+                System.out.printf("%3d",rezultat);
             }
-            System.out.println();
+        System.out.println();
         }
         
         System.out.println("-".repeat(sirinaTablice));
    
-        
-        String ime = JOptionPane.showInputDialog("Unesite ime");
-        
+        String ime = "Tomislav";
         
 
+        int razmak = (sirinaTablice - ime.length() - 2) / 2;
+        String razmaci = ":".repeat(razmak);
 
-        System.out.println("-".repeat(sirinaTablice));
-        
+        String ispis = razmaci + " " + ime + " " + razmaci;
+
+        if ((sirinaTablice - ime.length() - 2) % 2 == 1) {
+            ispis += ":";
             
 
 
        
-        }
+        }     }
 	
 }
 
