@@ -2,7 +2,7 @@ package edunova;
 
 import javax.swing.JOptionPane;
 
-public class V03UnosTemp {
+public class Vjezba03UnosTemp {
 
 	public static void main(String[] args) {
 		
