@@ -44,8 +44,8 @@ public class E04CiklicnaMatrica {
 			matrica[redovi - i][1] = b++;
 		}
 
-		for (int i = 3; i < stupci; i++) {
-			matrica[redovi-????][i] = b++;
+		for (int i = 1; i < stupci; i++) {
+			matrica[1][i-1] = b++;
 		}
 
 //		for (int i = redovi; i < redovi; i++) {
