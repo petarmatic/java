@@ -4,8 +4,7 @@ public class Racunalo {
 	
 	private String nazivProc;
 	private float cijena;
-	private byte RAM;
-	
+	private int RAM;
 	
 	
 	
@@ -13,7 +12,7 @@ public class Racunalo {
 	public Racunalo() {
 		super();
 	}
-	public Racunalo(String nazivProc, float cijena, byte rAM) {
+	public Racunalo(String nazivProc, float cijena, int rAM) {
 		super();
 		this.nazivProc = nazivProc;
 		this.cijena = cijena;
@@ -31,12 +30,23 @@ public class Racunalo {
 	public void setCijena(float cijena) {
 		this.cijena = cijena;
 	}
-	public byte getRAM() {
+	public int getRAM() {
 		return RAM;
 	}
-	public void setRAM(byte rAM) {
+	public void setRAM(int rAM) {
 		RAM = rAM;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

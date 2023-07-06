@@ -12,8 +12,8 @@ public class Z02 {
 			// instance klase Racunalo
 	
 
-	Racunalo pc1= new Racunalo("intel", 45545.33, 4);
-	Racunalo pc2=new Racunalo("amd", 4545, 8);
+	Racunalo pc1= new Racunalo("amd", 4545.33f, 4);
+	Racunalo pc2=new Racunalo("intel", 555.44f, 8);
 	
 	
 	
