@@ -1,4 +1,4 @@
-package edunova;
+package Zadatak;
 
 public class Z01 {
 	// Kreirajte klase Zivotinja, Sisavac, Riba, Pas i Som
