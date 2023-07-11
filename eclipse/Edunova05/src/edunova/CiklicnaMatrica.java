@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 public class CiklicnaMatrica {
 
+
 		 public static void main(String[] args) {
 			 
 		        boolean dev = false;
@@ -22,40 +23,41 @@ public class CiklicnaMatrica {
 		        int maxstup = stupci - 1;
 
 		        while (v <= redovi * stupci) {
-		            // 1
-		            for (int i = maxstup; i >= minstup; i--) {
-		                matrica[maxred][i] = v++;
-		            }
-		            maxred--;
+	                // 1
+	                for (int i = maxstup; i >= minstup && v <= redovi * stupci; i--) {
+	                    matrica[maxred][i] = v++;
+	                }
+	                maxred--;
 
-		            // 2
-		            for (int i = maxred; i >= minred; i--) {
-		                matrica[i][minstup] = v++;
-		            }
-		            minstup++;
+	                // 2
+	                for (int i = maxred; i >= minred && v <= redovi * stupci; i--) {
+	                    matrica[i][minstup] = v++;
+	                }
+	                minstup++;
 
-		            // 3
-		            for (int i = minstup; i <= maxstup; i++) {
-		                matrica[minred][i] = v++;
-		            }
-		            minred++;
+	                // 3
+	                for (int i = minstup; i <= maxstup && v <= redovi * stupci; i++) {
+	                    matrica[minred][i] = v++;
+	                }
+	                minred++;
 
-		            // 4
-		            for (int i = minred; i <= maxred; i++) {
-		                matrica[i][maxstup] = v++;
-		            }
-		            maxstup--;
-		        }
+	                // 4
+	                for (int i = minred; i <= maxred && v <= redovi * stupci; i++) {
+	                    matrica[i][maxstup] = v++;
+	                }
+	                maxstup--;
+	            }
 
-		        for (int i = 0; i < redovi; i++) {
-		            for (int j = 0; j < stupci; j++) {
-		                System.out.print(matrica[i][j] + "\t");
-		            }
-		            System.out.println();
-		        }
-		    }
-		}
+	            for (int i = 0; i < redovi; i++) {
+	                for (int j = 0; j < stupci; j++) {
+	                    System.out.print(matrica[i][j] + "\t");
+	                }
+	                System.out.println();
+	            }
+	        }
+	    }
+	
 
-
+		      
 
 
