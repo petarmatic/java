@@ -43,6 +43,7 @@ private static int ljubav (int[] niz) {
 		int[] noviNiz= {1,2};
 			return ljubav(noviNiz);
 		}
+		return 0;
 		
 	}
 	
