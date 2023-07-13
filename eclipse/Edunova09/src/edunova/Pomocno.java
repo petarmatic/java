@@ -1,10 +1,13 @@
 package edunova;
 
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 public class Pomocno {
 	public static Scanner ulaz;
 	public static boolean dev;
+	private static final String FORMAT_DATUMA="dd. MM. yyyy.";
+	private static SimpleDateFormat df = new SimpleDateFormat(FORMAT_DATUMA);
 
 	public static int unosRasponBroja(String poruka, String greska, int min, int max) {
 		// TODO Auto-generated method stub

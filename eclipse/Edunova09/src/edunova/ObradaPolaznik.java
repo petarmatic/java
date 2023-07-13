@@ -12,6 +12,11 @@ public class ObradaPolaznik {
 	public ObradaPolaznik() {
 		polaznici= new ArrayList<>();
 	}
+	
+	private void testniPodaci() {
+		polaznici.add(new Polaznik(1,"Ana","Gal","23432321222","agal@gail.com","2023/11"));
+		polaznici.add(new Polaznik(2,"Marija","Zimska","23432321223","mzimska@gail.com","2023/12"));
+	}
 	public void prikaziIzbornik() {
 		System.out.println("Polaznik izbornik");
 		System.out.println("1. Pregled postojećih polaznika");
@@ -33,15 +38,50 @@ public class ObradaPolaznik {
 			dodavanjePolaznika();
 			prikaziIzbornik();
 			break;
+		case 3:
+			promjenaPolaznika();
+			prikaziIzbornik();
+			break;
+		case 4:
+			brisanjePolaznika();
+			prikaziIzbornik();
+			break;
 		case 5:
 			break;
 		}
 		
 		
 	}
+	private void brisanjePolaznika() {
+		pregledPolaznika();
+		int index= Pomocno.unosRasponBroja("Odaberi redni broj polaznika: ", "Odabir nije dobar", 1, polaznici.size());
+		polaznici.remove(index-1);
+		
+	}
+
+	private void promjenaPolaznika() {
+		pregledPolaznika();
+		int index= Pomocno.unosRasponBroja("Odaberi redni broj smjera", "Odabir nije dobar", 1, polaznici.size());
+		Polaznik p=polaznici.get(index-1);
+		p.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera ("+ p.getSifra() + ")"	, "Pozitivan broj", index, index));
+		p.setIme(Pomocno.unosString("Unesi ime polaznika (" + p.getIme() + ")","Ime obavezno"));
+		p.setPrezime(Pomocno.unosString("Unesi prezime polaznika(" + p.getPrezime() + ")", "Prezime obavezno"));
+		p.setEmail(Pomocno.unosString("Unesi email polaznika("+ p.getEmail() + ")", "Email obavezno"));
+		p.setOib(Pomocno.unosString("Unesi oib polaznika(" + p.getOib()+ ")", "OIB obavezno"));
+		p.setBrojUgovora(Pomocno.unosString("Unesi broj ugovora polaznika("+ p.getBrojUgovora()+ ")", "Broj ugovora obavezno"));
+		
+		
+	}
 	private void pregledPolaznika() {
+		System.out.println("-------------------");
+		System.out.println("---- Polaznici ----");
+		System.out.println("-------------------");
 		// funkcionalno programiranje lambda expression
-		polaznici.forEach(s->{System.out.println(s);});
+		//polaznici.forEach(s->{System.out.println(s);});
+		int b=1;
+		for(Polaznik p : polaznici)
+			System.out.println(b++ + ". " + p);
+		System.out.println("-------------------");
 		
 		
 		
@@ -49,8 +89,13 @@ public class ObradaPolaznik {
 	private void dodavanjePolaznika() {
 		// TODO Auto-generated method stub
 		var p = new Polaznik();
+		p.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera", "Pozitivan broj", 1, Integer.MAX_VALUE));
 		p.setIme(Pomocno.unosString("Unesi ime polaznika", "Ime obavezno"));
 		p.setPrezime(Pomocno.unosString("Unesi prezime polaznika", "Prezime obavezno"));
+		polaznici.add(p);
+		p.setEmail(Pomocno.unosString("Unesi email polaznika", "Email obavezno"));
+		p.setOib(Pomocno.unosString("Unesi oib polaznika", "Oib obavezan"));
+		p.setBrojUgovora(Pomocno.unosString("Unesi broj ugovora", "Ugovor obavezan"));
 		polaznici.add(p);
 		
 	}

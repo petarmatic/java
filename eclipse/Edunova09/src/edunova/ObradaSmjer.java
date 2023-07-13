@@ -43,12 +43,32 @@ public class ObradaSmjer {
 			dodavanjeSmjera();
 			prikaziIzbornik();
 			break;
+		case 3:
+			promjenaSmjera();
+			prikaziIzbornik();
+			break;
 		case 5:
 			break;
 		}
 		
 		
 	}
+	private void promjenaSmjera() {
+		pregledSmjerova();
+		int index = Pomocno.unosRasponBroja("Odaberi redni broj smjera: ","Nije dobar odabir",1,smjerovi.size());
+		Smjer s = smjerovi.get(index-1);
+		s.setSifra(Pomocno.unosRasponBroja("Unesi šifru smjera (" + s.getSifra() + "): " ,"Pozitivan broj",
+				1,Integer.MAX_VALUE));
+		s.setNaziv(Pomocno.unosString("Unesi naziv smjera (" + s.getNaziv() + "): ","Naziv obavezan"));
+		s.setTrajanje(Pomocno.unosRasponBroja("Unesi trajanje smjera (" + s.getTrajanje() + "): ", 
+				"Broj između 30 i 360", 30, 360));
+		s.setCijena(Pomocno.unosFloat("Unesi cijenu smjera (. za decimalni dio) (" + s.getCijena() + "): ","Greška kod unosa"));
+		s.setUpisnina(Pomocno.unosFloat("Unesi upisninu smjera (. za decimalni dio) (" + s.getUpisnina() + "): ","Greška kod unosa"));
+		s.setVerificiran(Pomocno.unosBoolean("Smjer verificiran (da) ili bilo što drugo za ne (" + (s.isVerificiran() ? "da" : "ne") + "): "));
+		
+	}
+		
+	
 	private void pregledSmjerova() {
 		// TODO Auto-generated method stub
 		for (Smjer s : smjerovi) {
