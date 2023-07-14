@@ -5,27 +5,28 @@ import java.util.Scanner;
 
 public class Pomocno {
 	public static Scanner ulaz;
-	public static boolean dev;
+	public static boolean DEV;
 	private static final String FORMAT_DATUMA="dd. MM. yyyy.";
 	private static SimpleDateFormat df = new SimpleDateFormat(FORMAT_DATUMA);
 
+	
+		
 	public static int unosRasponBroja(String poruka, String greska, int min, int max) {
-		// TODO Auto-generated method stub
 		int i;
 		while (true) {
 			try {
 				System.out.print(poruka);
-				i=Integer.parseInt(ulaz.nextLine());
-				if(i>=min && i<=max) {
+				i = Integer.parseInt(ulaz.nextLine());
+				if (i >= min && i <= max) {
 					return i;
-				} System.out.println(greska);
-			}catch (Exception e) {
+				}
+				System.out.println(greska);
+			} catch (Exception e) {
 				System.out.println(greska);
 			}
+		}
 			
 		}
-		
-	}
 
 	public static String unosString(String poruka, String greska) {
 		// TODO Auto-generated method stub
@@ -38,6 +39,26 @@ public class Pomocno {
 			}
 			System.out.println(greska);
 		}
+	}
+	
+	public static float unosFloat(String poruka, String greska) {
+		while(true) {
+			try {
+				System.out.println(poruka);
+				return Float.parseFloat(ulaz.nextLine());
+			}catch(Exception e) {
+				System.out.println(greska);
+			}
+			
+			
+		}
+		
+	}
+	
+	public static boolean unosBoolean(String poruka) {
+		System.out.println(poruka);
+		return ulaz.nextLine().trim().toLowerCase().equals("da") ? true:false;
+		
 	}
 
 }

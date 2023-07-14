@@ -9,8 +9,12 @@ public class ObradaPolaznik {
 	
 	private List<Polaznik> polaznici;
 	
+
 	public ObradaPolaznik() {
 		polaznici= new ArrayList<>();
+		if(Pomocno.DEV) {
+			testniPodaci();
+		}
 	}
 	
 	private void testniPodaci() {
@@ -54,16 +58,18 @@ public class ObradaPolaznik {
 	}
 	private void brisanjePolaznika() {
 		pregledPolaznika();
-		int index= Pomocno.unosRasponBroja("Odaberi redni broj polaznika: ", "Odabir nije dobar", 1, polaznici.size());
+		int index = Pomocno.unosRasponBroja("Odaberi redni broj polaznika: ","Nije dobar odabir",1,polaznici.size());
 		polaznici.remove(index-1);
 		
 	}
+
 
 	private void promjenaPolaznika() {
 		pregledPolaznika();
 		int index= Pomocno.unosRasponBroja("Odaberi redni broj smjera", "Odabir nije dobar", 1, polaznici.size());
 		Polaznik p=polaznici.get(index-1);
-		p.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera ("+ p.getSifra() + ")"	, "Pozitivan broj", index, index));
+		p.setSifra(Pomocno.unosRasponBroja("Unesi šifru smjera (" + p.getSifra() + "): " ,"Pozitivan broj",
+				1,Integer.MAX_VALUE));
 		p.setIme(Pomocno.unosString("Unesi ime polaznika (" + p.getIme() + ")","Ime obavezno"));
 		p.setPrezime(Pomocno.unosString("Unesi prezime polaznika(" + p.getPrezime() + ")", "Prezime obavezno"));
 		p.setEmail(Pomocno.unosString("Unesi email polaznika("+ p.getEmail() + ")", "Email obavezno"));
@@ -92,7 +98,6 @@ public class ObradaPolaznik {
 		p.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera", "Pozitivan broj", 1, Integer.MAX_VALUE));
 		p.setIme(Pomocno.unosString("Unesi ime polaznika", "Ime obavezno"));
 		p.setPrezime(Pomocno.unosString("Unesi prezime polaznika", "Prezime obavezno"));
-		polaznici.add(p);
 		p.setEmail(Pomocno.unosString("Unesi email polaznika", "Email obavezno"));
 		p.setOib(Pomocno.unosString("Unesi oib polaznika", "Oib obavezan"));
 		p.setBrojUgovora(Pomocno.unosString("Unesi broj ugovora", "Ugovor obavezan"));

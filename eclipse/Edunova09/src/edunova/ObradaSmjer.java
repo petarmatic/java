@@ -10,12 +10,18 @@ public class ObradaSmjer {
 	
 	public ObradaSmjer() {
 		smjerovi= new ArrayList<>();
-		if(Pomocno.dev) {
+		if(Pomocno.DEV) {
 			testniPodaci();
 			
 		}
 		
+		
+		
 	}
+	public List<Smjer> getSmjerovi() {
+		return smjerovi;
+	}
+	
 	private void testniPodaci() {
 		// TODO Auto-generated method stub
 		smjerovi.add(new Smjer(1,"Java programiranje",100,100,100,true));
@@ -47,10 +53,21 @@ public class ObradaSmjer {
 			promjenaSmjera();
 			prikaziIzbornik();
 			break;
+		case 4:
+			brisanjeSmjera();
+			prikaziIzbornik();
+			break;
 		case 5:
 			break;
 		}
 		
+		
+	}
+	private void brisanjeSmjera() {
+		pregledSmjerova();
+		int index = Pomocno.unosRasponBroja("Odaberi redni broj smjera: ", "Odabir nije dobar",
+				1, smjerovi.size());
+		smjerovi.remove(index-1);
 		
 	}
 	private void promjenaSmjera() {
