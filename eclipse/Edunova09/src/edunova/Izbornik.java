@@ -6,7 +6,10 @@ public class Izbornik {
 	
 	private ObradaSmjer obradaSmjer;
 	private ObradaPolaznik obradaPolaznika;
+	private ObradaPredavac obradaPredavac;
+	private ObradaPolaznik obradaPolaznik;
 	
+
 	public Izbornik() {
 		obradaPolaznika= new ObradaPolaznik();
 		obradaSmjer= new ObradaSmjer();
@@ -55,10 +58,26 @@ public class Izbornik {
 		case 5:
 			System.out.println("Doviđenja");
 			break;
-			
-				
-		}
+			}
 		
 	}
+
+	public ObradaSmjer getObradaSmjer() {
+		return obradaSmjer;
+	}
+
+	public ObradaPolaznik getObradaPolaznik() {
+		return obradaPolaznika;
+	}
+
+	public ObradaPredavac getObradaPredavac() {
+		return obradaPredavac;
+	}
+
+	public ObradaPolaznik getObradaPolaznika() {
+		return obradaPolaznika;
+	}
+	
+	
 
 }

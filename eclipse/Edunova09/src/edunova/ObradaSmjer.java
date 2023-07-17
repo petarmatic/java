@@ -86,11 +86,17 @@ public class ObradaSmjer {
 	}
 		
 	
-	private void pregledSmjerova() {
-		// TODO Auto-generated method stub
-		for (Smjer s : smjerovi) {
-			System.out.println(s.getNaziv());
+	public void pregledSmjerova() {
+		System.out.println("------------------");
+		System.out.println("---- Smjerovi ----");
+		System.out.println("------------------");
+		int b=1;
+		for(Smjer s : smjerovi) {
+			System.out.println(b++ + ". " + s.getNaziv());
 		}
+		System.out.println("------------------");
+		
+		
 	}
 	private void dodavanjeSmjera() {
 		// TODO Auto-generated method stub

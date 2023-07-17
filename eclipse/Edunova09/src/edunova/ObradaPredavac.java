@@ -9,11 +9,20 @@ public class ObradaPredavac {
 	
 	private List<Predavac> predavaci;
 	
-	
+	public List<Predavac> getPredavaci() {
+		return predavaci;
+	}
 		
 	
 	public ObradaPredavac() {
 		predavaci= new ArrayList<>();
+		if(Pomocno.DEV) {
+			testniPodaci();
+		}
+		}
+	private void testniPodaci() {
+		predavaci.add(new Predavac(1,"Zrinka","Kek","23432321229","zkek@gail.com","HR3424242323423523"));
+		predavaci.add(new Predavac(2,"Zvonko","Lakot","23432321228","zlakot@gail.com","HR3424242323423524"));
 	}
 	
 	public void prikaziIzbornik() {
@@ -90,7 +99,7 @@ public class ObradaPredavac {
 		
 	}
 
-	private void pregledPredavaca() {
+	public void pregledPredavaca() {
 		System.out.println("-------------------");
 		System.out.println("---- Predavači ----");
 		System.out.println("-------------------");

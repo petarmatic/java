@@ -1,6 +1,7 @@
 package edunova;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Pomocno {
@@ -59,6 +60,17 @@ public class Pomocno {
 		System.out.println(poruka);
 		return ulaz.nextLine().trim().toLowerCase().equals("da") ? true:false;
 		
+	}
+	public static Date unosDatum(String poruka) {
+		while (true) {
+			try {
+				System.out.print(poruka);
+				return df.parse(ulaz.nextLine());
+			} catch (Exception e) {
+				System.out.println("Obavezan unos datuma u formatu " + FORMAT_DATUMA + ", npr. " + df.format(new Date()) + " za danas.");
+			}
+		}
+
 	}
 
 }

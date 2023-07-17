@@ -9,6 +9,15 @@ public class ObradaPolaznik {
 	
 	private List<Polaznik> polaznici;
 	
+	
+
+	public List<Polaznik> getPolaznici() {
+		return polaznici;
+	}
+
+	public void setPolaznici(List<Polaznik> polaznici) {
+		this.polaznici = polaznici;
+	}
 
 	public ObradaPolaznik() {
 		polaznici= new ArrayList<>();
@@ -78,7 +87,7 @@ public class ObradaPolaznik {
 		
 		
 	}
-	private void pregledPolaznika() {
+	public void pregledPolaznika() {
 		System.out.println("-------------------");
 		System.out.println("---- Polaznici ----");
 		System.out.println("-------------------");
