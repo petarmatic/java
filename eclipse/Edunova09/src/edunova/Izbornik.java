@@ -7,12 +7,13 @@ public class Izbornik {
 	private ObradaSmjer obradaSmjer;
 	private ObradaPolaznik obradaPolaznika;
 	private ObradaPredavac obradaPredavac;
-	private ObradaPolaznik obradaPolaznik;
-	
+	private ObradaGrupa obradaGrupa;
 
 	public Izbornik() {
-		obradaPolaznika= new ObradaPolaznik();
 		obradaSmjer= new ObradaSmjer();
+		obradaPolaznika= new ObradaPolaznik();
+		obradaPredavac = new ObradaPredavac();
+		obradaGrupa= new ObradaGrupa();
 		Pomocno.ulaz = new Scanner(System.in);
 		pozdravnaPoruka();
 		prikaziIzbornik();
@@ -48,11 +49,11 @@ public class Izbornik {
 			prikaziIzbornik();
 			break;
 		case 3:
-			System.out.println("Predavači");
+			obradaPredavac.prikaziIzbornik();
 			prikaziIzbornik();
 			break;
 		case 4:
-			System.out.println("Grupe");
+			obradaGrupa.prikaziIzbornik();
 			prikaziIzbornik();
 			break;
 		case 5:
@@ -73,11 +74,5 @@ public class Izbornik {
 	public ObradaPredavac getObradaPredavac() {
 		return obradaPredavac;
 	}
-
-	public ObradaPolaznik getObradaPolaznika() {
-		return obradaPolaznika;
-	}
-	
-	
 
 }

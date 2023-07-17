@@ -15,8 +15,6 @@ public class ObradaSmjer {
 			
 		}
 		
-		
-		
 	}
 	public List<Smjer> getSmjerovi() {
 		return smjerovi;
@@ -99,7 +97,6 @@ public class ObradaSmjer {
 		
 	}
 	private void dodavanjeSmjera() {
-		// TODO Auto-generated method stub
 		Smjer s= new Smjer();
 		s.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera", "Pozitivan broj",
 				0, Integer.MAX_VALUE));

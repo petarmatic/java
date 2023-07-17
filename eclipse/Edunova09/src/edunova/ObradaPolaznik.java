@@ -15,10 +15,6 @@ public class ObradaPolaznik {
 		return polaznici;
 	}
 
-	public void setPolaznici(List<Polaznik> polaznici) {
-		this.polaznici = polaznici;
-	}
-
 	public ObradaPolaznik() {
 		polaznici= new ArrayList<>();
 		if(Pomocno.DEV) {
@@ -40,7 +36,7 @@ public class ObradaPolaznik {
 		ucitajStavkuIzbornika();
 	}
 	private void ucitajStavkuIzbornika() {
-		// TODO Auto-generated method stub
+		
 		switch(Pomocno.unosRasponBroja("Odaberi stavku izbornika", 
 				"Odabir mora biti 1-5", 1, 5)) {
 		case 1:
@@ -114,7 +110,4 @@ public class ObradaPolaznik {
 		
 	}
 	
-	
-	
-
 }

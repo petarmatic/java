@@ -50,8 +50,7 @@ public class ObradaGrupa {
 		case 4:
 			brisanjeGrupa();
 			prikaziIzbornik();
-			break;
-			
+			break;	
 		case 5:
 			break;
 		}
@@ -101,6 +100,7 @@ public class ObradaGrupa {
 		g.setPredavac(postaviPredavaca());
 		g.setDatumPocetka(Pomocno.unosDatum("Unesi datum početka"));
 		g.setPolaznici(postaviPolaznike());
+		grupe.add(g);
 	}
 	
 	
@@ -148,3 +148,5 @@ public class ObradaGrupa {
 
 
 }
+
+
