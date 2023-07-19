@@ -2,14 +2,16 @@ package autokuca.model;
 
 public class ProdajnoMjesto extends Prodavac{
 	private String adresa;
-	private int naziv;
+	private String naziv;
 	private Prodavac prodavac;
+	
+	
 	
 	
 	public ProdajnoMjesto() {
 		super();
 	}
-	public ProdajnoMjesto(String adresa, int naziv, Prodavac prodavac) {
+	public ProdajnoMjesto(String adresa, String naziv, Prodavac prodavac) {
 		super();
 		this.adresa = adresa;
 		this.naziv = naziv;
@@ -21,10 +23,10 @@ public class ProdajnoMjesto extends Prodavac{
 	public void setAdresa(String adresa) {
 		this.adresa = adresa;
 	}
-	public int getNaziv() {
+	public String getNaziv() {
 		return naziv;
 	}
-	public void setNaziv(int naziv) {
+	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
 	public Prodavac getProdavac() {
@@ -33,6 +35,8 @@ public class ProdajnoMjesto extends Prodavac{
 	public void setProdavac(Prodavac prodavac) {
 		this.prodavac = prodavac;
 	}
+	
+	
 	
 	
 }

@@ -1,20 +1,14 @@
 package autokuca.model;
 
-public abstract class Prodavac extends Entitet{
+public class Prodavac extends Entitet{
+	
 	 private String ime;
 	 private String prezime;
 	 
 	 
 	 
-	
-	public Prodavac() {
-		super();
-	}
-	public Prodavac(String ime, String prezime) {
-		super();
-		this.ime = ime;
-		this.prezime = prezime;
-	}
+	 
+	 
 	public String getIme() {
 		return ime;
 	}
@@ -27,7 +21,4 @@ public abstract class Prodavac extends Entitet{
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
-	 
-	 
-
 }

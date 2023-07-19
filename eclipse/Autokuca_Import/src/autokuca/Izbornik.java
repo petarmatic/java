@@ -3,10 +3,13 @@ package autokuca;
 import java.util.Scanner;
 
 public class Izbornik {
+	private ObradaProdavac obradaProdavac;
 	
 	public Izbornik() {
-		prikaziIzbornik();
+		obradaProdavac= new ObradaProdavac();
 		Pomocno.ulaz= new Scanner(System.in);
+		prikaziIzbornik();
+		Pomocno.ulaz.close();
 		
 	}
 	
@@ -22,14 +25,21 @@ public class Izbornik {
 	}
 
 	private void ucitajStavkuIzbornika() {
-		switch(Pomocno.unosRasponBroja("Odaberi stavku izbornika", "Obavezno 1-6", 1, 6)) {
+		switch(Pomocno.unosRasponBroja("Odaberi stavku izbornika",
+				"Obavezno 1-6", 1, 6)) {
 		case 1:
-			
+			obradaProdavac.prikaziIzbornik();
+			prikaziIzbornik();
 			break;
 		case 6:
 			break;
-		}
+		    }
+		     
 		
 	}
-	
+
+	public ObradaProdavac getObradaProdavac() {
+		return obradaProdavac;
+	}
+
 }
