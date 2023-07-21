@@ -10,6 +10,11 @@ public class ObradaProdavac {
 	
 	private List<Prodavac> prodavaci;
 	
+	
+	public List<Prodavac> getProdavaci() {
+		return prodavaci;
+	}
+
 	public ObradaProdavac() {
 		prodavaci = new ArrayList<>();
 	}
@@ -85,17 +90,11 @@ public class ObradaProdavac {
 
 
 
-	private void pregledProdavaca() {
+	public void pregledProdavaca() {
 		int b=1;
 		System.out.println();
 		for (Prodavac p:prodavaci)
 			System.out.println(b++ + ". "+ p);	
 		System.out.println();
 	}
-
-	
-	
-	
-
 }
-

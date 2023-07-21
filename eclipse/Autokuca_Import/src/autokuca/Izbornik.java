@@ -4,9 +4,17 @@ import java.util.Scanner;
 
 public class Izbornik {
 	private ObradaProdavac obradaProdavac;
+	private ObradaProdajnoMjesto obradaProdajnoMjesto;
+	private ObradaVozilo obradaVozilo;
+	private ObradaKupac obradaKupac;
+	private ObradaRacun obradaRacun;
 	
 	public Izbornik() {
 		obradaProdavac= new ObradaProdavac();
+		obradaProdajnoMjesto= new ObradaProdajnoMjesto();
+		obradaVozilo= new ObradaVozilo(this);
+		obradaKupac= new ObradaKupac();
+		obradaRacun= new ObradaRacun();
 		Pomocno.ulaz= new Scanner(System.in);
 		prikaziIzbornik();
 		Pomocno.ulaz.close();
@@ -31,6 +39,20 @@ public class Izbornik {
 			obradaProdavac.prikaziIzbornik();
 			prikaziIzbornik();
 			break;
+		case 2:
+			obradaProdajnoMjesto.prikaziIzbornik();
+			prikaziIzbornik();
+			break;
+		case 3:
+			obradaVozilo.prikaziIzbornik();
+			prikaziIzbornik();
+			break;
+		case 4:
+			obradaKupac.prikaziIzbornik();
+			prikaziIzbornik();
+		case 5:
+			obradaRacun.prikaziIzbornik();
+			prikaziIzbornik();
 		case 6:
 			break;
 		    }
@@ -41,5 +63,21 @@ public class Izbornik {
 	public ObradaProdavac getObradaProdavac() {
 		return obradaProdavac;
 	}
+
+	public ObradaProdajnoMjesto getObradaProdajnoMjesto() {
+		return obradaProdajnoMjesto;
+	}
+
+	public ObradaVozilo getObradaVozilo() {
+		return obradaVozilo;
+	}
+
+	public ObradaKupac getObradaKupac() {
+		return obradaKupac;
+	}
+	
+	
+	
+	
 
 }

@@ -9,6 +9,14 @@ import autokuca.model.Prodavac;
 public class ObradaProdajnoMjesto {
 	
 	private List<ProdajnoMjesto> prodajnoMjesto;
+	
+
+
+	public List<ProdajnoMjesto> getProdajnoMjesto() {
+		return prodajnoMjesto;
+	}
+
+
 	private Izbornik izbornik;
 	
 	public ObradaProdajnoMjesto() {
@@ -37,9 +45,45 @@ public class ObradaProdajnoMjesto {
 			dodavanjeProdajnihMjesta();
 			prikaziIzbornik();
 			break;
+		case 3:
+			promjenaProdajnihMjesta();
+			prikaziIzbornik();
+			break;
+		case 4:
+			brisanjeProdajnihMjesta();
+			prikaziIzbornik();
+			break;
 		case 5:
 			break;
 		}
+		
+	}
+
+
+	private void brisanjeProdajnihMjesta() {
+		pregledProdajnihMjesta();
+		int i= Pomocno.unosRasponBroja("Odaberi redni broj prodajnog mjesta", 
+				"Odabir nije dobar", 1, prodajnoMjesto.size());
+		prodajnoMjesto.remove(i-1);
+		
+	}
+
+
+	private void promjenaProdajnihMjesta() {
+		int i= Pomocno.unosRasponBroja("Odabeir redni broj prodajnog mjesta"
+				, "Odabir nije dobar", 1, prodajnoMjesto.size());
+		ProdajnoMjesto pm= prodajnoMjesto.get(i-1);
+		pm.setSifra(Pomocno.unosRasponBroja("Unesi sifru prodajnog mjesta",
+				"Odabir nije dobar", 1, Integer.MAX_VALUE));
+		pm.setAdresa(Pomocno.unosString("Unesi adresu", "Adresa obavezno"));
+		pm.setNaziv(Pomocno.unosString("Unesi naziv", "Naziv obavezno"));
+		pm.setProdavac(pm);
+		System.out.println();
+//		int b=1;
+//		for(Prodavac p: pm.getProdavac()) {
+//			System.out.println(b++ + ". "+ p);
+//		}
+//		pm.setProdavac(postaviProdavaca());
 		
 	}
 
@@ -56,11 +100,14 @@ public class ObradaProdajnoMjesto {
 
 
 	private Prodavac postaviProdavaca() {
-		izbornik.getObradaProdavac().preg
+		izbornik.getObradaProdavac().pregledProdavaca();
+		int i= Pomocno.unosRasponBroja("Odaberi redni broj prodavača",
+				"Odabir nije dobar", 1,izbornik.getObradaProdavac().getProdavaci().size());
+		return izbornik.getObradaProdavac().getProdavaci().get(i-1);
 	}
 
 
-	private void pregledProdajnihMjesta() {
+	public void pregledProdajnihMjesta() {
 		int b=1;
 		System.out.println();
 		for(ProdajnoMjesto pm: prodajnoMjesto)

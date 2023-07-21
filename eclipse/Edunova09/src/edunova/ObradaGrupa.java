@@ -40,8 +40,8 @@ public class ObradaGrupa {
 			prikaziIzbornik();
 			break;
 		case 2:
-			pregledGrupe();
 			dodavanjeGrupe();
+			prikaziIzbornik();
 			break;
 		case 3:
 			pregledGrupe();

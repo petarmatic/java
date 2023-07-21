@@ -32,11 +32,19 @@ public class Pomocno {
 			if(s.trim().length()>0) {
 				return s;
 			}
+		}	
+	}
+	
+	public static float unosFloat(String poruka, String greska) {
+		while(true) {
+			try {
+			System.out.println(poruka);
+			return Float.parseFloat(ulaz.nextLine());
+		}catch(Exception e) {
+			System.out.println(greska);
 		}
-		
-		
-	};
-		
+	}
+	}
 		
 		
 

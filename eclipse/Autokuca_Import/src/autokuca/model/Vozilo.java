@@ -27,6 +27,11 @@ public class Vozilo extends ProdajnoMjesto {
 	public void setProdajnomjesto(ProdajnoMjesto prodajnomjesto) {
 		this.prodajnomjesto = prodajnomjesto;
 	}
+	public Vozilo(String adresa, String naziv, Prodavac prodavac, float cijena, ProdajnoMjesto prodajnomjesto) {
+		super(adresa, naziv, prodavac);
+		this.cijena = cijena;
+		this.prodajnomjesto = prodajnomjesto;
+	}
 	
 	
 	
