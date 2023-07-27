@@ -6,7 +6,7 @@ public class Prodavac extends Entitet{
 	 private String prezime;
 	 
 	 
-	 
+	
 	 
 	 
 	public String getIme() {
@@ -21,4 +21,6 @@ public class Prodavac extends Entitet{
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
+	
+	
 }

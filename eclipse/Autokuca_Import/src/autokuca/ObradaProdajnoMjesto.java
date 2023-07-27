@@ -70,6 +70,7 @@ public class ObradaProdajnoMjesto {
 
 
 	private void promjenaProdajnihMjesta() {
+		pregledProdajnihMjesta();
 		int i= Pomocno.unosRasponBroja("Odabeir redni broj prodajnog mjesta"
 				, "Odabir nije dobar", 1, prodajnoMjesto.size());
 		ProdajnoMjesto pm= prodajnoMjesto.get(i-1);
@@ -79,11 +80,12 @@ public class ObradaProdajnoMjesto {
 		pm.setNaziv(Pomocno.unosString("Unesi naziv", "Naziv obavezno"));
 		pm.setProdavac(pm);
 		System.out.println();
-//		int b=1;
-//		for(Prodavac p: pm.getProdavac()) {
-//			System.out.println(b++ + ". "+ p);
-//		}
-//		pm.setProdavac(postaviProdavaca());
+		int b=1;
+		for(Prodavac p : p) {
+			System.out.println(b++ + ". "+ p);
+		}
+		System.out.println();
+		pm.setProdavac(postaviProdavaca());
 		
 	}
 
