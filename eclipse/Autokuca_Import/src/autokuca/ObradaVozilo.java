@@ -66,7 +66,7 @@ public class ObradaVozilo {
 	private void unosVozila() {
 		Vozilo v = new Vozilo();
 		v.setSifra(Pomocno.unosRasponBroja("Odaberi redni broj vozila", 
-				"Odabir nije dobar", 1, vozilo.size()));
+				"Odabir nije dobar", 1, Integer.MAX_VALUE));
 		v.setCijena(Pomocno.unosFloat("Unesi cijenu vozila(. za decimalni dio) (" + v.getCijena() + ")",
 				"Greška kod unosa"));
 		v.setProdajnomjesto(postaviProdajnoMjesto());

@@ -51,5 +51,6 @@ public abstract class Osoba extends Entitet {
 	}
 	
 	
+	
 
 }

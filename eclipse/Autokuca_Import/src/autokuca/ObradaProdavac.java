@@ -81,8 +81,8 @@ public class ObradaProdavac {
 	private void dodavanjeProdavaca() {
 		Prodavac p = new Prodavac();
 		// var p= new Polaznik();
-		p.setSifra(Pomocno.unosRasponBroja("Odaberi redni broj predavača",
-				"Odabir nije dobar", 1, prodavaci.size()));
+		p.setSifra(Pomocno.unosRasponBroja("Odaberi redni broj predavača:",
+				"Odabir nije dobar", 1, Integer.MAX_VALUE));
 		p.setIme(Pomocno.unosString("Unesi ime predavača", "Ime obavezno"));
 		p.setPrezime(Pomocno.unosString("Unesi prezime prodavača", "Prezime obavezno"));
 		prodavaci.add(p);

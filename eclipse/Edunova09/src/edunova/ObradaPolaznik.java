@@ -14,6 +14,8 @@ public class ObradaPolaznik {
 	public List<Polaznik> getPolaznici() {
 		return polaznici;
 	}
+	
+	
 
 	public ObradaPolaznik() {
 		polaznici= new ArrayList<>();
@@ -109,5 +111,7 @@ public class ObradaPolaznik {
 		polaznici.add(p);
 		
 	}
+	
+	
 	
 }

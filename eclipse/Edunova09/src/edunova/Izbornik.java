@@ -75,4 +75,10 @@ public class Izbornik {
 		return obradaPredavac;
 	}
 
+	public ObradaGrupa getObradaGrupa() {
+		return obradaGrupa;
+	}
+	
+	
+
 }
