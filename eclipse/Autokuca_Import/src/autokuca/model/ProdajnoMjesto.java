@@ -7,7 +7,6 @@ public class ProdajnoMjesto extends Prodavac{
 	
 	
 	
-	
 	public ProdajnoMjesto() {
 		super();
 	}
@@ -35,7 +34,6 @@ public class ProdajnoMjesto extends Prodavac{
 	public void setProdavac(Prodavac prodavac) {
 		this.prodavac = prodavac;
 	}
-	
 	
 	
 	

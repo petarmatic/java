@@ -1,6 +1,7 @@
 package autokuca;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import autokuca.model.ProdajnoMjesto;
@@ -81,7 +82,7 @@ public class ObradaProdajnoMjesto {
 		pm.setProdavac(pm);
 		System.out.println();
 		int b=1;
-		for(Prodavac p : p) {
+		for(Prodavac p : ) {
 			System.out.println(b++ + ". "+ p);
 		}
 		System.out.println();
