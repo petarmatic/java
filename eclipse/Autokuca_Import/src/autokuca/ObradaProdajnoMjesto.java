@@ -10,9 +10,6 @@ import autokuca.model.Prodavac;
 public class ObradaProdajnoMjesto {
 	
 	private List<ProdajnoMjesto> prodajnoMjesto;
-	
-
-
 	public List<ProdajnoMjesto> getProdajnoMjesto() {
 		return prodajnoMjesto;
 	}
@@ -20,6 +17,10 @@ public class ObradaProdajnoMjesto {
 
 	private Izbornik izbornik;
 	
+	public ObradaProdajnoMjesto(Izbornik izbornik) {
+		this();
+		this.izbornik=izbornik;
+	}
 	public ObradaProdajnoMjesto() {
 		prodajnoMjesto= new ArrayList<>();	}
 	
@@ -80,12 +81,12 @@ public class ObradaProdajnoMjesto {
 		pm.setAdresa(Pomocno.unosString("Unesi adresu", "Adresa obavezno"));
 		pm.setNaziv(Pomocno.unosString("Unesi naziv", "Naziv obavezno"));
 		pm.setProdavac(pm);
-		System.out.println();
-		int b=1;
-		for(Prodavac p : ) {
-			System.out.println(b++ + ". "+ p);
-		}
-		System.out.println();
+//		System.out.println();
+//		int b=1;
+//		for(Prodavac p : p.get) {
+//			System.out.println(b++ + ". "+ p);
+//		}
+//		System.out.println();
 		pm.setProdavac(postaviProdavaca());
 		
 	}
@@ -93,6 +94,7 @@ public class ObradaProdajnoMjesto {
 
 	private void dodavanjeProdajnihMjesta() {
 		ProdajnoMjesto pm = new ProdajnoMjesto();
+		pm.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera", "sifra nije dobra", 1, Integer.MAX_VALUE));
 		pm.setAdresa(Pomocno.unosString("Unesi adresu", "Adresa obavezno"));
 		pm.setNaziv(Pomocno.unosString("Unesi naziv", "Naziv obavezno"));
 		pm.setProdavac(postaviProdavaca());

@@ -13,7 +13,7 @@ public class Izbornik {
 		obradaSmjer= new ObradaSmjer();
 		obradaPolaznika= new ObradaPolaznik();
 		obradaPredavac = new ObradaPredavac();
-		obradaGrupa= new ObradaGrupa();
+		obradaGrupa= new ObradaGrupa(this);
 		Pomocno.ulaz = new Scanner(System.in);
 		pozdravnaPoruka();
 		prikaziIzbornik();

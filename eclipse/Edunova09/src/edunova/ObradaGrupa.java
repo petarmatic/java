@@ -16,7 +16,7 @@ public class ObradaGrupa {
 
 	public ObradaGrupa(Izbornik izbornik) {
 		this();
-		this.izbornik = izbornik;
+		this.izbornik=izbornik;
 	}
 
 	public ObradaGrupa() {

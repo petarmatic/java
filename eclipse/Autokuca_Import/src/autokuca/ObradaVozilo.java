@@ -11,12 +11,15 @@ public class ObradaVozilo {
 	private List<Vozilo> vozilo;
 	private Izbornik izbornik;
 	
-	
+	public ObradaVozilo(Izbornik izbornik) {
+		this();
+		this.izbornik=izbornik;
+	}
 	
 	public List<Vozilo> getVozilo() {
 		return vozilo;
 	}
-	public ObradaVozilo(Izbornik izbornik2) {
+	public ObradaVozilo() {
 		vozilo= new ArrayList<>();
 	}
 	public void prikaziIzbornik() {

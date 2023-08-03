@@ -10,8 +10,8 @@ public class Izbornik {
 	private ObradaRacun obradaRacun;
 	
 	public Izbornik() {
-		obradaProdavac= new ObradaProdavac();
-		obradaProdajnoMjesto= new ObradaProdajnoMjesto();
+		obradaProdavac= new ObradaProdavac(this);
+		obradaProdajnoMjesto= new ObradaProdajnoMjesto(this);
 		obradaVozilo= new ObradaVozilo(this);
 		obradaKupac= new ObradaKupac();
 		obradaRacun= new ObradaRacun();

@@ -9,12 +9,16 @@ public class ObradaProdavac {
 	
 	
 	private List<Prodavac> prodavaci;
-	
+	private Izbornik izbornik;
 	
 	public List<Prodavac> getProdavaci() {
 		return prodavaci;
 	}
-
+	public ObradaProdavac(Izbornik izbornik) {
+		this();
+		this.izbornik= izbornik;
+	}
+	
 	public ObradaProdavac() {
 		prodavaci = new ArrayList<>();
 	}
