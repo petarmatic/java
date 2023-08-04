@@ -19,10 +19,10 @@ public class ObradaPredavac {
 		if(Pomocno.DEV) {
 			testniPodaci();
 		}
-		}
+	}
 	private void testniPodaci() {
-		predavaci.add(new Predavac(1,"Zrinka","Kek","23432321229","zkek@gail.com","HR3424242323423523"));
-		predavaci.add(new Predavac(2,"Zvonko","Lakot","23432321228","zlakot@gail.com","HR3424242323423524"));
+		predavaci.add(new Predavac(1,"Zrinka","Kek","zkek@gail.com","23432321229","HR3424242323423523"));
+		predavaci.add(new Predavac(2,"Zvonko","Lakot","zlakot@gail.com","23432321228","HR3424242323423524"));
 	}
 	
 	public void prikaziIzbornik() {

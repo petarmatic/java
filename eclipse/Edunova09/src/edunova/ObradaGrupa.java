@@ -13,7 +13,7 @@ public class ObradaGrupa {
 
 	private List<Grupa> grupe;
 	private Izbornik izbornik;
-
+	
 	public ObradaGrupa(Izbornik izbornik) {
 		this();
 		this.izbornik=izbornik;
@@ -21,7 +21,17 @@ public class ObradaGrupa {
 
 	public ObradaGrupa() {
 		grupe = new ArrayList<>();
+		if(Pomocno.DEV) {
+			testniPodaci();
+		}
 	}
+	
+	private void testniPodaci() {
+		grupe.add(new Grupa());
+		
+	}
+
+	
 
 	public void prikaziIzbornik() {
 		System.out.println("\nGrupa izbornik");

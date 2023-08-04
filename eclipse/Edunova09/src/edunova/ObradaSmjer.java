@@ -14,19 +14,19 @@ public class ObradaSmjer {
 	
 	public ObradaSmjer() {
 		smjerovi= new ArrayList<>();
-//		if(Pomocno.DEV) {
-//			testniPodaci();
-//			
-//		}
+		if(Pomocno.DEV) {
+			testniPodaci();
+			
+		}
 		
 	}
 	
-//	private void testniPodaci() {
-//		// TODO Auto-generated method stub
-//		smjerovi.add(new Smjer(1,"Java programiranje",100,100,100,true));
-//		smjerovi.add(new Smjer(2,"Web programiranje",100,100,100,true));
-//		smjerovi.add(new Smjer(3,"Web dizajn",100,100,100,true));
-//	}
+	private void testniPodaci() {
+		// TODO Auto-generated method stub
+		smjerovi.add(new Smjer(1,"Java programiranje",100,100,100,true));
+		smjerovi.add(new Smjer(2,"Web programiranje",100,100,100,true));
+		smjerovi.add(new Smjer(3,"Web dizajn",100,100,100,true));
+	}
 	public void prikaziIzbornik() {
 		System.out.println("Smjer izbornik");
 		System.out.println("1. Pregled postojećih smjerova");
