@@ -100,9 +100,9 @@ public class ObradaPolaznik {
 		
 	}
 	private void dodavanjePolaznika() {
-		// TODO Auto-generated method stub
 		var p = new Polaznik();
-		p.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera", "Pozitivan broj", 1, Integer.MAX_VALUE));
+		p.setSifra(Pomocno.unosRasponBroja("Unesi sifru smjera", "Pozitivan broj", 1,
+				Integer.MAX_VALUE));
 		p.setIme(Pomocno.unosString("Unesi ime polaznika", "Ime obavezno"));
 		p.setPrezime(Pomocno.unosString("Unesi prezime polaznika", "Prezime obavezno"));
 		p.setEmail(Pomocno.unosString("Unesi email polaznika", "Email obavezno"));

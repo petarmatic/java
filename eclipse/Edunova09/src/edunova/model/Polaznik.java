@@ -24,4 +24,5 @@ public class Polaznik extends Osoba{
 		this.brojUgovora = brojUgovora;
 	}	
 
+	
 }
