@@ -8,14 +8,13 @@ public class Kupac extends Entitet{
 	 
 	 
 	 
-	public Kupac() {
-		super();
+	
+	
+	public Kupac(int i, String string, String string2, String string3) {
+		// TODO Auto-generated constructor stub
 	}
-	public Kupac(float budzet, String ime, String prezime) {
-		super();
-		this.budzet = budzet;
-		this.ime = ime;
-		this.prezime = prezime;
+	public Kupac() {
+		// TODO Auto-generated constructor stub
 	}
 	public float getBudzet() {
 		return budzet;
@@ -36,5 +35,9 @@ public class Kupac extends Entitet{
 		this.prezime = prezime;
 	}
 	 
-	 
+	 @Override
+	public String toString() {
+		
+		return budzet + " " + ime + " " + prezime;
+	}
 }

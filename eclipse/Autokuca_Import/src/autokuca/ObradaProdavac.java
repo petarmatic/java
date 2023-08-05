@@ -1,10 +1,10 @@
 package autokuca;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import autokuca.model.Prodavac;
-
 public class ObradaProdavac {
 	
 	
@@ -21,8 +21,15 @@ public class ObradaProdavac {
 	
 	public ObradaProdavac() {
 		prodavaci = new ArrayList<>();
+		if(Pomocno.DEV) {
+			testniPodaci();
+		}
 	}
 	
+	private void testniPodaci() {
+		prodavaci.add(new Prodavac(1,"Pero","Matić"));
+		
+	}
 	public void prikaziIzbornik() {
 		System.out.println("\nIzbornik prodavača");
 		System.out.println("1.Pregled prodavača");

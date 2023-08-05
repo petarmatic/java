@@ -22,9 +22,19 @@ public class ObradaProdajnoMjesto {
 		this.izbornik=izbornik;
 	}
 	public ObradaProdajnoMjesto() {
-		prodajnoMjesto= new ArrayList<>();	}
+		prodajnoMjesto= new ArrayList<>();
+		if(Pomocno.DEV) {
+			testniPodaci();
+		}
+	}
 	
+		
+
 	
+	private void testniPodaci() {
+		prodajnoMjesto.add(new ProdajnoMjesto(1,"zagorksa 44 osijek","autos"));
+		
+	}
 	public void prikaziIzbornik() {
 		System.out.println("\nProdajno Mjesto izbornik");
 		System.out.println("1.Pregled postojećih prodajnih mjesta");

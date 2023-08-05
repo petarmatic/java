@@ -1,17 +1,27 @@
 package autokuca;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import autokuca.model.Kupac;
+
 
 public class ObradaKupac {
 	private List<Kupac>kupci;
 	
 	public ObradaKupac() {
 		kupci = new ArrayList<>();
+		if(Pomocno.DEV) {
+			testniPodaci();
+		}
 	}
 	
+	private void testniPodaci() {
+		kupci.add(new Kupac (1,"2223.33","Marko","Mak"));
+		
+	}
+
 	public List<Kupac> getKupci() {
 		return kupci;
 	}

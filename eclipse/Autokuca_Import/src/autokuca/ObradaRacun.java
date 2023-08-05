@@ -1,6 +1,7 @@
 package autokuca;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import autokuca.model.Kupac;
@@ -8,13 +9,22 @@ import autokuca.model.Prodavac;
 import autokuca.model.Racun;
 import autokuca.model.Vozilo;
 
+
 public class ObradaRacun {
 	private List<Racun> racuni;
 	private Izbornik izbornik;
 
 	public ObradaRacun() {
 		racuni = new ArrayList<>();
+		if(Pomocno.DEV) {
+			testniPodaci();
+		}
 
+	}
+
+	private void testniPodaci() {
+//		racuni.add(new Racun(1,))
+		
 	}
 
 	public void prikaziIzbornik() {
