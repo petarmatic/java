@@ -20,6 +20,7 @@ public abstract class Osoba extends Entitet {
 		this.oib = oib;
 		this.email = email;
 	}
+	
 	public String getIme() {
 		return ime;
 	}

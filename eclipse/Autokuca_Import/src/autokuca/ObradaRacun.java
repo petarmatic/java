@@ -58,6 +58,7 @@ public class ObradaRacun {
 		r.setKupac(postaviKupca());
 		r.setProdavac(postaviProdavaca());
 		r.setVozilo(postaviVozilo());
+		racuni.add(r);
 	}
 
 	private Vozilo postaviVozilo() {

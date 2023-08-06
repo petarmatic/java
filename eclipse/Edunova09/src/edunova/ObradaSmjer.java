@@ -63,10 +63,14 @@ public class ObradaSmjer {
 		
 	}
 	private void brisanjeSmjera() {
+		if(smjerovi.isEmpty()) {
+			System.out.println("Prazno");
+		} else {
 		pregledSmjerova();
 		int index = Pomocno.unosRasponBroja("Odaberi redni broj smjera: ", "Odabir nije dobar",
 				1, smjerovi.size());
 		smjerovi.remove(index-1);
+		}
 		
 	}
 	private void promjenaSmjera() {

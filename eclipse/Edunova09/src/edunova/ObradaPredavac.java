@@ -64,9 +64,13 @@ public class ObradaPredavac {
 	}
 
 	private void brisanjePredavaca() {
+		if(predavaci.isEmpty()) {
+			System.out.println("Prazno");
+		}else {
 		pregledPredavaca();
 		int index= Pomocno.unosRasponBroja("Odaberi redni broj predavaca:", "Nije dobar odabir", 1, predavaci.size());
 		predavaci.remove(index-1);
+		}
 		
 	}
 

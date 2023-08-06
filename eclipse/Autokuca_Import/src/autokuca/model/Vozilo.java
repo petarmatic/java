@@ -22,6 +22,10 @@ public class Vozilo extends ProdajnoMjesto {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Vozilo(int sifra, String ime, int i) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public float getCijena() {
 		return cijena;
 	}

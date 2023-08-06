@@ -70,10 +70,14 @@ public class ObradaProdavac {
 
 
 	private void brisanjeProdavaca() {
+		if(prodavaci.isEmpty()) {
+			System.out.println("Prazno");
+		}else {
 		pregledProdavaca();
 		int i=Pomocno.unosRasponBroja("Odaberi redni broj prodavača",
 				"Nije dobar odabir", 1, prodavaci.size());
 		prodavaci.remove(i-1);
+		}
 	}
 
 	private void promjenaProdavaca() {
@@ -85,6 +89,7 @@ public class ObradaProdavac {
 				"Odabir nije dobar", 1, prodavaci.size()));
 		p.setIme(Pomocno.unosString("Unesi ime prodavača(" + p.getIme()+ ")", "Ime obavezno"));
 		p.setPrezime(Pomocno.unosString("Unesi prezime prodavača", "Prezime obavezno"));
+	
 	}
 
 

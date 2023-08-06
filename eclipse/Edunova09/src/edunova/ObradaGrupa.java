@@ -27,7 +27,7 @@ public class ObradaGrupa {
 	}
 	
 	private void testniPodaci() {
-		grupe.add(new Grupa());
+//		grupe.add(new Grupa(1,"nova grupa",1,"20",1,"06.06.2023.",1));
 		
 	}
 
@@ -86,9 +86,13 @@ public class ObradaGrupa {
 
 	
 	private void brisanjeGrupa() {
+		if(grupe.isEmpty()) {
+			System.out.println("Prazno");
+		}else {
 		pregledGrupe();
 		int index = Pomocno.unosRasponBroja("Odaberi redni broj grupaa: ", "Nije dobar odabir", 1, grupe.size());
-		grupe.remove(index - 1);
+		grupe.remove(index - 1); 
+		}
 
 	}
 

@@ -73,10 +73,14 @@ public class ObradaProdajnoMjesto {
 
 
 	private void brisanjeProdajnihMjesta() {
+		if(prodajnoMjesto.isEmpty()) {
+			System.out.println("Prazno");
+		}else {
 		pregledProdajnihMjesta();
 		int i= Pomocno.unosRasponBroja("Odaberi redni broj prodajnog mjesta", 
 				"Odabir nije dobar", 1, prodajnoMjesto.size());
 		prodajnoMjesto.remove(i-1);
+		}
 		
 	}
 

@@ -64,10 +64,14 @@ public class ObradaKupac {
 	}
 
 	private void brisanjeKupca() {
+		if(kupci.isEmpty()) {
+			System.out.println("Prazno");
+		} else {
 		pregledKupca();
 		int i=Pomocno.unosRasponBroja("Odaberi redni broj kupca", "Odabir nije dobar",
 				1, kupci.size());
 		kupci.remove(i-1);
+		}
 		
 	}
 
