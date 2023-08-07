@@ -4,17 +4,13 @@ import java.util.Scanner;
 
 public class Ponavljanje03 {
 	public static void main(String[] args) {
-		
-		Scanner scanner= new Scanner(System.in);
-		int b;
-		
-		if(i<=1) {
-			return false;
-		}
-			
-		
+		 String str = "Hello, World!";
+	        
+	        // Dohvaća znak na indeksu 7
+	        char charAtIndex = str.charAt(7);
+	        
+	        System.out.println("Znak na indeksu 7: " + charAtIndex);
+	    }
 	
-			
-	}
 
 }

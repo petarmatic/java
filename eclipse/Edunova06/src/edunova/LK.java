@@ -34,11 +34,77 @@ public class LK {
 			niz[i]=b;	
 		}
 		System.out.println(Arrays.toString(niz));
-	}
-	
-	private void drugikorak() {
-		if ()
 		
+		int[] zbrojNiza = new int[niz.length / 2 + 1];
+        zbrojNiza(niz, zbrojNiza, 0, niz.length - 1, 0);
+
+        System.out.println(Arrays.toString(zbrojNiza));
+    }
+		
+		private static int[] zbrojNiza(int[] ulazniNiz, int[] izlazniNiz, int lijeviIndeks, int desniIndeks, int k ) {
+			if(lijeviIndeks <=desniIndeks) {
+				if(lijeviIndeks == desniIndeks) {
+					izlazniNiz[k]=ulazniNiz[lijeviIndeks];
+				}else {
+					izlazniNiz[k]= ulazniNiz[lijeviIndeks] + ulazniNiz[desniIndeks];
+				}
+				zbrojNiza(ulazniNiz, izlazniNiz, lijeviIndeks +1, desniIndeks-1, k+1);
+			}
+			
+			 private static int[] razdvajanje(int[] niz) {
+			        int b = 0;
+			        for (int i : niz) {
+			            if (i < 10) {
+			                b++;
+			            }
+			        }
+			        int[] matrica = new int[niz.length + b];
+			        for (int i = 0, j = 0; i < niz.length; i++) {
+			            if (niz[i] < 10) {
+			                matrica[j++] = niz[i];
+			            } else {
+			                matrica[j++] = niz[i] / 10;
+			                matrica[j++] = niz[i] % 10;
+			            }
+			        }
+
+			        return matrica;
+			    }
+			
+		
+			
+		
+
+
+		
+			
+			
+			
+			
+			
+		// drugi korak
+//		 int lijeviIndeks = 0;
+//	        int desniIndeks = niz.length - 1;
+//	        int[] zbrojNiza = new int[niz.length / 2 + 1];
+//	        int k = 0;
+//
+//	        while (lijeviIndeks <= desniIndeks) {
+//	            if (lijeviIndeks == desniIndeks) {
+//	                zbrojNiza[k++] = niz[lijeviIndeks];
+//	            } else {
+//	                zbrojNiza[k++] = niz[lijeviIndeks] + niz[desniIndeks];
+//	            }
+//	            lijeviIndeks++;
+//	            desniIndeks--;
+//	        }
+//
+//	        System.out.println(Arrays.toString(zbrojNiza));
+		
+	    }
 	}
 	
-}
+
+			
+		
+	
+	
