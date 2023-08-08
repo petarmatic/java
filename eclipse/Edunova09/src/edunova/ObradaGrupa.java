@@ -8,32 +8,29 @@ import edunova.model.Predavac;
 import edunova.model.Polaznik;
 import edunova.model.Smjer;
 import java.util.List;
-
-
+import java.util.Scanner;
 
 public class ObradaGrupa {
 
 	private List<Grupa> grupe;
 	private Izbornik izbornik;
-	
+
 	public ObradaGrupa(Izbornik izbornik) {
 		this();
-		this.izbornik=izbornik;
+		this.izbornik = izbornik;
 	}
 
 	public ObradaGrupa() {
 		grupe = new ArrayList<>();
-		if(Pomocno.DEV) {
+		if (Pomocno.DEV) {
 			testniPodaci();
 		}
 	}
-	
+
 	private void testniPodaci() {
 //		grupe.add(new Grupa(1,"nova grupa",1,"20",1,"06.06.2023.",1));
-		
-	}
 
-	
+	}
 
 	public void prikaziIzbornik() {
 		System.out.println("\nGrupa izbornik");
@@ -75,76 +72,84 @@ public class ObradaGrupa {
 	}
 
 	private void brisanjePolaznika() {
+		Scanner ulaz = new Scanner(System.in);
+
 		if (grupe.isEmpty()) {
 			System.out.println("Nema polaznika");
-			
+			return;
 		}
-			else {
-			pregledGrupe();
-			int i=Pomocno.unosRasponBroja("Odaberi redni broj grupe","Odabir nije dobar", 1, grupe.size());
-			Grupa g= grupe.get(i-1);
-			if(g.getPolaznici().isEmpty()) {
-				System.out.println("nema polaznika");
-		}  if (grupe.isEmpty()) {
-	        System.out.println("Nema polaznika");
-	        return;
-	    }
 
-	    pregledGrupe();
+		pregledGrupe();
 
-	    int index = Pomocno.unosRasponBroja("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, grupe.size());
-	    Grupa odabranaGrupa = grupe.get(index - 1);
+		int index = Pomocno.unosRasponBroja("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, grupe.size());
+		Grupa odabranaGrupa = grupe.get(index - 1);
 
-	    if (odabranaGrupa.getPolaznici().isEmpty()) {
-	        System.out.println("Grupa nema polaznika.");
-	        return;
-	    }
+		if (odabranaGrupa.getPolaznici().isEmpty()) {
+			System.out.println("Grupa nema polaznika.");
+			return;
+		}
 
-	    List<Polaznik> polaznici = new ArrayList<>(odabranaGrupa.getPolaznici());
-	    Iterator<Polaznik> iterator = polaznici.iterator();
+		List<Polaznik> polaznici = new ArrayList<>(odabranaGrupa.getPolaznici());
+		Iterator<Polaznik> iterator = polaznici.iterator();
 
-	    while (iterator.hasNext()) {
-	        Polaznik polaznik = iterator.next();
-	    }
+		while (iterator.hasNext()) {
+			Polaznik polaznik = iterator.next();
+			System.out.print(
+					"Želite li obrisati polaznika '" + polaznik.getIme() + " " + polaznik.getPrezime() + "' (da/ne)? ");
+			String odgovor = ulaz.nextLine().toLowerCase();
+			if (odgovor.equals("da")) {
+				iterator.remove();
 			}
-		
-		
+			 
+		}
+
+		odabranaGrupa.setPolaznici(polaznici);
+		System.out.println("Promjene spremljene.");
+		 ulaz.close();
 	}
 
-	
 	private void brisanjeGrupa() {
-		if(grupe.isEmpty()) {
+		if (grupe.isEmpty()) {
 			System.out.println("Prazno");
-		}else {
-		pregledGrupe();
-		int index = Pomocno.unosRasponBroja("Odaberi redni broj grupaa: ", "Nije dobar odabir", 1, grupe.size());
-		grupe.remove(index - 1); 
+		} else {
+			pregledGrupe();
+			int index = Pomocno.unosRasponBroja("Odaberi redni broj grupaa: ", "Nije dobar odabir", 1, grupe.size());
+			grupe.remove(index - 1);
 		}
 
 	}
 
 	private void promjenaGrupe() {
-		int index = Pomocno.unosRasponBroja("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, grupe.size());
-		Grupa g = grupe.get(index - 1);
-		g.setSifra(Pomocno.unosRasponBroja("Unesi šifru grupe (" + g.getSifra() + "): ", "Pozitivan broj", 1,
-				Integer.MAX_VALUE));
-		g.setNaziv(Pomocno.unosString("Unesi naziv grupe (" + g.getNaziv() + "): ", "Naziv obavezan"));
-		g.setMaxpolaznika(
-				Pomocno.unosRasponBroja("Unesi maksimalno polaznika grupe: ", "Pozitivan broj (5-25)", 5, 25));
-		System.out.println("Trenutni smjer: " + g.getSmjer().getNaziv());
-		g.setSmjer(postaviSmjer());
-		System.out.println("Trenutni predavač: " + g.getPredavac());
-		g.setPredavac(postaviPredavaca());
-		g.setDatumPocetka(Pomocno.unosDatum("Unesi datum početka"));
-		System.out.println("----------------------------");
-		System.out.println("---- Trenutni polaznici ----");
-		System.out.println("----------------------------");
-		int b = 1;
-		for (Polaznik p : g.getPolaznici()) {
-			System.out.println(b++ + ". " + p);
+		boolean upit = Pomocno
+				.unosBoolean("Želite li promjeniti jednu od grupa? (da za nastavak ili ne za odustajanje): ");
+		if (upit) {
+			if (grupe.isEmpty()) {
+				System.out.println("\nTrenutno nije unesena niti jedna grupa");
+			} else {
+				int index = Pomocno.unosRasponBroja("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, grupe.size());
+				Grupa g = grupe.get(index - 1);
+				g.setSifra(Pomocno.unosRasponBroja("Unesi šifru grupe (" + g.getSifra() + "): ", "Pozitivan broj", 1,
+						Integer.MAX_VALUE));
+				g.setNaziv(Pomocno.unosString("Unesi naziv grupe (" + g.getNaziv() + "): ", "Naziv obavezan"));
+				g.setMaxpolaznika(
+						Pomocno.unosRasponBroja("Unesi maksimalno polaznika grupe: ", "Pozitivan broj (5-25)", 5, 25));
+				System.out.println("Trenutni smjer: " + g.getSmjer().getNaziv());
+				g.setSmjer(postaviSmjer());
+				System.out.println("Trenutni predavač: " + g.getPredavac());
+				g.setPredavac(postaviPredavaca());
+				g.setDatumPocetka(Pomocno.unosDatum("Unesi datum početka"));
+				System.out.println("----------------------------");
+				System.out.println("---- Trenutni polaznici ----");
+				System.out.println("----------------------------");
+				int b = 1;
+				for (Polaznik p : g.getPolaznici()) {
+					System.out.println(b++ + ". " + p);
+				}
+				System.out.println("-------------------");
+				g.setPolaznici(postaviPolaznike());
+				System.out.println("Promjene spremljene.");
+			}
 		}
-		System.out.println("-------------------");
-		g.setPolaznici(postaviPolaznike());
 
 	}
 
@@ -157,19 +162,19 @@ public class ObradaGrupa {
 				Pomocno.unosRasponBroja("Unesi maksimalno polaznika grupe: ", "Pozitivan broj (5-25)", 5, 25));
 		g.setPredavac(postaviPredavaca());
 		g.setDatumPocetka(Pomocno.unosDatum("Unesi datum početka"));
-		 List<Polaznik> polaznici = postaviPolaznike();
+		List<Polaznik> polaznici = postaviPolaznike();
 		g.setPolaznici(postaviPolaznike());
 		if (polaznici.isEmpty()) {
-	        System.out.println("Grupa mora imati barem jednog polaznika.");
-	        return; // Vraćanje na izbornik grupe
-	    }
+			System.out.println("Grupa mora imati barem jednog polaznika.");
+			return; // Vraćanje na izbornik grupe
+		}
 
-	    List<Grupa> novaListaGrupa = new ArrayList<>(grupe);
-	    g.setPolaznici(polaznici);
-	    novaListaGrupa.add(g);
+		List<Grupa> novaListaGrupa = new ArrayList<>(grupe);
+		g.setPolaznici(polaznici);
+		novaListaGrupa.add(g);
 
-	    grupe = novaListaGrupa;
-		
+		grupe = novaListaGrupa;
+
 	}
 
 	private List<Polaznik> postaviPolaznike() {
@@ -177,7 +182,7 @@ public class ObradaGrupa {
 		while (Pomocno.unosRasponBroja("Dodati polaznike (1 da,2 ne)", "greska", 1, 2) == 1) {
 			polaznici.add(postaviPolaznika());
 		}
-		return polaznici; 
+		return polaznici;
 	}
 
 	private Polaznik postaviPolaznika() {
