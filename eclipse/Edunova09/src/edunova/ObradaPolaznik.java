@@ -25,8 +25,8 @@ public class ObradaPolaznik {
 	}
 	
 	private void testniPodaci() {
-//		polaznici.add(new Polaznik(1,"Ana","Gal","23432321222","agal@gail.com","2023/11"));
-//		polaznici.add(new Polaznik(2,"Marija","Zimska","23432321223","mzimska@gail.com","2023/12"));
+		polaznici.add(new Polaznik(1,"Ana","Gal","23432321222","agal@gail.com","2023/11"));
+		polaznici.add(new Polaznik(2,"Marija","Zimska","23432321223","mzimska@gail.com","2023/12"));
 	}
 	public void prikaziIzbornik() {
 		System.out.println("Polaznik izbornik");

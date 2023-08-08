@@ -1,6 +1,8 @@
 package edunova;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import edunova.model.Grupa;
 import edunova.model.Predavac;
 import edunova.model.Polaznik;
@@ -79,8 +81,33 @@ public class ObradaGrupa {
 		}
 			else {
 			pregledGrupe();
-			
-		} 
+			int i=Pomocno.unosRasponBroja("Odaberi redni broj grupe","Odabir nije dobar", 1, grupe.size());
+			Grupa g= grupe.get(i-1);
+			if(g.getPolaznici().isEmpty()) {
+				System.out.println("nema polaznika");
+		}  if (grupe.isEmpty()) {
+	        System.out.println("Nema polaznika");
+	        return;
+	    }
+
+	    pregledGrupe();
+
+	    int index = Pomocno.unosRasponBroja("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, grupe.size());
+	    Grupa odabranaGrupa = grupe.get(index - 1);
+
+	    if (odabranaGrupa.getPolaznici().isEmpty()) {
+	        System.out.println("Grupa nema polaznika.");
+	        return;
+	    }
+
+	    List<Polaznik> polaznici = new ArrayList<>(odabranaGrupa.getPolaznici());
+	    Iterator<Polaznik> iterator = polaznici.iterator();
+
+	    while (iterator.hasNext()) {
+	        Polaznik polaznik = iterator.next();
+	    }
+			}
+		
 		
 	}
 
@@ -130,8 +157,19 @@ public class ObradaGrupa {
 				Pomocno.unosRasponBroja("Unesi maksimalno polaznika grupe: ", "Pozitivan broj (5-25)", 5, 25));
 		g.setPredavac(postaviPredavaca());
 		g.setDatumPocetka(Pomocno.unosDatum("Unesi datum početka"));
+		 List<Polaznik> polaznici = postaviPolaznike();
 		g.setPolaznici(postaviPolaznike());
-		grupe.add(g);
+		if (polaznici.isEmpty()) {
+	        System.out.println("Grupa mora imati barem jednog polaznika.");
+	        return; // Vraćanje na izbornik grupe
+	    }
+
+	    List<Grupa> novaListaGrupa = new ArrayList<>(grupe);
+	    g.setPolaznici(polaznici);
+	    novaListaGrupa.add(g);
+
+	    grupe = novaListaGrupa;
+		
 	}
 
 	private List<Polaznik> postaviPolaznike() {
@@ -139,7 +177,7 @@ public class ObradaGrupa {
 		while (Pomocno.unosRasponBroja("Dodati polaznike (1 da,2 ne)", "greska", 1, 2) == 1) {
 			polaznici.add(postaviPolaznika());
 		}
-		return polaznici;
+		return polaznici; 
 	}
 
 	private Polaznik postaviPolaznika() {
