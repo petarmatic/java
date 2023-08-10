@@ -20,5 +20,9 @@ public class Polaznik extends Osoba {
 	public void setBrojUgovora(String brojUgovora) {
 		this.brojUgovora = brojUgovora;
 	}
-
+	@Override
+	public String toString() {
+		//
+		return sifra + " " + brojUgovora;
+	}
 }

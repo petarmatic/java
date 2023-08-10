@@ -28,7 +28,7 @@ public class ObradaGrupa {
 	}
 
 	private void testniPodaci() {
-//		grupe.add(new Grupa(1,"nova grupa",1,"20",1,"06.06.2023.",1));
+		grupe.add(new Grupa(1,"nova grupa",1,"20",1,"06.06.2023.",1));
 
 	}
 
@@ -100,12 +100,12 @@ public class ObradaGrupa {
 			if (odgovor.equals("da")) {
 				iterator.remove();
 			}
-			 
+
 		}
 
 		odabranaGrupa.setPolaznici(polaznici);
 		System.out.println("Promjene spremljene.");
-		 ulaz.close();
+		ulaz.close();
 	}
 
 	private void brisanjeGrupa() {
@@ -166,7 +166,7 @@ public class ObradaGrupa {
 		g.setPolaznici(postaviPolaznike());
 		if (polaznici.isEmpty()) {
 			System.out.println("Grupa mora imati barem jednog polaznika.");
-			return; // Vraćanje na izbornik grupe
+			return; 
 		}
 
 		List<Grupa> novaListaGrupa = new ArrayList<>(grupe);

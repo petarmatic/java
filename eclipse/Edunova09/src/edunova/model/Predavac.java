@@ -27,7 +27,11 @@ public class Predavac extends Osoba {
 	}
 	
 	
-
+	@Override
+	public String toString() {
+		
+		return sifra + " "+ iban;
+	}
 	
 
 }

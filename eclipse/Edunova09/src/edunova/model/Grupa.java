@@ -4,8 +4,8 @@ import java.util.Date;
 
 import java.util.List;
 
-public class Grupa extends Entitet{
-	
+public class Grupa extends Entitet {
+
 	private String naziv;
 	private Smjer smjer;
 	private int maxpolaznika;
@@ -14,6 +14,24 @@ public class Grupa extends Entitet{
 	private List<Polaznik> polaznici;
 	
 	
+	
+	
+	public Grupa(int i, String string, int j, String string2, int k, String string3, int l) {
+		super();
+	}
+	public Grupa(int sifra, String naziv, Smjer smjer, int maxpolaznika, Predavac predavac, Date datumPocetka,
+			List<Polaznik> polaznici) {
+		super(sifra);
+		this.naziv = naziv;
+		this.smjer = smjer;
+		this.maxpolaznika = maxpolaznika;
+		this.predavac = predavac;
+		this.datumPocetka = datumPocetka;
+		this.polaznici = polaznici;
+	}
+	public Grupa() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getNaziv() {
 		return naziv;
 	}
@@ -51,11 +69,10 @@ public class Grupa extends Entitet{
 		this.polaznici = polaznici;
 	}
 	
-	
-	
-
+	public String toString() {
+	    return "Grupa [sifra=" + sifra + ", naziv=" + naziv + ", smjer=" + smjer + ", maxpolaznika=" + maxpolaznika
+	            + ", predavac=" + predavac + ", datumPocetka=" + datumPocetka + ", polaznici=" + polaznici + "]";
+	}
 }
-	
-	
-	
+
 	

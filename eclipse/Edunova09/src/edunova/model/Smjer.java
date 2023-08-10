@@ -53,6 +53,11 @@ public class Smjer extends Entitet {
 		this.verificiran = verificiran;
 	}
 	
-	
+	@Override
+	public String toString() {
+		
+		return sifra + " " + naziv+ " " + cijena+ " " + upisnina+
+				" "+ trajanje + " " + verificiran;
+	}
 
 }

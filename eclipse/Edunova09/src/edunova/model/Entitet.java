@@ -14,7 +14,7 @@ public abstract class Entitet {
 		this.sifra = sifra;
 	}
 
-	private int sifra;
+	protected int sifra;
 
 	public int getSifra() {
 		return sifra;
