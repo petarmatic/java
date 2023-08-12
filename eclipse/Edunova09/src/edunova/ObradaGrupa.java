@@ -74,10 +74,11 @@ public class ObradaGrupa {
 	private void brisanjePolaznika() {
 		Scanner ulaz = new Scanner(System.in);
 
-		if (grupe.isEmpty()) {
-			System.out.println("Nema polaznika");
-			return;
-		}
+		try {
+	        if (grupe.isEmpty()) {
+	            System.out.println("Nema polaznika");
+	            return;
+	        }
 
 		pregledGrupe();
 
@@ -105,7 +106,9 @@ public class ObradaGrupa {
 
 		odabranaGrupa.setPolaznici(polaznici);
 		System.out.println("Promjene spremljene.");
-		ulaz.close();
+		} finally {
+	        ulaz.close(); // Zatvaranje Scannera u finally bloku osigurava da će se resurs uvijek zatvoriti
+	    }
 	}
 
 	private void brisanjeGrupa() {
@@ -134,7 +137,11 @@ public class ObradaGrupa {
 				g.setMaxpolaznika(
 						Pomocno.unosRasponBroja("Unesi maksimalno polaznika grupe: ", "Pozitivan broj (5-25)", 5, 25));
 				System.out.println("Trenutni smjer: " + g.getSmjer().getNaziv());
-				g.setSmjer(postaviSmjer());
+				if (g.getSmjer() != null) {
+				    System.out.println("Trenutni smjer: " + g.getSmjer().getNaziv());
+				} else {
+				    System.out.println("Trenutni smjer nije postavljen.");
+				}
 				System.out.println("Trenutni predavač: " + g.getPredavac());
 				g.setPredavac(postaviPredavaca());
 				g.setDatumPocetka(Pomocno.unosDatum("Unesi datum početka"));
@@ -163,7 +170,7 @@ public class ObradaGrupa {
 		g.setPredavac(postaviPredavaca());
 		g.setDatumPocetka(Pomocno.unosDatum("Unesi datum početka"));
 		List<Polaznik> polaznici = postaviPolaznike();
-		g.setPolaznici(postaviPolaznike());
+		g.setPolaznici(new ArrayList<>());
 		if (polaznici.isEmpty()) {
 			System.out.println("Grupa mora imati barem jednog polaznika.");
 			return; 

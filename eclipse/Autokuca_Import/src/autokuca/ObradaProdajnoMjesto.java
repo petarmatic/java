@@ -8,33 +8,32 @@ import autokuca.model.ProdajnoMjesto;
 import autokuca.model.Prodavac;
 
 public class ObradaProdajnoMjesto {
-	
+
 	private List<ProdajnoMjesto> prodajnoMjesto;
+
 	public List<ProdajnoMjesto> getProdajnoMjesto() {
 		return prodajnoMjesto;
 	}
 
-
 	private Izbornik izbornik;
-	
+
 	public ObradaProdajnoMjesto(Izbornik izbornik) {
 		this();
-		this.izbornik=izbornik;
+		this.izbornik = izbornik;
 	}
+
 	public ObradaProdajnoMjesto() {
-		prodajnoMjesto= new ArrayList<>();
-		if(Pomocno.DEV) {
+		prodajnoMjesto = new ArrayList<>();
+		if (Pomocno.DEV) {
 			testniPodaci();
 		}
 	}
-	
-		
 
-	
 	private void testniPodaci() {
-		prodajnoMjesto.add(new ProdajnoMjesto(1,"zagorksa 44 osijek","autos"));
-		
+		prodajnoMjesto.add(new ProdajnoMjesto(1, "zagorksa 44 osijek", "autos"));
+
 	}
+
 	public void prikaziIzbornik() {
 		System.out.println("\nProdajno Mjesto izbornik");
 		System.out.println("1.Pregled postojećih prodajnih mjesta");
@@ -45,10 +44,8 @@ public class ObradaProdajnoMjesto {
 		ucitajStavkuIzbornika();
 	}
 
-
 	private void ucitajStavkuIzbornika() {
-		switch (Pomocno.unosRasponBroja("Odaberi stavku izbornika",
-				"Odabir mora biti 1-5", 1, 5)) {
+		switch (Pomocno.unosRasponBroja("Odaberi stavku izbornika", "Odabir mora biti 1-5", 1, 5)) {
 		case 1:
 			pregledProdajnihMjesta();
 			prikaziIzbornik();
@@ -68,43 +65,37 @@ public class ObradaProdajnoMjesto {
 		case 5:
 			break;
 		}
-		
-	}
 
+	}
 
 	private void brisanjeProdajnihMjesta() {
-		if(prodajnoMjesto.isEmpty()) {
+		if (prodajnoMjesto.isEmpty()) {
 			System.out.println("Prazno");
-		}else {
-		pregledProdajnihMjesta();
-		int i= Pomocno.unosRasponBroja("Odaberi redni broj prodajnog mjesta", 
-				"Odabir nije dobar", 1, prodajnoMjesto.size());
-		prodajnoMjesto.remove(i-1);
+		} else {
+			pregledProdajnihMjesta();
+			int i = Pomocno.unosRasponBroja("Odaberi redni broj prodajnog mjesta", "Odabir nije dobar", 1,
+					prodajnoMjesto.size());
+			prodajnoMjesto.remove(i - 1);
 		}
-		
-	}
 
+	}
 
 	private void promjenaProdajnihMjesta() {
 		pregledProdajnihMjesta();
-		int i= Pomocno.unosRasponBroja("Odabeir redni broj prodajnog mjesta"
-				, "Odabir nije dobar", 1, prodajnoMjesto.size());
-		ProdajnoMjesto pm= prodajnoMjesto.get(i-1);
-		pm.setSifra(Pomocno.unosRasponBroja("Unesi sifru prodajnog mjesta",
-				"Odabir nije dobar", 1, Integer.MAX_VALUE));
-		pm.setAdresa(Pomocno.unosString("Unesi adresu", "Adresa obavezno"));
-		pm.setNaziv(Pomocno.unosString("Unesi naziv", "Naziv obavezno"));
-		pm.setProdavac(pm);
-//		System.out.println();
-//		int b=1;
-//		for(Prodavac p : p.get) {
-//			System.out.println(b++ + ". "+ p);
-//		}
-//		System.out.println();
-		pm.setProdavac(postaviProdavaca());
-		
-	}
+		int i = Pomocno.unosRasponBroja("Odaberite redni broj prodajnog mjesta", "Odabir nije dobar", 1,
+				prodajnoMjesto.size());
+		ProdajnoMjesto pm = prodajnoMjesto.get(i - 1);
+		pm.setSifra(
+				Pomocno.unosRasponBroja("Unesite šifru prodajnog mjesta", "Odabir nije dobar", 1, Integer.MAX_VALUE));
+		pm.setAdresa(Pomocno.unosString("Unesite adresu", "Adresa obavezno"));
+		pm.setNaziv(Pomocno.unosString("Unesite naziv", "Naziv obavezno"));
 
+		System.out.println("Trenutni prodavac: " + pm.getProdavac());
+		pm.setProdavac(postaviProdavaca());
+
+		System.out.println("Promjene spremljene.");
+
+	}
 
 	private void dodavanjeProdajnihMjesta() {
 		ProdajnoMjesto pm = new ProdajnoMjesto();
@@ -114,28 +105,22 @@ public class ObradaProdajnoMjesto {
 		pm.setProdavac(postaviProdavaca());
 		prodajnoMjesto.add(pm);
 
-		
 	}
-
 
 	private Prodavac postaviProdavaca() {
 		izbornik.getObradaProdavac().pregledProdavaca();
-		int i= Pomocno.unosRasponBroja("Odaberi redni broj prodavača",
-				"Odabir nije dobar", 1,izbornik.getObradaProdavac().getProdavaci().size());
-		return izbornik.getObradaProdavac().getProdavaci().get(i-1);
+		int i = Pomocno.unosRasponBroja("Odaberi redni broj prodavača", "Odabir nije dobar", 1,
+				izbornik.getObradaProdavac().getProdavaci().size());
+		return izbornik.getObradaProdavac().getProdavaci().get(i - 1);
 	}
-
 
 	public void pregledProdajnihMjesta() {
-		int b=1;
+		int b = 1;
 		System.out.println();
-		for(ProdajnoMjesto pm: prodajnoMjesto)
-			System.out.println(b++ + ". "+ pm);
+		for (ProdajnoMjesto pm : prodajnoMjesto)
+			System.out.println(b++ + ". " + pm);
 		System.out.println();
-		
+
 	}
-	
-	
-	
-	
+
 }

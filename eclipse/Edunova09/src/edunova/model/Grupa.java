@@ -1,5 +1,6 @@
 package edunova.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import java.util.List;
@@ -27,7 +28,8 @@ public class Grupa extends Entitet {
 		this.maxpolaznika = maxpolaznika;
 		this.predavac = predavac;
 		this.datumPocetka = datumPocetka;
-		this.polaznici = polaznici;
+		this.polaznici = polaznici != null ? polaznici : new ArrayList<>();
+    
 	}
 	public Grupa() {
 		// TODO Auto-generated constructor stub
