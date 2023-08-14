@@ -4,28 +4,19 @@ public class Racun extends Vozilo {
 	private Kupac kupac;
 	private Prodavac prodavac;
 	private Vozilo vozilo;
-	
-	
-	
-	
-
-	public Racun(int sifra, String ime, String prezime) {
-		super(sifra, ime, prezime);
-	}
-
-	
-
-	public Racun(int sifra, String ime, String prezime, Kupac kupac, Prodavac prodavac, Vozilo vozilo) {
-		super(sifra, ime, prezime);
-		this.kupac = kupac;
-		this.prodavac = prodavac;
-		this.vozilo = vozilo;
-	}
-
-
 
 	public Racun() {
-		// TODO Auto-generated constructor stub
+		super();
+	}
+
+	
+
+	public Racun(int sifra, String ime, String prezime, String adresa, String naziv, Prodavac prodavac, float cijena,
+			ProdajnoMjesto prodajnomjesto, Kupac kupac, Prodavac prodavac2, Vozilo vozilo) {
+		super(sifra, ime, prezime, adresa, naziv, prodavac, cijena, prodajnomjesto);
+		this.kupac = kupac;
+		prodavac = prodavac2;
+		this.vozilo = vozilo;
 	}
 
 
@@ -54,10 +45,6 @@ public class Racun extends Vozilo {
 		this.vozilo = vozilo;
 	}
 
-	@Override
-	public String toString() {
-
-		return kupac + " " + prodavac + " " + vozilo;
-	}
+	
 
 }

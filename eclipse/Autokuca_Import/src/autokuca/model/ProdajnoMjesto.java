@@ -8,20 +8,18 @@ public class ProdajnoMjesto extends Prodavac {
 	
 	
 	
+
 	public ProdajnoMjesto() {
 		super();
 	}
 
-	public ProdajnoMjesto(int sifra, String ime, String prezime) {
-		super(sifra, ime, prezime);
-	}
-
-	public ProdajnoMjesto(int sifra, String ime, String prezime, String adresa, String naziv, Prodavac prodavac) {
-		super(sifra, ime, prezime);
+	public ProdajnoMjesto(int sifra, String adresa, String naziv, Prodavac prodavac) {
+		super(sifra, naziv, naziv);
 		this.adresa = adresa;
 		this.naziv = naziv;
 		this.prodavac = prodavac;
 	}
+
 
 	public String getAdresa() {
 		return adresa;
@@ -47,8 +45,5 @@ public class ProdajnoMjesto extends Prodavac {
 		this.prodavac = prodavac;
 	}
 
-	@Override
-	public String toString() {
-		return adresa + " " + naziv + " " + prodavac;
-	}
+	
 }

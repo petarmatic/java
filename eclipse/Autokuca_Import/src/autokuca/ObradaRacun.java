@@ -9,22 +9,22 @@ import autokuca.model.Prodavac;
 import autokuca.model.Racun;
 import autokuca.model.Vozilo;
 
-
 public class ObradaRacun {
 	private List<Racun> racuni;
 	private Izbornik izbornik;
 
 	public ObradaRacun() {
+
 		racuni = new ArrayList<>();
-		if(Pomocno.DEV) {
+		if (Pomocno.DEV) {
 			testniPodaci();
 		}
 
 	}
 
 	private void testniPodaci() {
-//		racuni.add(new Racun(1,))
-		
+//		racuni.add(new Racun(1, 1, 1, 1));
+
 	}
 
 	public void prikaziIzbornik() {
@@ -47,9 +47,40 @@ public class ObradaRacun {
 			unosRacuna();
 			prikaziIzbornik();
 			break;
+		case 3:
+			promjenaRacuna();
+			prikaziIzbornik();
+			break;
+		case 4:
+			brisanjeRacuna();
+			prikaziIzbornik();
+			break;
 		case 5:
 			break;
 		}
+
+	}
+
+	private void brisanjeRacuna() {
+		if (racuni.isEmpty()) {
+			System.out.println("Prazno");
+		} else {
+			pregledRacuna();
+			int i = Pomocno.unosRasponBroja("Odaberi redni broj racuna", "Odabir nije dobar", 1, racuni.size());
+			racuni.remove(i - 1);
+		}
+
+	}
+
+	private void promjenaRacuna() {
+		pregledRacuna();
+		int i = Pomocno.unosRasponBroja("Odaberi redni broj racuna", "Odabir nije dobar", 1, racuni.size());
+		Racun r = racuni.get(i - 1);
+		r.setSifra(Pomocno.unosRasponBroja("Odaberi redni broj racuna", "", 1, racuni.size()));
+		r.setKupac(postaviKupca());
+		r.setProdavac(postaviProdavaca());
+		r.setVozilo(postaviVozilo());
+		System.out.println("Promjene spremljene");
 
 	}
 
@@ -63,24 +94,24 @@ public class ObradaRacun {
 
 	private Vozilo postaviVozilo() {
 		izbornik.getObradaVozilo().pregledVozila();
-		int i= Pomocno.unosRasponBroja("Odaberi redni broj vozila",
-				"Odabir nije dobar", 1, izbornik.getObradaVozilo().getVozilo().size());
-		return izbornik.getObradaVozilo().getVozilo().get(i-1);
+		int i = Pomocno.unosRasponBroja("Odaberi redni broj vozila", "Odabir nije dobar", 1,
+				izbornik.getObradaVozilo().getVozilo().size());
+		return izbornik.getObradaVozilo().getVozilo().get(i - 1);
 	}
 
 	private Prodavac postaviProdavaca() {
 		izbornik.getObradaProdavac().pregledProdavaca();
-		int i= Pomocno.unosRasponBroja("Odaberi redni broj prodavaca, "
-				 ,"Odabir nije dobar", 1, izbornik.getObradaProdavac().getProdavaci().size());
-		return izbornik.getObradaProdavac().getProdavaci().get(i-1);
+		int i = Pomocno.unosRasponBroja("Odaberi redni broj prodavaca, ", "Odabir nije dobar", 1,
+				izbornik.getObradaProdavac().getProdavaci().size());
+		return izbornik.getObradaProdavac().getProdavaci().get(i - 1);
 	}
 
 	private Kupac postaviKupca() {
 		izbornik.getObradaKupac().pregledKupca();
-		int i = Pomocno.unosRasponBroja("Odaberi redni broj kupca",
-				"Odabir nije dobar", 1,izbornik.getObradaKupac().getKupci().size());
-		return izbornik.getObradaKupac().getKupci().get(i-1);
-}
+		int i = Pomocno.unosRasponBroja("Odaberi redni broj kupca", "Odabir nije dobar", 1,
+				izbornik.getObradaKupac().getKupci().size());
+		return izbornik.getObradaKupac().getKupci().get(i - 1);
+	}
 
 	private void pregledRacuna() {
 		int b = 1;

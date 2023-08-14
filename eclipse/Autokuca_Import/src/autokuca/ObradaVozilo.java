@@ -28,7 +28,7 @@ public class ObradaVozilo {
 	}
 
 	private void testniPodaci() {
-		vozilo.add(new Vozilo(1,"222.55",1));
+		vozilo.add(new Vozilo(1, "Petar", "Prez", "kndkf", "fdfds", 2000, 333.33f, 1));
 	}
 
 	public void prikaziIzbornik() {
@@ -66,12 +66,12 @@ public class ObradaVozilo {
 	}
 
 	private void brisanjeVozila() {
-		if(vozilo.isEmpty()) {
+		if (vozilo.isEmpty()) {
 			System.out.println("Prazno");
-		}else {
-		pregledVozila();
-		int i = Pomocno.unosRasponBroja("Odaberi redni broj vozila", "Odabir nije dobar", 1, vozilo.size());
-		vozilo.remove(i - 1);
+		} else {
+			pregledVozila();
+			int i = Pomocno.unosRasponBroja("Odaberi redni broj vozila", "Odabir nije dobar", 1, vozilo.size());
+			vozilo.remove(i - 1);
 		}
 
 	}

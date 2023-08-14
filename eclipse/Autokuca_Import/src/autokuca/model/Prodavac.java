@@ -5,11 +5,6 @@ public class Prodavac extends Entitet {
 	private String ime;
 	private String prezime;
 
-	
-	
-	
-	
-	
 	public Prodavac() {
 		super();
 	}
@@ -35,10 +30,11 @@ public class Prodavac extends Entitet {
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
-	
+
 	@Override
 	public String toString() {
-		
-		return ime + " " + prezime;
+
+		return sifra + " " + ime + " " + prezime;
 	}
+
 }

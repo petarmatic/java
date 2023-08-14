@@ -18,7 +18,7 @@ public class ObradaKupac {
 	}
 	
 	private void testniPodaci() {
-		kupci.add(new Kupac (1,"2223.33","Marko","Mak"));
+		kupci.add(new Kupac(1, 223.33f, "Marko", "Mak"));
 		
 	}
 

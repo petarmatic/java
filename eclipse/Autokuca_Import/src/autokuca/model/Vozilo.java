@@ -3,28 +3,24 @@ package autokuca.model;
 public class Vozilo extends ProdajnoMjesto {
 	private float cijena;
 	private ProdajnoMjesto prodajnomjesto;
-	
-	
-	
 
-	public Vozilo(int sifra, String ime, String prezime) {
-		super(sifra, ime, prezime);
+	public Vozilo(int i, String string, String string2, String string3, String string4, int j, float f, int k) {
+		super();
 	}
 
+	
 	public Vozilo(int sifra, String ime, String prezime, String adresa, String naziv, Prodavac prodavac, float cijena,
 			ProdajnoMjesto prodajnomjesto) {
-		super(sifra, ime, prezime, adresa, naziv, prodavac);
+//		super(sifra, ime, prezime, adresa, naziv, prodavac);
 		this.cijena = cijena;
 		this.prodajnomjesto = prodajnomjesto;
 	}
+
 
 	public Vozilo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vozilo(int sifra, String ime, int i) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public float getCijena() {
 		return cijena;
@@ -42,10 +38,5 @@ public class Vozilo extends ProdajnoMjesto {
 		this.prodajnomjesto = prodajnomjesto;
 	}
 
-	@Override
-	public String toString() {
-
-		return cijena + " " + prodajnomjesto;
-	}
-
+	
 }

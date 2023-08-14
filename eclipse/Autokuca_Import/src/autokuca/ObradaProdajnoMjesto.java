@@ -30,8 +30,8 @@ public class ObradaProdajnoMjesto {
 	}
 
 	private void testniPodaci() {
-		prodajnoMjesto.add(new ProdajnoMjesto(1, "zagorksa 44 osijek", "autos"));
-
+//		prodajnoMjesto.add(new ProdajnoMjesto(1, "adresa", "naziv",
+//				izbornik.getObradaProdavac().getProdavaci().get(1)));
 	}
 
 	public void prikaziIzbornik() {
