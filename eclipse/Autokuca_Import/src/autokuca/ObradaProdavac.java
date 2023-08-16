@@ -14,13 +14,17 @@ public class ObradaProdavac {
 	public List<Prodavac> getProdavaci() {
 		return prodavaci;
 	}
+	
 	public ObradaProdavac(Izbornik izbornik) {
 		this();
-		this.izbornik= izbornik;
+		this.izbornik=izbornik;
 	}
 	
+	
+	
+	
 	public ObradaProdavac() {
-		prodavaci = new ArrayList<>();
+		prodavaci = new ArrayList<Prodavac>();
 		if(Pomocno.DEV) {
 			testniPodaci();
 		}
@@ -81,6 +85,9 @@ public class ObradaProdavac {
 	}
 
 	private void promjenaProdavaca() {
+		if(prodavaci.isEmpty()) {
+			System.out.println("Prazno");
+		}else {
 		pregledProdavaca();
 		int i = Pomocno.unosRasponBroja("Odaberi redni broj prodavača",
 				"Odabir nije dobar", 1, prodavaci.size());
@@ -89,6 +96,7 @@ public class ObradaProdavac {
 				"Odabir nije dobar", 1, prodavaci.size()));
 		p.setIme(Pomocno.unosString("Unesi ime prodavača(" + p.getIme()+ ")", "Ime obavezno"));
 		p.setPrezime(Pomocno.unosString("Unesi prezime prodavača", "Prezime obavezno"));
+		}
 	
 	}
 

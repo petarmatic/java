@@ -10,28 +10,31 @@ import autokuca.model.Prodavac;
 public class ObradaProdajnoMjesto {
 
 	private List<ProdajnoMjesto> prodajnoMjesto;
+	private Izbornik izbornik;
 
 	public List<ProdajnoMjesto> getProdajnoMjesto() {
 		return prodajnoMjesto;
 	}
 
-	private Izbornik izbornik;
-
 	public ObradaProdajnoMjesto(Izbornik izbornik) {
-		this();
+//		this();
 		this.izbornik = izbornik;
+		 prodajnoMjesto = new ArrayList<ProdajnoMjesto>();
 	}
 
 	public ObradaProdajnoMjesto() {
-		prodajnoMjesto = new ArrayList<>();
 		if (Pomocno.DEV) {
 			testniPodaci();
 		}
 	}
 
 	private void testniPodaci() {
-//		prodajnoMjesto.add(new ProdajnoMjesto(1, "adresa", "naziv",
-//				izbornik.getObradaProdavac().getProdavaci().get(1)));
+		
+		 Prodavac testProdavac = new Prodavac(2, "Marko", "Marković"); // Kreiramo novog prodavca
+		    izbornik.getObradaProdavac().getProdavaci().add(testProdavac); // Dodajemo prodavca u listu prodavaca
+
+		    prodajnoMjesto.add(new ProdajnoMjesto(1, "Adresa 1", "Prodajno Mjesto 1", testProdavac)); // Dodajemo prodavca u prodajno mjesto
+		
 	}
 
 	public void prikaziIzbornik() {
@@ -81,6 +84,9 @@ public class ObradaProdajnoMjesto {
 	}
 
 	private void promjenaProdajnihMjesta() {
+		if(prodajnoMjesto.isEmpty()) {
+			System.out.println("Nema prodajnih mjesta");
+		}else {
 		pregledProdajnihMjesta();
 		int i = Pomocno.unosRasponBroja("Odaberite redni broj prodajnog mjesta", "Odabir nije dobar", 1,
 				prodajnoMjesto.size());
@@ -94,6 +100,7 @@ public class ObradaProdajnoMjesto {
 		pm.setProdavac(postaviProdavaca());
 
 		System.out.println("Promjene spremljene.");
+		}
 
 	}
 

@@ -2,7 +2,9 @@ package autokuca;
 
 import java.util.ArrayList;
 
+
 import java.util.List;
+import java.util.Scanner;
 
 import autokuca.model.Kupac;
 import autokuca.model.Prodavac;
@@ -12,6 +14,12 @@ import autokuca.model.Vozilo;
 public class ObradaRacun {
 	private List<Racun> racuni;
 	private Izbornik izbornik;
+	
+	
+	public ObradaRacun(Izbornik izbornik) {
+		this();
+		this.izbornik=izbornik;
+	}
 
 	public ObradaRacun() {
 
@@ -56,9 +64,42 @@ public class ObradaRacun {
 			prikaziIzbornik();
 			break;
 		case 5:
+			brisanjeVozila();
+			prikaziIzbornik();
+			break;
+		case 6:
 			break;
 		}
 
+	}
+
+	private void brisanjeVozila() {
+		Scanner ulaz= new Scanner(System.in);
+		
+		try {
+			if(racuni.isEmpty()) {
+				System.out.println("Nema vozila");
+				return;
+			}
+		pregledRacuna();
+		
+		int i= Pomocno.unosRasponBroja("Odaberi redni broj računa",
+				"Odabir nije dobar", 1, racuni.size());
+		Racun odabraniRacun=racuni.get(i-1);
+		
+		if(odabraniRacun.getVozilo().isEmpty()) {
+			System.out.println("Nema vozila");
+			return;
+		}
+		
+		
+		List<Vozilo>vozilos=new ArrayList<>(odabraniRacun.getVozilo());
+		
+		
+		}finally {
+			
+		}
+		
 	}
 
 	private void brisanjeRacuna() {
@@ -73,14 +114,18 @@ public class ObradaRacun {
 	}
 
 	private void promjenaRacuna() {
-		pregledRacuna();
-		int i = Pomocno.unosRasponBroja("Odaberi redni broj racuna", "Odabir nije dobar", 1, racuni.size());
-		Racun r = racuni.get(i - 1);
-		r.setSifra(Pomocno.unosRasponBroja("Odaberi redni broj racuna", "", 1, racuni.size()));
-		r.setKupac(postaviKupca());
-		r.setProdavac(postaviProdavaca());
-		r.setVozilo(postaviVozilo());
-		System.out.println("Promjene spremljene");
+		if (racuni.isEmpty()) {
+			System.out.println("Prazno");
+		} else {
+			pregledRacuna();
+			int i = Pomocno.unosRasponBroja("Odaberi redni broj racuna", "Odabir nije dobar", 1, racuni.size());
+			Racun r = racuni.get(i - 1);
+			r.setSifra(Pomocno.unosRasponBroja("Odaberi redni broj racuna", "", 1, racuni.size()));
+			r.setKupac(postaviKupca());
+			r.setProdavac(postaviProdavaca());
+			r.setVozilo(postaviVozilo());
+			System.out.println("Promjene spremljene");
+		}
 
 	}
 

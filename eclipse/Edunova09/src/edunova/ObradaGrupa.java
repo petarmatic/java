@@ -1,6 +1,7 @@
 package edunova;
 
 import java.util.ArrayList;
+
 import java.util.Iterator;
 
 import edunova.model.Grupa;
@@ -84,13 +85,12 @@ public class ObradaGrupa {
 
 		int index = Pomocno.unosRasponBroja("Odaberi redni broj grupe: ", "Nije dobar odabir", 1, grupe.size());
 		Grupa odabranaGrupa = grupe.get(index - 1);
-
-		if (odabranaGrupa.getPolaznici().isEmpty()) {
+		if(odabranaGrupa.getPolaznici().isEmpty()) {
 			System.out.println("Grupa nema polaznika.");
 			return;
 		}
 
-		List<Polaznik> polaznici = new ArrayList<>(odabranaGrupa.getPolaznici());
+		List<Polaznik>polaznici = new ArrayList<>(odabranaGrupa.getPolaznici());
 		Iterator<Polaznik> iterator = polaznici.iterator();
 
 		while (iterator.hasNext()) {

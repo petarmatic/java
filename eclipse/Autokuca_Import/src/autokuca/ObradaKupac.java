@@ -76,6 +76,9 @@ public class ObradaKupac {
 	}
 
 	private void promjenaPostojecegKupca() {
+		if(kupci.isEmpty()) {
+			System.out.println("Prazno");
+		}else {
 		pregledKupca();
 		int i= Pomocno.unosRasponBroja("Odaberi redni broj kupca",
 				"Odabir nije dobar", 1, kupci.size());
@@ -83,6 +86,7 @@ public class ObradaKupac {
 		k.setBudzet(Pomocno.unosFloat("Odaberi redni broj kupca", "Odabir nije dobar"));
 		k.setIme(Pomocno.unosString("Unesi ime kupca", "Unos nije dobar"));
 		k.setPrezime(Pomocno.unosString("Unesi prezime kupca", "Unos nije dobar"));
+		}
 		
 	}
 
