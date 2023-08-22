@@ -3,6 +3,7 @@ package autokuca;
 import java.util.ArrayList;
 
 
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,7 +19,7 @@ public class ObradaRacun {
 	
 	
 	public ObradaRacun(Izbornik izbornik) {
-		this();
+		//this();
 		this.izbornik=izbornik;
 	}
 
@@ -69,44 +70,14 @@ public class ObradaRacun {
 			brisanjeRacuna();
 			prikaziIzbornik();
 			break;
-//		case 5:
-//			brisanjeVozila();
-//			prikaziIzbornik();
-//			break;
-		case 6:
+		case 5:
 			break;
 		}
 
 	}
 
-//	private void brisanjeVozila() {
-//		Scanner ulaz= new Scanner(System.in);
-//		
-//		try {
-//			if(racuni.isEmpty()) {
-//				System.out.println("Nema vozila");
-//				return;
-//			}
-//		pregledRacuna();
-//		
-//		int i= Pomocno.unosRasponBroja("Odaberi redni broj računa",
-//				"Odabir nije dobar", 1, racuni.size());
-//		Racun odabraniRacun=racuni.get(i-1);
-//		
-//		if(odabraniRacun.getVozilo().()) {
-//			System.out.println("Nema vozila");
-//			return;
-//		}
-//		
-//		
-//		List<Vozilo>vozilos=new ArrayList<>(odabraniRacun.getVozilo());
-//		
-//		
-//		}finally {
-//			
-//		}
-//		
-//	}
+	
+	
 
 	private void brisanjeRacuna() {
 		if (racuni.isEmpty()) {
@@ -166,10 +137,16 @@ public class ObradaRacun {
 
 	private void pregledRacuna() {
 		int b = 1;
-		for (Racun r : racuni) {
-			System.out.println(b++ + "." + r);
-		}
 		System.out.println();
+		System.out.println("\nPregled Računa");
+		 for (Racun r : racuni) {
+			 System.out.println(b+ "Šifra računa" + r.getSifra());
+			 System.out.println("Kupci:"+ r.getKupac());
+			 System.out.println("Prodavači:"+r.getProdavac());
+			 System.out.println("Vozila:"+r.getVozilo());
+			 b++;
+		 }
+			
 
 	}
 }

@@ -29,8 +29,10 @@ public class ObradaVozilo {
 	}
 
 	private void testniPodaci() {
-		
-		vozilo.add(new Vozilo(1, 200, new ProdajnoMjesto(1,"Adresa","kk",new Prodavac(1,"ime","prezime"))));
+
+		vozilo.add(new Vozilo(1, 200, new ProdajnoMjesto(1, "Adresa", "kk", new Prodavac(1, "ime", "prezime"))));
+		vozilo.add(new Vozilo(2, 2200, new ProdajnoMjesto(1, "Adresa", "kk", new Prodavac(1, "ime", "prezime"))));
+//		vozilo.add(new Vozilo(3, 300, izbornik.getObradaProdajnoMjesto().getProdajnoMjesto().get(1)));
 	}
 
 	public void prikaziIzbornik() {
@@ -75,22 +77,21 @@ public class ObradaVozilo {
 			int i = Pomocno.unosRasponBroja("Odaberi redni broj vozila", "Odabir nije dobar", 1, vozilo.size());
 			vozilo.remove(i - 1);
 		}
-		
-		
 
 	}
 
 	private void promjenaVozila() {
-		if(vozilo.isEmpty()) {
+		if (vozilo.isEmpty()) {
 			System.out.println("Prazno");
-		}else {
-		int i = Pomocno.unosRasponBroja("Odabeir redni broj prodajnog mjesta", "Odabir nije dobar", 1, vozilo.size());
-		Vozilo v = new Vozilo();
-		v.setSifra(Pomocno.unosRasponBroja("Unesi sifru vozila", "Odabir nije dobar", 1, Integer.MAX_VALUE));
-		v.setCijena(Pomocno.unosFloat("Unesi cijenu vozila(. za decimalni dio) (" + v.getCijena() + ")",
-				"Greška kod unosa"));
-		ProdajnoMjesto p = new ProdajnoMjesto();
-		v.setProdajnomjesto(p);
+		} else {
+			int i = Pomocno.unosRasponBroja("Odabeir redni broj prodajnog mjesta", "Odabir nije dobar", 1,
+					vozilo.size());
+			Vozilo v = new Vozilo();
+			v.setSifra(Pomocno.unosRasponBroja("Unesi sifru vozila", "Odabir nije dobar", 1, Integer.MAX_VALUE));
+			v.setCijena(Pomocno.unosFloat("Unesi cijenu vozila(. za decimalni dio) (" + v.getCijena() + ")",
+					"Greška kod unosa"));
+			ProdajnoMjesto p = new ProdajnoMjesto();
+			v.setProdajnomjesto(p);
 		}
 
 	}
@@ -114,9 +115,18 @@ public class ObradaVozilo {
 	public void pregledVozila() {
 		int b = 1;
 		System.out.println();
-		for (Vozilo v : vozilo)
-			System.out.println(b++ + ". " + v);
-		System.out.println();
+		System.out.println("\nPregled vozila:");
+		for (Vozilo v : vozilo) {
+			System.out.println(b + ". Šifra vozila: " + v.getSifra());
+			System.out.println("   Cijena: " + v.getCijena());
+			System.out.println("   Prodajno mjesto:");
+			System.out.println("      Adresa: " + v.getProdajnomjesto().getAdresa());
+			System.out.println("      Grad: " + v.getProdajnomjesto().getNaziv());
+			System.out.println("      Prodavac: " + v.getProdajnomjesto().getProdavac().getIme() + " "
+					+ v.getProdajnomjesto().getProdavac().getPrezime());
+			System.out.println();
+			b++;
+		}
 
 	}
 

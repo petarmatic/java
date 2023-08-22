@@ -100,10 +100,15 @@ public class ObradaKupac {
 
 	public void pregledKupca() {
 		int b=1;
-		for(Kupac k :kupci) {
-			System.out.println(b++ + "." + k);
-		}
 		System.out.println();
+		System.out.println("\nPregled kupca");
+			for(Kupac k:kupci) {
+				System.out.println(b + " Šifra vozila:" + k.getSifra());
+				System.out.println("   Budzet: " + k.getBudzet());
+				System.out.println("   Ime: "+k.getIme());
+				System.out.println("   Prezime: "+k.getPrezime());
+				b++;
+			}
 	}
 	
 	

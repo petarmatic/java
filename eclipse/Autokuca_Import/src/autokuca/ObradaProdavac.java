@@ -18,6 +18,7 @@ public class ObradaProdavac {
 	public ObradaProdavac(Izbornik izbornik) {
 		this();
 		this.izbornik=izbornik;
+		
 	}
 	
 	
@@ -32,6 +33,7 @@ public class ObradaProdavac {
 	
 	private void testniPodaci() {
 		prodavaci.add(new Prodavac(1,"Pero","Matić"));
+		prodavaci.add(new Prodavac(2,"Neki","Keki"));
 		
 	}
 	public void prikaziIzbornik() {
@@ -117,8 +119,13 @@ public class ObradaProdavac {
 	public void pregledProdavaca() {
 		int b=1;
 		System.out.println();
-		for (Prodavac p:prodavaci)
-			System.out.println(b++ + ". "+ p);	
-		System.out.println();
+		System.out.println("\nPregled Prodavača:");
+		for (Prodavac p:prodavaci) {
+			System.out.println(b+ "Šifra prodavača: "+ p.getSifra());
+			System.out.println("   Ime: " +p.getIme());
+			System.out.println("   Prezime: "+ p.getPrezime());
+			b++;
+		}
+			
 	}
 }

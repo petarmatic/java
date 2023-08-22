@@ -50,9 +50,11 @@ public class Izbornik {
 		case 4:
 			obradaKupac.prikaziIzbornik();
 			prikaziIzbornik();
+			break;
 		case 5:
 			obradaRacun.prikaziIzbornik();
 			prikaziIzbornik();
+			break;
 		case 6:
 			break;
 		    }

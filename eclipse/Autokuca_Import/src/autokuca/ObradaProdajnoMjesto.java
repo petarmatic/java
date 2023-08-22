@@ -18,7 +18,7 @@ public class ObradaProdajnoMjesto {
 
 	public ObradaProdajnoMjesto(Izbornik izbornik) {
 		this.izbornik = izbornik;
-		 prodajnoMjesto = new ArrayList<ProdajnoMjesto>();
+		prodajnoMjesto = new ArrayList<>();
 	}
 
 	public ObradaProdajnoMjesto() {
@@ -28,12 +28,16 @@ public class ObradaProdajnoMjesto {
 	}
 
 	private void testniPodaci() {
-		
-		 Prodavac testProdavac = new Prodavac(2, "Marko", "Marković"); // Kreiramo novog prodavca
-		    izbornik.getObradaProdavac().getProdavaci().add(testProdavac); // Dodajemo prodavca u listu prodavaca
 
-		    prodajnoMjesto.add(new ProdajnoMjesto(1, "Adresa 1", "Prodajno Mjesto 1", testProdavac)); // Dodajemo prodavca u prodajno mjesto
-		
+		Prodavac testProdavac = new Prodavac(5, "Marko", "Marković"); // Kreiramo novog prodavca
+		izbornik.getObradaProdavac().getProdavaci().add(testProdavac); // Dodajemo prodavca u listu prodavaca
+
+		prodajnoMjesto.add(new ProdajnoMjesto(1, "Adresa 1", "Prodajno Mjesto 1", testProdavac)); // Dodajemo prodavca u
+																									// prodajno mjesto
+
+		prodajnoMjesto.add(new ProdajnoMjesto(1, "dd", "fdd",
+				izbornik.getObradaProdavac().getProdavaci().get(1)));
+
 	}
 
 	public void prikaziIzbornik() {
@@ -83,22 +87,22 @@ public class ObradaProdajnoMjesto {
 	}
 
 	private void promjenaProdajnihMjesta() {
-		if(prodajnoMjesto.isEmpty()) {
+		if (prodajnoMjesto.isEmpty()) {
 			System.out.println("Nema prodajnih mjesta");
-		}else {
-		pregledProdajnihMjesta();
-		int i = Pomocno.unosRasponBroja("Odaberite redni broj prodajnog mjesta", "Odabir nije dobar", 1,
-				prodajnoMjesto.size());
-		ProdajnoMjesto pm = prodajnoMjesto.get(i - 1);
-		pm.setSifra(
-				Pomocno.unosRasponBroja("Unesite šifru prodajnog mjesta", "Odabir nije dobar", 1, Integer.MAX_VALUE));
-		pm.setAdresa(Pomocno.unosString("Unesite adresu", "Adresa obavezno"));
-		pm.setNaziv(Pomocno.unosString("Unesite naziv", "Naziv obavezno"));
+		} else {
+			pregledProdajnihMjesta();
+			int i = Pomocno.unosRasponBroja("Odaberite redni broj prodajnog mjesta", "Odabir nije dobar", 1,
+					prodajnoMjesto.size());
+			ProdajnoMjesto pm = prodajnoMjesto.get(i - 1);
+			pm.setSifra(Pomocno.unosRasponBroja("Unesite šifru prodajnog mjesta", "Odabir nije dobar", 1,
+					Integer.MAX_VALUE));
+			pm.setAdresa(Pomocno.unosString("Unesite adresu", "Adresa obavezno"));
+			pm.setNaziv(Pomocno.unosString("Unesite naziv", "Naziv obavezno"));
 
-		System.out.println("Trenutni prodavac: " + pm.getProdavac());
-		pm.setProdavac(postaviProdavaca());
+			System.out.println("Trenutni prodavac: " + pm.getProdavac());
+			pm.setProdavac(postaviProdavaca());
 
-		System.out.println("Promjene spremljene.");
+			System.out.println("Promjene spremljene.");
 		}
 
 	}
@@ -121,11 +125,21 @@ public class ObradaProdajnoMjesto {
 	}
 
 	public void pregledProdajnihMjesta() {
-		int b = 1;
-		System.out.println();
-		for (ProdajnoMjesto pm : prodajnoMjesto)
-			System.out.println(b++ + ". " + pm);
-		System.out.println();
+		 if (prodajnoMjesto.isEmpty()) {
+		        System.out.println("Nema prodajnih mjesta.");
+		        return;
+		    }
+
+		    int b = 1;
+		    System.out.println("\nPregled prodajnih mjesta:");
+		    for (ProdajnoMjesto pm : prodajnoMjesto) {
+		        System.out.println(b + ". Šifra prodajnog mjesta: " + pm.getSifra());
+		        System.out.println("   Adresa: " + pm.getAdresa());
+		        System.out.println("   Naziv: " + pm.getNaziv());
+		        System.out.println("   Prodavač: " + pm.getProdavac().getIme() + " " + pm.getProdavac().getPrezime());
+		        b++;
+		    
+		    }
 
 	}
 
