@@ -2,21 +2,18 @@ package autokuca.model;
 
 import java.util.List;
 
-public class Vozilo extends ProdajnoMjesto {
+public class Vozilo extends Entitet{
 	private float cijena;
 	private ProdajnoMjesto prodajnomjesto;
 	
 	
 	
 
-	public Vozilo(int i, String string, String string2, String string3, String string4, List<Prodavac> prodavac, float f, ProdajnoMjesto prodajnomjesto2) {
-		super();
-	}
-
 	
-	public Vozilo(int sifra, String ime, String prezime, String adresa, String naziv, Prodavac prodavac, float cijena,
-			ProdajnoMjesto prodajnomjesto) {
-		super(sifra, ime, prezime, adresa, naziv, prodavac);
+
+
+	public Vozilo(int sifra, float cijena, ProdajnoMjesto prodajnomjesto) {
+		super(sifra);
 		this.cijena = cijena;
 		this.prodajnomjesto = prodajnomjesto;
 	}
@@ -31,17 +28,23 @@ public class Vozilo extends ProdajnoMjesto {
 		return cijena;
 	}
 
+
 	public void setCijena(float cijena) {
 		this.cijena = cijena;
 	}
+
 
 	public ProdajnoMjesto getProdajnomjesto() {
 		return prodajnomjesto;
 	}
 
+
 	public void setProdajnomjesto(ProdajnoMjesto prodajnomjesto) {
 		this.prodajnomjesto = prodajnomjesto;
 	}
+
+
+	
 
 	
 }

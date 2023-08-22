@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import autokuca.model.Kupac;
+import autokuca.model.ProdajnoMjesto;
 import autokuca.model.Prodavac;
 import autokuca.model.Racun;
 import autokuca.model.Vozilo;
@@ -31,7 +32,12 @@ public class ObradaRacun {
 	}
 
 	private void testniPodaci() {
-//		racuni.add(new Racun(1, 1, 1, 1));
+		
+		Kupac test1=new Kupac(1, 57, "MARKO", "MARKOO");
+		Prodavac test2 = new Prodavac(1, "Aka", "Kla");
+		ProdajnoMjesto test2a= new ProdajnoMjesto(1, "kfk", "Nzaiv", test2);
+		Vozilo test3= new Vozilo(1, 46, test2a);
+		racuni.add(new Racun(1, test1, test2, test3));
 
 	}
 
@@ -63,44 +69,44 @@ public class ObradaRacun {
 			brisanjeRacuna();
 			prikaziIzbornik();
 			break;
-		case 5:
-			brisanjeVozila();
-			prikaziIzbornik();
-			break;
+//		case 5:
+//			brisanjeVozila();
+//			prikaziIzbornik();
+//			break;
 		case 6:
 			break;
 		}
 
 	}
 
-	private void brisanjeVozila() {
-		Scanner ulaz= new Scanner(System.in);
-		
-		try {
-			if(racuni.isEmpty()) {
-				System.out.println("Nema vozila");
-				return;
-			}
-		pregledRacuna();
-		
-		int i= Pomocno.unosRasponBroja("Odaberi redni broj računa",
-				"Odabir nije dobar", 1, racuni.size());
-		Racun odabraniRacun=racuni.get(i-1);
-		
-		if(odabraniRacun.getVozilo().isEmpty()) {
-			System.out.println("Nema vozila");
-			return;
-		}
-		
-		
-		List<Vozilo>vozilos=new ArrayList<>(odabraniRacun.getVozilo());
-		
-		
-		}finally {
-			
-		}
-		
-	}
+//	private void brisanjeVozila() {
+//		Scanner ulaz= new Scanner(System.in);
+//		
+//		try {
+//			if(racuni.isEmpty()) {
+//				System.out.println("Nema vozila");
+//				return;
+//			}
+//		pregledRacuna();
+//		
+//		int i= Pomocno.unosRasponBroja("Odaberi redni broj računa",
+//				"Odabir nije dobar", 1, racuni.size());
+//		Racun odabraniRacun=racuni.get(i-1);
+//		
+//		if(odabraniRacun.getVozilo().()) {
+//			System.out.println("Nema vozila");
+//			return;
+//		}
+//		
+//		
+//		List<Vozilo>vozilos=new ArrayList<>(odabraniRacun.getVozilo());
+//		
+//		
+//		}finally {
+//			
+//		}
+//		
+//	}
 
 	private void brisanjeRacuna() {
 		if (racuni.isEmpty()) {

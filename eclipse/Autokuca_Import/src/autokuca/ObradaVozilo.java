@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import autokuca.model.ProdajnoMjesto;
+import autokuca.model.Prodavac;
 import autokuca.model.Vozilo;
 
 public class ObradaVozilo {
@@ -28,7 +29,8 @@ public class ObradaVozilo {
 	}
 
 	private void testniPodaci() {
-		//vozilo.add(new Vozilo(1, "Petar", "Prez", "kndkf", "fdfds", 2000, 333.33f, 1));
+		
+		vozilo.add(new Vozilo(1, 200, new ProdajnoMjesto(1,"Adresa","kk",new Prodavac(1,"ime","prezime"))));
 	}
 
 	public void prikaziIzbornik() {
@@ -87,7 +89,8 @@ public class ObradaVozilo {
 		v.setSifra(Pomocno.unosRasponBroja("Unesi sifru vozila", "Odabir nije dobar", 1, Integer.MAX_VALUE));
 		v.setCijena(Pomocno.unosFloat("Unesi cijenu vozila(. za decimalni dio) (" + v.getCijena() + ")",
 				"Greška kod unosa"));
-		v.setProdajnomjesto(v);
+		ProdajnoMjesto p = new ProdajnoMjesto();
+		v.setProdajnomjesto(p);
 		}
 
 	}

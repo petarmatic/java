@@ -1,11 +1,13 @@
 package autokuca.model;
 
-import java.util.List;
 
-public class Racun extends Vozilo {
-	private List<Kupac> kupac;
-	private List<Prodavac> prodavac;
-	private List<Vozilo> vozilo;
+
+public class Racun extends Entitet{
+	private Kupac kupac;
+	private  Prodavac prodavac;
+	private Vozilo vozilo;
+	
+	
 	
 	
 	
@@ -13,32 +15,44 @@ public class Racun extends Vozilo {
 	public Racun() {
 		super();
 	}
-	public Racun(int sifra, String ime, String prezime, String adresa, String naziv, List<Prodavac> prodavac, float cijena,
-			ProdajnoMjesto prodajnomjesto, List<Kupac> kupac, List<Prodavac> prodavac2, List<Vozilo> vozilo) {
-		super(sifra, ime, prezime, adresa, naziv, prodavac, cijena, prodajnomjesto);
+	public Racun(int sifra, Kupac kupac, Prodavac prodavac, Vozilo vozilo) {
+		super(sifra);
 		this.kupac = kupac;
-		prodavac = prodavac2;
+		this.prodavac = prodavac;
 		this.vozilo = vozilo;
 	}
-	public List<Kupac> getKupac() {
+	public Kupac getKupac() {
 		return kupac;
 	}
-	public void setKupac(List<Kupac> kupac) {
+	public void setKupac(Kupac kupac) {
 		this.kupac = kupac;
 	}
-	public List<Prodavac> getProdavac() {
+	public Prodavac getProdavac() {
 		return prodavac;
 	}
-	public void setProdavac(List<Prodavac> prodavac) {
+	public void setProdavac(Prodavac prodavac) {
 		this.prodavac = prodavac;
 	}
-	public List<Vozilo> getVozilo() {
+	public Vozilo getVozilo() {
 		return vozilo;
 	}
-	public void setVozilo(List<Vozilo> vozilo) {
+	public void setVozilo(Vozilo vozilo) {
 		this.vozilo = vozilo;
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

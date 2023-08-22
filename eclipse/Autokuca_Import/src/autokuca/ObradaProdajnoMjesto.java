@@ -17,7 +17,6 @@ public class ObradaProdajnoMjesto {
 	}
 
 	public ObradaProdajnoMjesto(Izbornik izbornik) {
-//		this();
 		this.izbornik = izbornik;
 		 prodajnoMjesto = new ArrayList<ProdajnoMjesto>();
 	}
