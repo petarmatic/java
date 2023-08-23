@@ -17,14 +17,13 @@ public class ObradaProdajnoMjesto {
 	}
 
 	public ObradaProdajnoMjesto(Izbornik izbornik) {
+		this();
 		this.izbornik = izbornik;
-		prodajnoMjesto = new ArrayList<>();
+		testniPodaci();
 	}
 
 	public ObradaProdajnoMjesto() {
-		if (Pomocno.DEV) {
-			testniPodaci();
-		}
+		prodajnoMjesto= new ArrayList<ProdajnoMjesto>();
 	}
 
 	private void testniPodaci() {
