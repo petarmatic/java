@@ -11,17 +11,20 @@ import org.hibernate.cfg.Configuration;
  *
  * @author Petar
  */
-public class HibernateUtil {
-    private static Session session= null;
+
+    public class HibernateUtil {
     
-    private HibernateUtil() {
-        
-    }
-    public static Session getSession() {
-        if(session==null){
-            session= new Configuration().configure().buildSessionFactory().openSession();
+        private static Session session = null;
+
+        private HibernateUtil(){
+            session = new Configuration().configure().buildSessionFactory().openSession();
         }
-        return session;
+
+        public static Session getSession(){
+            if(session==null){
+                new HibernateUtil();
+            }
+            return session;
     }
 }
 
