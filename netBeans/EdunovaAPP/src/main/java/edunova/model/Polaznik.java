@@ -1,28 +1,27 @@
 package edunova.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Polaznik extends Osoba {
 
-	private String brojUgovora;
+    private String brojUgovora;
 
-	public Polaznik() {
-		super();
-	}
+    public Polaznik() {
 
-	public Polaznik(int sifra, String ime, String prezime, String oib, String email, String brojUgovora) {
-		super(sifra, ime, prezime, oib, email);
-		this.brojUgovora = brojUgovora;
-	}
+    }
 
-	public String getBrojUgovora() {
-		return brojUgovora;
-	}
+    public Polaznik(int sifra, String ime, String prezime, String oib, String email, String brojUgovora) {
+        super(sifra, ime, prezime, oib, email);
+        this.brojUgovora = brojUgovora;
+    }
 
-	public void setBrojUgovora(String brojUgovora) {
-		this.brojUgovora = brojUgovora;
-	}
-	@Override
-	public String toString() {
-		//
-		return sifra + " " + brojUgovora;
-	}
+    public String getBrojUgovora() {
+        return brojUgovora;
+    }
+
+    public void setBrojUgovora(String brojUgovora) {
+        this.brojUgovora = brojUgovora;
+    }
+
 }

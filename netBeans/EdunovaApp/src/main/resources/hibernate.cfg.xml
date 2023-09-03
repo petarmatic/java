@@ -19,9 +19,9 @@
     <property name="hbm2ddl.auto">update</property>
     
     <mapping class="edunova.model.Smjer" />
-    
-    
+    <mapping class="edunova.model.Polaznik" />
+    <mapping class="edunova.model.Predavac" />
+    <mapping class="edunova.model.Grupa" />
     
   </session-factory>
 </hibernate-configuration>
-

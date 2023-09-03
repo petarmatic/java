@@ -1,22 +1,22 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
 
 package edunova;
 
 import edunova.util.HibernateUtil;
-
-
-
+import edunova.util.PocetniInsert;
 
 /**
  *
- * @author Petar
+ * @author Katedra
  */
 public class Start {
 
     public static void main(String[] args) {
-        HibernateUtil.getSession();
+        
+       // HibernateUtil.getSession();
+       new PocetniInsert();
+        
     }
 }
