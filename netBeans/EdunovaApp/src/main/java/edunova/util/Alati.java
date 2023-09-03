@@ -14,7 +14,7 @@ import us.codecraft.xsoup.Xsoup;
 
 /**
  *
- * @author Katedra
+ * @author petar
  */
 public class Alati {
     
