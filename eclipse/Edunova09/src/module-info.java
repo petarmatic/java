@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Petar
+ * @author Katedra
  *
  */
 module Edunova09 {

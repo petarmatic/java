@@ -5,15 +5,15 @@ import java.util.Scanner;
 public class Izbornik {
 	
 	private ObradaSmjer obradaSmjer;
-	private ObradaPolaznik obradaPolaznika;
+	private ObradaPolaznik obradaPolaznik;
 	private ObradaPredavac obradaPredavac;
 	private ObradaGrupa obradaGrupa;
-
+	
 	public Izbornik() {
-		obradaSmjer= new ObradaSmjer();
-		obradaPolaznika= new ObradaPolaznik();
+		obradaSmjer = new ObradaSmjer();
+		obradaPolaznik = new ObradaPolaznik();
 		obradaPredavac = new ObradaPredavac();
-		obradaGrupa= new ObradaGrupa(this);
+		obradaGrupa = new ObradaGrupa(this);
 		Pomocno.ulaz = new Scanner(System.in);
 		pozdravnaPoruka();
 		prikaziIzbornik();
@@ -45,7 +45,7 @@ public class Izbornik {
 			prikaziIzbornik();
 			break;
 		case 2:
-			obradaPolaznika.prikaziIzbornik();
+			obradaPolaznik.prikaziIzbornik();
 			prikaziIzbornik();
 			break;
 		case 3:
@@ -59,7 +59,9 @@ public class Izbornik {
 		case 5:
 			System.out.println("Doviđenja");
 			break;
-			}
+			
+				
+		}
 		
 	}
 
@@ -68,15 +70,11 @@ public class Izbornik {
 	}
 
 	public ObradaPolaznik getObradaPolaznik() {
-		return obradaPolaznika;
+		return obradaPolaznik;
 	}
 
 	public ObradaPredavac getObradaPredavac() {
 		return obradaPredavac;
-	}
-
-	public ObradaGrupa getObradaGrupa() {
-		return obradaGrupa;
 	}
 	
 	

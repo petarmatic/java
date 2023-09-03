@@ -1,10 +1,9 @@
 package edunova;
 
 public class Start {
+
 	public static void main(String[] args) {
-		
-		Pomocno.DEV=true;
+		Pomocno.dev=true;
 		new Izbornik();
 	}
-
 }

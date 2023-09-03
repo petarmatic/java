@@ -8,12 +8,12 @@ public class Smjer extends Entitet {
 	private int trajanje;
 	private boolean verificiran;
 	
-	
-	
-	
 	public Smjer() {
 		
 	}
+	
+	
+	
 	public Smjer(int sifra, String naziv, float cijena, float upisnina, int trajanje, boolean verificiran) {
 		super(sifra);
 		this.naziv = naziv;
@@ -22,6 +22,9 @@ public class Smjer extends Entitet {
 		this.trajanje = trajanje;
 		this.verificiran = verificiran;
 	}
+
+
+
 	public String getNaziv() {
 		return naziv;
 	}
@@ -53,11 +56,6 @@ public class Smjer extends Entitet {
 		this.verificiran = verificiran;
 	}
 	
-	@Override
-	public String toString() {
-		
-		return sifra + " " + naziv+ " " + cijena+ " " + upisnina+
-				" "+ trajanje + " " + verificiran;
-	}
+	
 
 }

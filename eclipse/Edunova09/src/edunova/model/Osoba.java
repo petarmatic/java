@@ -7,12 +7,11 @@ public abstract class Osoba extends Entitet {
 	private String oib;
 	private String email;
 	
-	
-	
-	
-	public Osoba() {
+	public Osoba(){
 		
 	}
+	
+	
 	public Osoba(int sifra, String ime, String prezime, String oib, String email) {
 		super(sifra);
 		this.ime = ime;
@@ -20,7 +19,6 @@ public abstract class Osoba extends Entitet {
 		this.oib = oib;
 		this.email = email;
 	}
-	
 	public String getIme() {
 		return ime;
 	}
@@ -48,10 +46,7 @@ public abstract class Osoba extends Entitet {
 	
 	@Override
 	public String toString() {
-		return "ime" + " " + "prezime";
+		return ime + " " + prezime;
 	}
-	
-	
-	
 
 }
