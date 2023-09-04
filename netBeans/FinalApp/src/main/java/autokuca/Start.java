@@ -5,6 +5,7 @@
 package autokuca;
 
 import autokuca.util.HibernateUtil;
+import autokuca.util.PocetniInsert;
 
 /**
  *
@@ -13,6 +14,8 @@ import autokuca.util.HibernateUtil;
 public class Start {
 
     public static void main(String[] args) {
-        HibernateUtil.getSession();
+       // HibernateUtil.getSession();
+       
+       new PocetniInsert();
     }
 }
