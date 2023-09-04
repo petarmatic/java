@@ -2,15 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package edunova;
+package autokuca;
+
+import autokuca.util.HibernateUtil;
 
 /**
  *
  * @author petar
  */
-public class FinalApp {
+public class Start {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        HibernateUtil.getSession();
     }
 }

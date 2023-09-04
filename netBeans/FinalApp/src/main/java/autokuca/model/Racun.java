@@ -1,10 +1,16 @@
 package autokuca.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 
+@Entity
 public class Racun extends Entitet{
+        @ManyToOne
 	private Kupac kupac;
+        @ManyToOne
 	private  Prodavac prodavac;
+        @ManyToOne
 	private Vozilo vozilo;
 	
 	
@@ -15,7 +21,7 @@ public class Racun extends Entitet{
 	public Racun() {
 		super();
 	}
-	public Racun(int sifra, Kupac kupac, Prodavac prodavac, Vozilo vozilo) {
+	public Racun(Integer sifra, Kupac kupac, Prodavac prodavac, Vozilo vozilo) {
 		super(sifra);
 		this.kupac = kupac;
 		this.prodavac = prodavac;

@@ -1,5 +1,10 @@
 package autokuca.model;
 
+import jakarta.persistence.Entity;
+
+
+
+@Entity
 public class Prodavac extends Entitet {
 
 	private String ime;
@@ -9,7 +14,7 @@ public class Prodavac extends Entitet {
 		super();
 	}
 
-	public Prodavac(int sifra, String ime, String prezime) {
+	public Prodavac(Integer sifra, String ime, String prezime) {
 		super(sifra);
 		this.ime = ime;
 		this.prezime = prezime;
@@ -31,10 +36,12 @@ public class Prodavac extends Entitet {
 		this.prezime = prezime;
 	}
 
-	@Override
-	public String toString() {
+	//@Override
+	//public String toString() {
 
-		return sifra + " " + ime + " " + prezime;
+		//return sifra + " " + ime + " " + prezime;
 	}
 
-}
+//}
+
+

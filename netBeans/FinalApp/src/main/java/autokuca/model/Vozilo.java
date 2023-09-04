@@ -1,9 +1,14 @@
 package autokuca.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
+import java.math.BigDecimal;
 import java.util.List;
 
+@Entity
 public class Vozilo extends Entitet{
-	private float cijena;
+	private BigDecimal cijena;
+        @ManyToOne
 	private ProdajnoMjesto prodajnomjesto;
 	
 	
@@ -13,7 +18,7 @@ public class Vozilo extends Entitet{
 	
 
 
-	public Vozilo(int sifra, float cijena, ProdajnoMjesto prodajnomjesto) {
+	public Vozilo(Integer sifra, BigDecimal cijena, ProdajnoMjesto prodajnomjesto) {
 		super(sifra);
 		this.cijena = cijena;
 		this.prodajnomjesto = prodajnomjesto;
@@ -25,12 +30,12 @@ public class Vozilo extends Entitet{
 	}
 
 
-	public float getCijena() {
+	public BigDecimal getCijena() {
 		return cijena;
 	}
 
 
-	public void setCijena(float cijena) {
+	public void setCijena(BigDecimal cijena) {
 		this.cijena = cijena;
 	}
 

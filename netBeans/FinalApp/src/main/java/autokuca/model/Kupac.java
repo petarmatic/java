@@ -1,7 +1,13 @@
 package autokuca.model;
 
+import jakarta.persistence.Entity;
+import java.math.BigDecimal;
+
+
+@Entity
 public class Kupac extends Entitet {
-	private float budzet;
+        
+	private BigDecimal budzet;
 	private String ime;
 	private String prezime;
 	
@@ -15,7 +21,7 @@ public class Kupac extends Entitet {
 	}
 
 	
-	public Kupac(int sifra, float budzet, String ime, String prezime) {
+	public Kupac(Integer sifra, BigDecimal budzet, String ime, String prezime) {
 		super(sifra);
 		this.budzet = budzet;
 		this.ime = ime;
@@ -23,11 +29,11 @@ public class Kupac extends Entitet {
 	}
 
 
-	public float getBudzet() {
+	public BigDecimal getBudzet() {
 		return budzet;
 	}
 
-	public void setBudzet(float budzet) {
+	public void setBudzet(BigDecimal budzet) {
 		this.budzet = budzet;
 	}
 

@@ -1,10 +1,15 @@
 package autokuca.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import java.util.List;
 
+
+@Entity
 public class ProdajnoMjesto extends Entitet {
 	private String adresa;
 	private String naziv;
+        @ManyToOne
 	private Prodavac prodavac;
 	
 	
@@ -12,7 +17,7 @@ public class ProdajnoMjesto extends Entitet {
 	
 	
 	
-	public ProdajnoMjesto(int sifra, String adresa, String naziv, Prodavac prodavac) {
+	public ProdajnoMjesto(Integer sifra, String adresa, String naziv, Prodavac prodavac) {
 		super(sifra);
 		this.adresa = adresa;
 		this.naziv = naziv;
