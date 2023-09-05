@@ -83,7 +83,8 @@ public class PocetniInsert {
             p = new Predavac();
             p.setIme(faker.name().firstName());
             p.setPrezime(faker.name().lastName());
-            p.setOib(Alati.getOib());
+            //p.setOib(Alati.getOib());
+            p.setOib("54542");
             p.setIban(faker.business().creditCardNumber());
             p.setEmail(faker.internet().emailAddress());
             
