@@ -38,7 +38,7 @@ public class ObradaSmjer extends Obrada<Smjer>{
         //if(Entitet.getNaziv()==null|| Entitet.getNaziv().isEmpty)
         //sout== Naziv smjera obavezno
         if(entitet.getNaziv()==null){
-            throw new EdunovaException("Naziv smjera ne smije biti null");
+            throw new EdunovaException("Naziv smjer ne smije biti null");
         }
         if(entitet.getNaziv().isEmpty()){
             throw new EdunovaException("Naziv smjera ne smije biti prazan");
