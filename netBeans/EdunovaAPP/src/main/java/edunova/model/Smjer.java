@@ -68,4 +68,6 @@ public class Smjer extends Entitet {
         this.verificiran = verificiran;
     }
 
+  
+
 }

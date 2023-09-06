@@ -15,9 +15,8 @@ import org.hibernate.Session;
  * @author petar
  */
 public abstract class Obrada<T extends Entitet>{
-    protected T Entitet;
-    protected Session session;
-    private Object entitet;
+    protected T entitet;
+    protected Session session;   
     public abstract List<T> read();
     protected abstract void kontrolaUnos() throws EdunovaException;
     protected abstract void kontrolaPromjena() throws EdunovaException;
@@ -28,10 +27,8 @@ public abstract class Obrada<T extends Entitet>{
     }
     
     public void create() throws EdunovaException{
-        if(Entitet==null){
-            throw new EdunovaException("Entitet je null");
-        }
         kontrolaNull();
+        entitet.setSifra(null);
         kontrolaUnos();
         persist();
     }
@@ -57,17 +54,17 @@ public abstract class Obrada<T extends Entitet>{
     }
     
     private void kontrolaNull() throws EdunovaException{
-        if(Entitet==null){
+        if(entitet==null){
             throw new EdunovaException("Entitet je null");
         }
     }
     
     public T getEntitet() {
-        return Entitet;
+        return entitet;
     }
 
     public void setEntitet(T Entitet) {
-        this.Entitet = Entitet;
+        this.entitet = Entitet;
     }
     
     

@@ -66,7 +66,8 @@ public class PocetniInsert {
             p = new Polaznik();
             p.setIme(faker.name().firstName());
             p.setPrezime(faker.name().lastName());
-            p.setOib(Alati.getOib());
+           // p.setOib(Alati.getOib());
+           p.setOib("56565");
             p.setBrojUgovora(faker.business().creditCardNumber());
             p.setEmail(faker.internet().emailAddress());
             
