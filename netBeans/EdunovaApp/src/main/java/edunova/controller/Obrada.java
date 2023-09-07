@@ -15,6 +15,7 @@ import org.hibernate.Session;
  * @author petar
  */
 public abstract class Obrada<T extends Entitet>{
+    
     protected T entitet;
     protected Session session;   
     public abstract List<T> read();
@@ -24,6 +25,11 @@ public abstract class Obrada<T extends Entitet>{
     
     public Obrada(){
         session=HibernateUtil.getSession();
+    }
+    
+     public Obrada(T entitet){
+        this();
+        this.entitet=entitet;
     }
     
     public void create() throws EdunovaException{
