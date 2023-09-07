@@ -14,6 +14,7 @@ import edunova.util.EdunovaException;
  */
 public abstract class ObradaOsoba<T extends Osoba> extends Obrada<T>{
 
+    
     @Override
     protected void kontrolaUnos() throws EdunovaException {
         kontrolaOib();
