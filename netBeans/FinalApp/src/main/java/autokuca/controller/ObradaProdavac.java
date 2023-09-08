@@ -4,27 +4,23 @@
  */
 package autokuca.controller;
 
-import autokuca.model.Kupac;
+import autokuca.model.Prodavac;
 import autokuca.util.autokucaException;
-import java.math.BigDecimal;
 import java.util.List;
-import org.hibernate.Session;
 
 /**
  *
  * @author petar
  */
-public class ObradaKupac extends Obrada<Kupac>{
-    
-     
-    public List<Kupac> read(){
-        return session.createQuery("from Kupac", Kupac.class).list();
-    
+public class ObradaProdavac extends Obrada<Prodavac>{
+
+    @Override
+    public List<Prodavac> read() {
+        return session.createQuery("from Prodavac", Prodavac.class).list();
     }
 
     @Override
     protected void kontrolaUnos() throws autokucaException {
-        kontrolaBudzet();
         kontrolaIme();
         kontrolaPrezime();
     }
@@ -36,35 +32,25 @@ public class ObradaKupac extends Obrada<Kupac>{
 
     @Override
     protected void kontrolaBrisanja() throws autokucaException {
-       
-    }
-    
-    private void kontrolaIme() throws autokucaException{
-        if(entitet.getIme()==null){
-            throw new autokucaException("Ime kupca ne smije biti null");
-        }
-        if(entitet.getIme().isEmpty()){
-            throw new autokucaException("Ime kupca ne smije biti prazno");
-        }
-    }
-    
-    private void kontrolaBudzet() throws autokucaException{
-      var b=entitet.getBudzet();
-      
-           if (b == null) {
-        throw new autokucaException("Budžet mora biti definiran");
-    }
-    
-           
-        
     }
 
-    private void kontrolaPrezime() throws autokucaException {
-         if(entitet.getPrezime()==null){
+    private void kontrolaIme() throws autokucaException{
+        if(entitet.getIme()==null){
+            throw new autokucaException("Ime mora biti definirano");
+        }
+        if(entitet.getIme().isEmpty()){
+            throw new autokucaException("Ime ne smije biti prazno");
+        }
+    }
+
+    private void kontrolaPrezime() throws autokucaException{
+        if(entitet.getPrezime()==null){
             throw new autokucaException("Prezime mora biti definirano");
         }
         if(entitet.getPrezime().isEmpty()){
-            throw new autokucaException("Prezime kupca ne smije biti prazno");
+            throw new autokucaException("Prezime ne smije biti prazno");
         }
     }
+    
+    
 }
