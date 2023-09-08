@@ -41,6 +41,9 @@ public class ObradaProdavac extends Obrada<Prodavac>{
         if(entitet.getIme().isEmpty()){
             throw new autokucaException("Ime ne smije biti prazno");
         }
+        if (!Character.isUpperCase(entitet.getIme().charAt(0))) {
+        throw new autokucaException("Prvo slovo imena mora biti veliko");
+    }
     }
 
     private void kontrolaPrezime() throws autokucaException{
@@ -50,6 +53,9 @@ public class ObradaProdavac extends Obrada<Prodavac>{
         if(entitet.getPrezime().isEmpty()){
             throw new autokucaException("Prezime ne smije biti prazno");
         }
+        if (!Character.isUpperCase(entitet.getPrezime().charAt(0))) {
+        throw new autokucaException("Prvo slovo prezimena mora biti veliko");
+    }
     }
     
     

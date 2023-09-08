@@ -5,6 +5,7 @@
 package autokuca.controller;
 
 import autokuca.model.ProdajnoMjesto;
+import autokuca.model.Prodavac;
 import autokuca.util.autokucaException;
 import java.util.List;
 
@@ -67,7 +68,12 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
     }
 
     private void kontrolaProdavac() throws autokucaException{
+        
+    
+    
+          
+    
+    }
     }
     
     
-}

@@ -36,12 +36,12 @@ public class Prodavac extends Entitet {
 		this.prezime = prezime;
 	}
 
-	//@Override
-	//public String toString() {
+	@Override
+	public String toString() {
 
-		//return sifra + " " + ime + " " + prezime;
+		return sifra + " " + ime + " " + prezime;
 	}
 
-//}
+}
 
 

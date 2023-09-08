@@ -15,7 +15,7 @@ public abstract class Entitet {
     
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer sifra;
+	 Integer sifra;
 
 	public Entitet() {
 		super();

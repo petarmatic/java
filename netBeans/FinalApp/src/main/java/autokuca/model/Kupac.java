@@ -12,10 +12,6 @@ public class Kupac extends Entitet {
 	private String prezime;
 	
 	
-	
-	
-	
-
 	public Kupac() {
 		super();
 	}
