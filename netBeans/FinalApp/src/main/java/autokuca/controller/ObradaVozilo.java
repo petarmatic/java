@@ -5,7 +5,7 @@
 package autokuca.controller;
 
 import autokuca.model.Vozilo;
-import autokuca.util.autokucaException;
+import autokuca.util.AutokucaException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -21,31 +21,31 @@ public class ObradaVozilo extends Obrada<Vozilo>{
     }
 
     @Override
-    protected void kontrolaUnos() throws autokucaException {
+    protected void kontrolaUnos() throws AutokucaException {
         kontrolaCijena();
         kontrolaProdajnoMjesto();
     }
 
     @Override
-    protected void kontrolaPromjena() throws autokucaException {
+    protected void kontrolaPromjena() throws AutokucaException {
         kontrolaUnos();
     }
 
     @Override
-    protected void kontrolaBrisanja() throws autokucaException {
+    protected void kontrolaBrisanja() throws AutokucaException {
     }
 
-    private void kontrolaCijena() throws autokucaException{
+    private void kontrolaCijena() throws AutokucaException{
         if(entitet.getCijena()==null){
-            throw new autokucaException("Cijena mora biti definirana");
+            throw new AutokucaException("Cijena mora biti definirana");
         }
         if (entitet.getCijena().compareTo(BigDecimal.ZERO) <= 0) {
-        throw new autokucaException("Cijena mora biti veća od nule");
+        throw new AutokucaException("Cijena mora biti veća od nule");
     }
         
     }
 
-    private void kontrolaProdajnoMjesto() throws autokucaException{
+    private void kontrolaProdajnoMjesto() throws AutokucaException{
         
     }
     

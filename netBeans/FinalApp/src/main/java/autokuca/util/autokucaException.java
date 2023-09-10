@@ -8,11 +8,11 @@ package autokuca.util;
  *
  * @author petar
  */
-public class autokucaException extends Exception{
+public class AutokucaException extends Exception{
     
     private String poruka;
 
-    public autokucaException(String poruka) {
+    public AutokucaException(String poruka) {
         super(poruka);
         this.poruka = poruka;
     }

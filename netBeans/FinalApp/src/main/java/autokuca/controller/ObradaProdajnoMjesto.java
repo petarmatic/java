@@ -5,8 +5,7 @@
 package autokuca.controller;
 
 import autokuca.model.ProdajnoMjesto;
-import autokuca.model.Prodavac;
-import autokuca.util.autokucaException;
+import autokuca.util.AutokucaException;
 import java.util.List;
 
 /**
@@ -22,7 +21,7 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
     }
 
     @Override
-    protected void kontrolaUnos() throws autokucaException {
+    protected void kontrolaUnos() throws AutokucaException {
         kontrolaNaziv();
         kontrolaAdresa();
         kontrolaProdavac();
@@ -30,44 +29,44 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
     }
 
     @Override
-    protected void kontrolaPromjena() throws autokucaException {
+    protected void kontrolaPromjena() throws AutokucaException {
         kontrolaUnos();
     }
 
     @Override
-    protected void kontrolaBrisanja() throws autokucaException {
+    protected void kontrolaBrisanja() throws AutokucaException {
         
     }
 
-    private void kontrolaNaziv() throws autokucaException{
+    private void kontrolaNaziv() throws AutokucaException{
         if(entitet.getNaziv()==null){
-            throw new autokucaException("Naziv mora biti definiran");
+            throw new AutokucaException("Naziv mora biti definiran");
             }
         if(entitet.getNaziv().isEmpty()){
-            throw new autokucaException("Naziv smjera ne smije biti prazan");
+            throw new AutokucaException("Naziv smjera ne smije biti prazan");
         }
     }
 
-    private void kontrolaAdresa() throws autokucaException{
+    private void kontrolaAdresa() throws AutokucaException{
         String adresa = entitet.getAdresa();
     
         if (adresa == null) {
-            throw new autokucaException("Adresa mora biti definirana");
+            throw new AutokucaException("Adresa mora biti definirana");
         }
 
         adresa = adresa.trim(); 
 
         if (adresa.isEmpty()) {
-            throw new autokucaException("Adresa ne smije biti prazna");
+            throw new AutokucaException("Adresa ne smije biti prazna");
         }
 
         if (adresa.length() < 5) {
-            throw new autokucaException("Adresa mora imati barem 5 znakova");
+            throw new AutokucaException("Adresa mora imati barem 5 znakova");
         }
         
     }
 
-    private void kontrolaProdavac() throws autokucaException{
+    private void kontrolaProdavac() throws AutokucaException{
         
     
     

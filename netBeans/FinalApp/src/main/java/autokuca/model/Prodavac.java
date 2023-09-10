@@ -1,6 +1,9 @@
 package autokuca.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -9,13 +12,44 @@ public class Prodavac extends Entitet {
 
 	private String ime;
 	private String prezime;
+        
+        
+        
+        @OneToMany(mappedBy = "kupac")
+        private List<Racun> racuni= new ArrayList<>();
+        
+        @OneToMany(mappedBy = "prodavac")
+        private List<ProdajnoMjesto> prodajnoMjesto=new ArrayList<>();
+
+    public List<Racun> getRacuni() {
+        return racuni;
+    }
+
+    public void setRacuni(List<Racun> racuni) {
+        this.racuni = racuni;
+    }
+
+    public List<ProdajnoMjesto> getProdajnoMjesto() {
+        return prodajnoMjesto;
+    }
+
+    public void setProdajnoMjesto(List<ProdajnoMjesto> prodajnoMjesto) {
+        this.prodajnoMjesto = prodajnoMjesto;
+    }
+
+   
+
+   
+        
 
 	public Prodavac() {
 		super();
+        this.prodajnoMjesto = new ArrayList<>();
 	}
 
 	public Prodavac(Integer sifra, String ime, String prezime) {
 		super(sifra);
+        this.prodajnoMjesto = new ArrayList<>();
 		this.ime = ime;
 		this.prezime = prezime;
 	}

@@ -5,7 +5,7 @@
 package autokuca.controller;
 
 import autokuca.model.Racun;
-import autokuca.util.autokucaException;
+import autokuca.util.AutokucaException;
 import java.util.List;
 
 /**
@@ -20,27 +20,27 @@ public class ObradRacun extends Obrada<Racun>{
     }
 
     @Override
-    protected void kontrolaUnos() throws autokucaException {
+    protected void kontrolaUnos() throws AutokucaException {
         kontrolaKupac();
         kontrolaRacun();
         kontrolaVozilo();
     }
 
     @Override
-    protected void kontrolaPromjena() throws autokucaException {
+    protected void kontrolaPromjena() throws AutokucaException {
     }
 
     @Override
-    protected void kontrolaBrisanja() throws autokucaException {
+    protected void kontrolaBrisanja() throws AutokucaException {
     }
 
-    private void kontrolaKupac() throws autokucaException{
+    private void kontrolaKupac() throws AutokucaException{
     }
 
-    private void kontrolaRacun() throws autokucaException{
+    private void kontrolaRacun() throws AutokucaException{
     }
 
-    private void kontrolaVozilo() throws autokucaException{
+    private void kontrolaVozilo() throws AutokucaException{
     }
     
 }

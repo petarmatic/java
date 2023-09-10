@@ -6,7 +6,7 @@ package autokuca.controller;
 
 import autokuca.model.Entitet;
 import autokuca.util.HibernateUtil;
-import autokuca.util.autokucaException;
+import autokuca.util.AutokucaException;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -19,28 +19,28 @@ public abstract class Obrada<T extends Entitet>{
     protected T entitet;
     protected Session session;   
     public abstract List<T> read();
-    protected abstract void kontrolaUnos() throws autokucaException;
-    protected abstract void kontrolaPromjena() throws autokucaException;
-    protected abstract void kontrolaBrisanja() throws autokucaException;
+    protected abstract void kontrolaUnos() throws AutokucaException;
+    protected abstract void kontrolaPromjena() throws AutokucaException;
+    protected abstract void kontrolaBrisanja() throws AutokucaException;
     
     public Obrada(){
         session=HibernateUtil.getSession();
     }
     
-    public void create() throws autokucaException{
+    public void create() throws AutokucaException{
         kontrolaNull();
         entitet.setSifra(null);
         kontrolaUnos();
         persist();
     }
     
-    public void update() throws autokucaException{
+    public void update() throws AutokucaException{
         kontrolaNull();
         kontrolaPromjena();
         persist();
     }
     
-    public void delete() throws autokucaException{
+    public void delete() throws AutokucaException{
         kontrolaNull();
         kontrolaBrisanja();
         session.beginTransaction();
@@ -54,9 +54,9 @@ public abstract class Obrada<T extends Entitet>{
         session.getTransaction().commit();
     }
     
-    private void kontrolaNull() throws autokucaException{
+    private void kontrolaNull() throws AutokucaException{
         if(entitet==null){
-            throw new autokucaException("Entitet je null");
+            throw new AutokucaException("Entitet je null");
         }
     }
     
