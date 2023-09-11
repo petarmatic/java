@@ -46,6 +46,9 @@ public class ObradaProdavac extends Obrada<Prodavac>{
         }
         if (!Character.isUpperCase(entitet.getIme().charAt(0))) {
         throw new AutokucaException("Prvo slovo imena mora biti veliko");
+        }
+        if (!Character.isUpperCase(entitet.getPrezime().charAt(0))) {
+        throw new AutokucaException("Prvo slovo prezimena mora biti veliko");
     }
     }
 

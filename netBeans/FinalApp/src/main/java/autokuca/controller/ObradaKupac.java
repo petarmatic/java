@@ -15,7 +15,7 @@ import java.util.List;
 public class ObradaKupac extends Obrada<Kupac>{
     
      
-    public List<Kupac> read(){
+    public List<Kupac> read() {
         return session.createQuery("from Kupac", Kupac.class).list();
     
     }
@@ -34,6 +34,9 @@ public class ObradaKupac extends Obrada<Kupac>{
 
     @Override
     protected void kontrolaBrisanja() throws AutokucaException {
+        if(!entitet.getRacuni().isEmpty()){
+            throw new AutokucaException("Kupac se ne može obrisati iz razloga zato što je na nekom računu");
+        }
        
     }
     
@@ -47,13 +50,11 @@ public class ObradaKupac extends Obrada<Kupac>{
     }
     
     private void kontrolaBudzet() throws AutokucaException{
-      var b=entitet.getBudzet();
       
-           if (b == null) {
+      
+           if (entitet.getBudzet() == null) {
         throw new AutokucaException("Budžet mora biti definiran");
-    }
-    
-           
+           }
         
     }
 

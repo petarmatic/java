@@ -17,7 +17,7 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
     @Override
     public List<ProdajnoMjesto> read() {
         
-        return session.createQuery("from Prodajno Mjesto", ProdajnoMjesto.class).list();
+        return session.createQuery("from ProdajnoMjesto", ProdajnoMjesto.class).list();
     }
 
     @Override
@@ -35,6 +35,10 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
 
     @Override
     protected void kontrolaBrisanja() throws AutokucaException {
+        if(entitet.getProdavac()==null){
+            throw new AutokucaException("Prodajno mjesto se ne može obrisati iz razloga što sadrži prodavača");
+        }
+       
         
     }
 
@@ -67,12 +71,13 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
     }
 
     private void kontrolaProdavac() throws AutokucaException{
-        
-    
-    
-          
-    
+        if (entitet.getProdavac() == null) {
+        throw new AutokucaException("Prodavac mora biti definiran za prodajno mjesto");
+        }
     }
-    }
+}
+    
+    
+    
     
     

@@ -2,6 +2,9 @@ package autokuca.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -12,7 +15,16 @@ public class ProdajnoMjesto extends Entitet {
         @ManyToOne
 	private Prodavac prodavac;
 	
-	
+	@OneToMany(mappedBy = "prodajnomjesto")
+	private List<Vozilo> vozilo=new ArrayList<>();
+
+        public List<Vozilo> getVozilo() {
+            return vozilo;
+        }
+
+        public void setVozilo(List<Vozilo> vozilo) {
+            this.vozilo = vozilo;
+        }
 	
 	
 	

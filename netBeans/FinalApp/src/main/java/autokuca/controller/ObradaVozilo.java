@@ -33,6 +33,9 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 
     @Override
     protected void kontrolaBrisanja() throws AutokucaException {
+        if(entitet.getRacuni()==null){
+            throw new AutokucaException("Vozilo se ne može obrisati zato što je na računu");
+        }
     }
 
     private void kontrolaCijena() throws AutokucaException{
@@ -46,6 +49,10 @@ public class ObradaVozilo extends Obrada<Vozilo>{
     }
 
     private void kontrolaProdajnoMjesto() throws AutokucaException{
+        if(entitet.getProdajnomjesto()==null){
+            throw new AutokucaException("Prodajno mjesto obavezno");
+            
+        }
         
     }
     

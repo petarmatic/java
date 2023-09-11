@@ -1,16 +1,35 @@
 package autokuca.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
 public class Kupac extends Entitet {
         
+	 
+        
 	private BigDecimal budzet;
 	private String ime;
 	private String prezime;
-	
+        
+	 @OneToMany(mappedBy = "kupac")
+        private List<Racun> racuni = new ArrayList<>();
+
+        public List<Racun> getRacuni() {
+            return racuni;
+        }
+
+        public void setRacuni(List<Racun> racuni) {
+            this.racuni = racuni;
+        }
+         
+         
+         
+         
 	
 	public Kupac() {
 		super();
@@ -48,6 +67,9 @@ public class Kupac extends Entitet {
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
+    
+        
+	
 
 	
 }

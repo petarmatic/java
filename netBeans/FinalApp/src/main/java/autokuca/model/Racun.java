@@ -16,21 +16,8 @@ public class Racun extends Entitet{
         @ManyToOne
 	private Vozilo vozilo;
 	
-        @OneToMany(mappedBy = "kupac")
-        private List<Racun> racuni= new ArrayList<>();
+        
 
-    public List<Racun> getRacuni() {
-        return racuni;
-    }
-
-    public void setRacuni(List<Racun> racuni) {
-        this.racuni = racuni;
-    }
-	
-	
-	
-	
-	
 	public Racun() {
 		super();
 	}

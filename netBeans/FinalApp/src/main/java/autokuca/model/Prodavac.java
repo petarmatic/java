@@ -15,7 +15,7 @@ public class Prodavac extends Entitet {
         
         
         
-        @OneToMany(mappedBy = "kupac")
+        @OneToMany(mappedBy = "prodavac")
         private List<Racun> racuni= new ArrayList<>();
         
         @OneToMany(mappedBy = "prodavac")
@@ -44,11 +44,13 @@ public class Prodavac extends Entitet {
 
 	public Prodavac() {
 		super();
+        this.racuni = new ArrayList<>();
         this.prodajnoMjesto = new ArrayList<>();
 	}
 
 	public Prodavac(Integer sifra, String ime, String prezime) {
 		super(sifra);
+        this.racuni = new ArrayList<>();
         this.prodajnoMjesto = new ArrayList<>();
 		this.ime = ime;
 		this.prezime = prezime;
