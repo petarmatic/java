@@ -33,43 +33,43 @@ public class Fgdgdf {
 			niz[i] = b;
 		}
 	}
-		private static void createZbrojNiza(int[] niz) {
-		int lijeviIndeks = 0;
-		int desniIndeks = niz.length - 1;
-		int[] zbrojNiza = new int[niz.length / 2 + 1];
-		int k = 0;
-
-		while (lijeviIndeks <= desniIndeks) {
-			if (lijeviIndeks == desniIndeks) {
-				zbrojNiza[k++] = Math.min(niz[lijeviIndeks], 100);
-			} else {
-				int zbroj = niz[lijeviIndeks] + niz[desniIndeks];
-				zbrojNiza[k++] = Math.min(zbroj, 100);
-			}
-			lijeviIndeks++;
-			desniIndeks--;
-		}
-		// Rastavi dvoznamenkaste brojeve u jednoznamenkaste
-        for (int i = 0; i < zbrojNiza.length; i++) {
-            if (zbrojNiza[i] >= 10) {
-                int prviZnamenka = zbrojNiza[i] / 10;
-                int drugiZnamenka = zbrojNiza[i] % 10;
-
-                zbrojNiza[i] = prviZnamenka;
-                if (i == zbrojNiza.length - 1) {
-                    // Ako smo došli do zadnjeg elementa, dodaj drugu znamenku kao novi element
-                    zbrojNiza = Arrays.copyOf(zbrojNiza, zbrojNiza.length + 1);
-                    zbrojNiza[i + 1] = drugiZnamenka;
-                } else {
-                    // Inače, dodaj drugu znamenku iza sljedećeg elementa
-                    zbrojNiza[i + 1] += drugiZnamenka;
-                }
-            }
-        }
-
-		System.out.println(Arrays.toString(zbrojNiza));
+//		private static void createZbrojNiza(int[] niz) {
+//		int lijeviIndeks = 0;
+//		int desniIndeks = niz.length - 1;
+//		int[] zbrojNiza = new int[niz.length / 2 + 1];
+//		int k = 0;
+//
+//		while (lijeviIndeks <= desniIndeks) {
+//			if (lijeviIndeks == desniIndeks) {
+//				zbrojNiza[k++] = Math.min(niz[lijeviIndeks], 100);
+//			} else {
+//				int zbroj = niz[lijeviIndeks] + niz[desniIndeks];
+//				zbrojNiza[k++] = Math.min(zbroj, 100);
+//			}
+//			lijeviIndeks++;
+//			desniIndeks--;
+//		}
+//		// Rastavi dvoznamenkaste brojeve u jednoznamenkaste
+//        for (int i = 0; i < zbrojNiza.length; i++) {
+//            if (zbrojNiza[i] >= 10) {
+//                int prviZnamenka = zbrojNiza[i] / 10;
+//                int drugiZnamenka = zbrojNiza[i] % 10;
+//
+//                zbrojNiza[i] = prviZnamenka;
+//                if (i == zbrojNiza.length - 1) {
+//                    // Ako smo došli do zadnjeg elementa, dodaj drugu znamenku kao novi element
+//                    zbrojNiza = Arrays.copyOf(zbrojNiza, zbrojNiza.length + 1);
+//                    zbrojNiza[i + 1] = drugiZnamenka;
+//                } else {
+//                    // Inače, dodaj drugu znamenku iza sljedećeg elementa
+//                    zbrojNiza[i + 1] += drugiZnamenka;
+//                }
+//            }
+//        }
+//
+//		System.out.println(Arrays.toString(zbrojNiza));
 		
 		
 		
-	}
+//	}
 }

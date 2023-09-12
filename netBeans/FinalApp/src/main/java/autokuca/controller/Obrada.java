@@ -5,8 +5,8 @@
 package autokuca.controller;
 
 import autokuca.model.Entitet;
-import autokuca.util.HibernateUtil;
 import autokuca.util.AutokucaException;
+import autokuca.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 
@@ -14,7 +14,6 @@ import org.hibernate.Session;
  *
  * @author petar
  */
-
 public abstract class Obrada<T extends Entitet>{
     protected T entitet;
     protected Session session;   
@@ -67,5 +66,7 @@ public abstract class Obrada<T extends Entitet>{
     public void setEntitet(T Entitet) {
         this.entitet = Entitet;
     }
-    
+
+       
+   
 }

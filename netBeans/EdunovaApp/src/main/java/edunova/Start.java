@@ -5,26 +5,19 @@ package edunova;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import edunova.controller.Obrada;
-import edunova.controller.ObradaPolaznik;
+import edunova.controller.ObradaGrupa;
 import edunova.controller.ObradaSmjer;
-import edunova.model.Polaznik;
+import edunova.model.Grupa;
 import edunova.model.Smjer;
 import edunova.util.EdunovaException;
-import edunova.util.HibernateUtil;
-import edunova.util.PocetniInsert;
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.hibernate.Session;
 
 /**
  *
- * @author Katedra
+ * @author Petar
  */
-public class Start {
 
+public class Start {
     public static void main(String[] args) {
 
         // HibernateUtil.getSession();
@@ -33,21 +26,20 @@ public class Start {
         //System.out.println(new Gson().toJson(new ObradaSmjer().read()));
         
        
-        ObradaPolaznik op = new ObradaPolaznik();
-        Polaznik p = new Polaznik();
-        p.setIme("Pero"); p.setPrezime("Perić");
-        p.setOib("70159100491");
+        ObradaGrupa o = new ObradaGrupa();
         
-        op.setEntitet(p);
+        Grupa g = new Grupa();
         
+        g.setNaziv("Nova test");
+        o.setEntitet(g);
         try {
-            op.create();
-        } catch (EdunovaException e) {
-            System.out.println(e.getPoruka());
+            o.create();
+        } catch (Exception e) {
         }
         
         
         
+      // new PocetniInsert();
         
         
     }
@@ -68,5 +60,7 @@ public class Start {
                 System.out.println(ex.getPoruka());
             }
         }
-    }
 }
+}
+
+

@@ -17,14 +17,14 @@ import org.hibernate.Session;
 public abstract class Obrada<T extends Entitet>{
     
     protected T entitet;
-    protected Session sesssion;
+    protected Session session;
     public abstract List<T> read();
     protected abstract void kontrolaUnos() throws EdunovaException;
     protected abstract void kontrolaPromjena() throws EdunovaException;
     protected abstract void kontrolaBrisanje() throws EdunovaException;
     
     public Obrada(){
-        sesssion = HibernateUtil.getSession();
+        session = HibernateUtil.getSession();
     }
     
     public Obrada(T entitet){
@@ -48,15 +48,15 @@ public abstract class Obrada<T extends Entitet>{
     public void delete() throws EdunovaException{
         kontrolaNull();
         kontrolaBrisanje();
-        sesssion.beginTransaction();
-        sesssion.remove(entitet);
-        sesssion.getTransaction().commit();
+        session.beginTransaction();
+        session.remove(entitet);
+        session.getTransaction().commit();
     }
     
     private void persist(){
-        sesssion.beginTransaction();
-        sesssion.persist(entitet);
-        sesssion.getTransaction().commit();
+        session.beginTransaction();
+        session.persist(entitet);
+        session.getTransaction().commit();
     }
     
     private void kontrolaNull() throws EdunovaException{

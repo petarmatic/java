@@ -67,7 +67,7 @@ public class PocetniInsert {
             p.setIme(faker.name().firstName());
             p.setPrezime(faker.name().lastName());
             //p.setOib(Alati.getOib());
-            p.setOib("25265854585");
+            p.setOib("");
             p.setBrojUgovora(faker.business().creditCardNumber());
             p.setEmail(faker.internet().emailAddress());
             
