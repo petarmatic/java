@@ -7,3 +7,4 @@ select *from smjer;
 select * from grupa;
 select *from polaznik;
 select *from predavac;
+select *from operater;

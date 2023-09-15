@@ -4,6 +4,8 @@
 
 package autokuca;
 
+import autokuca.controller.ObradaOperater;
+import autokuca.model.Operater;
 import autokuca.util.HibernateUtil;
 import autokuca.util.PocetniInsert;
 
@@ -14,8 +16,11 @@ import autokuca.util.PocetniInsert;
 public class Start {
 
     public static void main(String[] args) {
-       // HibernateUtil.getSession();
+        
        
-       new PocetniInsert();
+    
+        HibernateUtil.getSession();
+          new PocetniInsert();
     }
+       
 }

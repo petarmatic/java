@@ -7,29 +7,31 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
-import edunova.controller.ObradaGrupa;
 import edunova.controller.ObradaOperater;
 import edunova.controller.ObradaSmjer;
-import edunova.model.Grupa;
 import edunova.model.Operater;
 import edunova.model.Smjer;
 import edunova.util.EdunovaException;
+import edunova.util.HibernateUtil;
+import edunova.util.PocetniInsert;
 import java.util.List;
+import static java.util.Objects.hash;
 
 /**
- *
+ * 
  * @author Petar
  */
 
 public class Start {
     public static void main(String[] args) {
         
-        
-         ObradaOperater oo = new ObradaOperater();
+        // HibernateUtil.getSession();
+         //new PocetniInsert();
+       ObradaOperater oo = new ObradaOperater();
        
        Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
        
-        System.out.println(o==null ? "Neispravno" : o.getIme());
+       System.out.println(o==null ? "Neispravno" : o.getIme());
         
         
         //System.out.println(hash);
@@ -45,7 +47,7 @@ public class Start {
         String hash = argon2.hash(10, 65536, 1, "oper".toCharArray());
         
         ObradaOperater oo = new ObradaOperater();
-        Operater o = new Operater() {};
+        Operater o = new Operater();
         o.setIme("Pero");
         o.setPrezime("perić");
         o.setEmail("oper@edunova.hr");
@@ -62,8 +64,7 @@ public class Start {
         }
     }
 
-        // HibernateUtil.getSession();
-        // new PocetniInsert();
+       
        
         //System.out.println(new Gson().toJson(new ObradaSmjer().read()));
         

@@ -22,6 +22,7 @@
     <mapping class="autokuca.model.Prodavac" />
     <mapping class="autokuca.model.Racun" />
     <mapping class="autokuca.model.Vozilo" />
+    <mapping class="autokuca.model.Operater" />
     
        
   </session-factory>

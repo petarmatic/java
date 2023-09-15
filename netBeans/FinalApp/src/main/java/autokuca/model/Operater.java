@@ -2,17 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edunova.model;
+package autokuca.model;
 
-import jakarta.persistence.Entity;
+import autokuca.controller.Obrada;
 
 /**
  *
  * @author petar
  */
-@Entity
-public class Operater extends Osoba {
-
+public abstract class Operater extends Entitet{
+    
     private String lozinka;
     private String uloga;
 
@@ -31,5 +30,5 @@ public class Operater extends Osoba {
     public void setUloga(String uloga) {
         this.uloga = uloga;
     }
-
+    
 }
