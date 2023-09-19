@@ -14,6 +14,8 @@ import edunova.model.Smjer;
 import edunova.util.EdunovaException;
 import edunova.util.HibernateUtil;
 import edunova.util.PocetniInsert;
+import edunova.view.Autorizacija;
+import edunova.view.SplashScreen;
 import java.util.List;
 import static java.util.Objects.hash;
 
@@ -25,13 +27,16 @@ import static java.util.Objects.hash;
 public class Start {
     public static void main(String[] args) {
         
+         new Autorizacija().setVisible(true);
+        // new SplashScreen().setVisible(true);
+        
         // HibernateUtil.getSession();
          //new PocetniInsert();
-       ObradaOperater oo = new ObradaOperater();
+       //ObradaOperater oo = new ObradaOperater();
        
-       Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
+      // Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
        
-       System.out.println(o==null ? "Neispravno" : o.getIme());
+       //System.out.println(o==null ? "Neispravno" : o.getIme());
         
         
         //System.out.println(hash);

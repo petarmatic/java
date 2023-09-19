@@ -4,6 +4,7 @@
  */
 package edunova.util;
 
+import edunova.model.Operater;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
@@ -17,6 +18,15 @@ import us.codecraft.xsoup.Xsoup;
  * @author Katedra
  */
 public class Alati {
+    
+    
+     public static final String NAZIV_APP = "Edunova APP";
+    public static Operater OPERATER;
+    
+    public static String getOperater(){
+        return OPERATER.getIme() + " " + OPERATER.getPrezime() + " (" + OPERATER.getUloga() + ")";
+    }
+    
     
     public static String getOib(){
          try {
