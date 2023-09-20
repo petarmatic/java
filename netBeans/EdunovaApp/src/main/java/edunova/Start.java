@@ -27,7 +27,9 @@ import static java.util.Objects.hash;
 public class Start {
     public static void main(String[] args) {
         
-         new Autorizacija().setVisible(true);
+            new SplashScreen().setVisible(true);
+        
+         //new Autorizacija().setVisible(true);
         // new SplashScreen().setVisible(true);
         
         // HibernateUtil.getSession();

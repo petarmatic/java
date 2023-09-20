@@ -18,6 +18,7 @@ import org.apache.commons.validator.EmailValidator;
  * @author petar
  */
 public class Autorizacija extends javax.swing.JFrame {
+    
     private ObradaOperater obrada;
     /**
      * Creates new form Autorizacija
@@ -42,12 +43,13 @@ public class Autorizacija extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnAutoriziraj = new javax.swing.JButton();
         txtLozinka = new javax.swing.JPasswordField();
-        lblEmailPoruka = new javax.swing.JLabel();
+        txtEmailPoruka = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Email");
 
+        txtEmail.setText("oper@edunova.hr");
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmailActionPerformed(evt);
@@ -63,13 +65,23 @@ public class Autorizacija extends javax.swing.JFrame {
             }
         });
 
+        txtLozinka.setText("oper");
         txtLozinka.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLozinkaActionPerformed(evt);
             }
         });
+        txtLozinka.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtLozinkaKeyPressed(evt);
+            }
+        });
 
-        lblEmailPoruka.setText("jLabel3");
+        txtEmailPoruka.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEmailPorukaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +96,7 @@ public class Autorizacija extends javax.swing.JFrame {
                             .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEmailPoruka)))
+                            .addComponent(txtEmailPoruka)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(126, 126, 126)
                         .addComponent(btnAutoriziraj)))
@@ -96,7 +108,7 @@ public class Autorizacija extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
                 .addGap(1, 1, 1)
-                .addComponent(lblEmailPoruka)
+                .addComponent(txtEmailPoruka)
                 .addGap(1, 1, 1)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
@@ -105,34 +117,29 @@ public class Autorizacija extends javax.swing.JFrame {
                 .addComponent(txtLozinka, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(btnAutoriziraj)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        if(txtEmail.getText().length()>0){
-            txtEmail.setBackground(Color.WHITE);
-        }
-        
-        if(evt.getKey == KeyEvent.VK_ENTER){
-            btnAutorizirajActionPerformed(null);
+        //visak
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnAutorizirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorizirajActionPerformed
-         reset();
+        reset();
         
         var email = txtEmail.getText().trim();
         
         if(email.isEmpty()){
-            lblEmailPoruka.setText("Email obavezno");
+            txtEmailPoruka.setText("Email obavezno");
             postaviGresku(txtEmail);
             return;
         }
         
         if(!EmailValidator.getInstance().isValid(email)){
-             lblEmailPoruka.setText("Upisani tekst nije email");
+             txtEmailPoruka.setText("Upisani tekst nije email");
              postaviGresku(txtEmail);
              return;
         }
@@ -168,19 +175,33 @@ public class Autorizacija extends javax.swing.JFrame {
     }
     
     private void reset(){
-        lblEmailPoruka.setText("");
+        txtEmailPoruka.setText("");
         txtEmail.setBackground(Color.WHITE);
         txtLozinka.setBackground(Color.WHITE);
     }
     private void txtLozinkaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLozinkaActionPerformed
+        //visak 
+    }//GEN-LAST:event_txtLozinkaActionPerformed
+
+    private void txtEmailPorukaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailPorukaKeyPressed
+         if(txtEmail.getText().length()>0){
+            txtEmail.setBackground(Color.WHITE);
+        }
+        
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        btnAutorizirajActionPerformed(null);
+        }
+    }//GEN-LAST:event_txtEmailPorukaKeyPressed
+
+    private void txtLozinkaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLozinkaKeyPressed
          if(txtLozinka.getPassword().length>0){
             txtLozinka.setBackground(Color.WHITE);
         }
         
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            btnAutorizirajActionPerformed(null);
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        btnAutorizirajActionPerformed(null);
         }
-    }//GEN-LAST:event_txtLozinkaActionPerformed
+    }//GEN-LAST:event_txtLozinkaKeyPressed
 
     
 
@@ -188,8 +209,8 @@ public class Autorizacija extends javax.swing.JFrame {
     private javax.swing.JButton btnAutoriziraj;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lblEmailPoruka;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JLabel txtEmailPoruka;
     private javax.swing.JPasswordField txtLozinka;
     // End of variables declaration//GEN-END:variables
 }

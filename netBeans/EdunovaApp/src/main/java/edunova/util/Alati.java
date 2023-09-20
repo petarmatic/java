@@ -20,7 +20,7 @@ import us.codecraft.xsoup.Xsoup;
 public class Alati {
     
     
-     public static final String NAZIV_APP = "Edunova APP";
+    public static final String NAZIV_APP = "Edunova APP";
     public static Operater OPERATER;
     
     public static String getOperater(){
