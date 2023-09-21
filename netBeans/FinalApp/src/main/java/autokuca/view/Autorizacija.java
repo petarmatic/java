@@ -114,7 +114,9 @@ public class Autorizacija extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAutorizirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorizirajActionPerformed
-        reset();
+       
+        
+       reset();
         
         var email=txtEmail.getText().trim();
         
@@ -177,12 +179,14 @@ public class Autorizacija extends javax.swing.JFrame {
         c.setBackground(Color.RED);
         c.requestFocus();
     }
-
-    private void reset() {
+    
+     private void reset() {
         lblEmailPoruka.setText("");
         txtEmail.setBackground(Color.WHITE);
         txtLozinka.setBackground(Color.WHITE);
     }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAutoriziraj;

@@ -22,8 +22,8 @@ public class Start {
         
        
         new Autorizacija().setVisible(true);
-        HibernateUtil.getSession();
-        new PocetniInsert();
+        //HibernateUtil.getSession();
+        ///new PocetniInsert();
     }
     
     private void lozinka(){
