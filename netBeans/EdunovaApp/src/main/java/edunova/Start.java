@@ -12,12 +12,8 @@ import edunova.controller.ObradaSmjer;
 import edunova.model.Operater;
 import edunova.model.Smjer;
 import edunova.util.EdunovaException;
-import edunova.util.HibernateUtil;
-import edunova.util.PocetniInsert;
-import edunova.view.Autorizacija;
 import edunova.view.SplashScreen;
 import java.util.List;
-import static java.util.Objects.hash;
 
 /**
  * 

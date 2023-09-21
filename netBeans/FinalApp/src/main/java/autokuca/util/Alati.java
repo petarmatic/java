@@ -4,18 +4,22 @@
  */
 package autokuca.util;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URI;
-import javax.swing.text.Document;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
-import us.codecraft.xsoup.Xsoup;
+import autokuca.model.Operater;
+
 
 /**
  *
  * @author petar
  */
-public class Alati {
+public class Alati { 
+    public static final String NAZIV_APP = "Edunova APP";
+    public static Operater OPERATER;
+
+    public static String getOPERATER() {
+        return OPERATER.getIme() + " " + OPERATER.getPrezime() + " (" + OPERATER.getUloga() + ")";
+    }
+
+   
+    
     
 }

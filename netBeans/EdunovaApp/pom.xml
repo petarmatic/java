@@ -12,7 +12,7 @@
         <exec.mainClass>edunova.Start</exec.mainClass>
     </properties>
     
-    <dependencies>
+     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
@@ -58,19 +58,16 @@
             <version>2.10.1</version>
         </dependency>
 
-         <dependency>
+
+
+        <dependency>
             <groupId>de.mkammerer</groupId>
             <artifactId>argon2-jvm</artifactId>
             <version>2.11</version>
         </dependency>
         
-        <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpclient</artifactId>
-        <version>4.5.13</version>
-        </dependency>
         
-         <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>

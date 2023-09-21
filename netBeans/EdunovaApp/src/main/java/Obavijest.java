@@ -1,4 +1,4 @@
-import org.apache.http.HttpEntity;
+/**import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -8,7 +8,7 @@ import org.apache.http.util.EntityUtils;
 
 public class Obavijest {
     public static void posaljiPorukuOGresci() {
-        String webhookUrl = "https://hooks.slack.com/services/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"; // Postavite svoj Webhook URL ovdje
+        String webhookUrl = "https://hooks.slack.com/services/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"; // Postavi svoj Webhook URL ovdje
         String porukaOGresci = "Došlo je do greške u aplikaciji!";
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
@@ -37,3 +37,4 @@ public class Obavijest {
         posaljiPorukuOGresci();
     }
 }
+*/
