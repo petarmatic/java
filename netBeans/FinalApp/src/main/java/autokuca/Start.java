@@ -9,6 +9,7 @@ import autokuca.model.Operater;
 import autokuca.util.HibernateUtil;
 import autokuca.util.PocetniInsert;
 import autokuca.view.Autorizacija;
+import autokuca.view.SplashScreen;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 
@@ -20,8 +21,8 @@ public class Start {
 
     public static void main(String[] args) {
         
-       
-        new Autorizacija().setVisible(true);
+       new SplashScreen().setVisible(true);
+       new Autorizacija().setVisible(true);
         //HibernateUtil.getSession();
         ///new PocetniInsert();
     }

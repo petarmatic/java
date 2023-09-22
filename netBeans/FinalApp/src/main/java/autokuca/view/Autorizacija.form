@@ -23,23 +23,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnAutoriziraj" min="-2" pref="165" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblEmailPoruka" min="-2" pref="157" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel1" min="-2" pref="62" max="-2" attributes="0"/>
                       <Component id="txtEmail" pref="179" max="32767" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" pref="69" max="-2" attributes="0"/>
                       <Component id="txtLozinka" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="lblEmailPoruka" min="-2" pref="157" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="180" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnAutoriziraj" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,9 +56,9 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="txtLozinka" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace pref="49" max="32767" attributes="0"/>
               <Component id="btnAutoriziraj" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,15 +90,15 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtLozinkaKeyPressed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JLabel" name="lblEmailPoruka">
+    </Component>
     <Component class="javax.swing.JButton" name="btnAutoriziraj">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Autorizacija"/>
+        <Property name="text" type="java.lang.String" value="Autoriziraj"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAutorizirajActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblEmailPoruka">
     </Component>
   </SubComponents>
 </Form>
