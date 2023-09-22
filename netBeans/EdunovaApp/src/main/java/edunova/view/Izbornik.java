@@ -25,7 +25,7 @@ public class Izbornik extends javax.swing.JFrame {
     public Izbornik() {
         initComponents();
         setTitle(Alati.NAZIV_APP + " | Izbornik");
-        lblOperater.setText(Alati.getOperater());
+//        lblOperater.setText(Alati.getOperater());
     }
 
     /**

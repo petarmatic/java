@@ -115,25 +115,29 @@ public class Autorizacija extends javax.swing.JFrame {
 
     private void txtEmailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyPressed
           if(txtEmail.getText().length()>0){
-              txtEmail.setBackground(Color.WHITE);
-          }
-          if(evt.getKeyCode()== KeyEvent.VK_ENTER){
-             // btnAutorizirajActionPerformed(null);
-          }
+            txtEmail.setBackground(Color.WHITE);
+        }
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnAutorizirajActionPerformed(null);
+        }
     }//GEN-LAST:event_txtEmailKeyPressed
 
     private void txtLozinkaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtLozinkaKeyPressed
-        if(txtLozinka.getPassword().length>0) {
+        if(txtLozinka.getPassword().length>0){
             txtLozinka.setBackground(Color.WHITE);
         }
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
-           // btnAutorizirajActionPerformed(null);
+        
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnAutorizirajActionPerformed(null);
         }
+       
     }//GEN-LAST:event_txtLozinkaKeyPressed
 
     private void btnAutorizirajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutorizirajActionPerformed
         reset();
-        var email= txtEmail.getText().trim();
+        
+        var email = txtEmail.getText().trim();
         
         if(email.isEmpty()){
             lblEmailPoruka.setText("Email obavezno");
@@ -142,27 +146,37 @@ public class Autorizacija extends javax.swing.JFrame {
         }
         
         if(!EmailValidator.getInstance().isValid(email)){
-            lblEmailPoruka.setText("Upisani tekst nije email");
-            postaviGresku(txtEmail);
-            return;
+             lblEmailPoruka.setText("Upisani tekst nije email");
+             postaviGresku(txtEmail);
+             return;
         }
         
         if(txtLozinka.getPassword().length==0){
             postaviGresku(txtLozinka);
             return;
         }
+        
+        
+        new Izbornik().setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_btnAutorizirajActionPerformed
 
-    private void postaviGresku(JComponent c) {
+     private void postaviGresku(JComponent c){
         c.setBackground(Color.RED);
         c.requestFocus();
     }
     
-     private void reset() {
+    private void reset(){
         lblEmailPoruka.setText("");
         txtEmail.setBackground(Color.WHITE);
         txtLozinka.setBackground(Color.WHITE);
     }
+
+    
+     
+        
+    
 
     
 

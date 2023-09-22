@@ -15,9 +15,9 @@ public class Alati {
     public static final String NAZIV_APP = "Edunova APP";
     public static Operater OPERATER;
 
-    public static String getOPERATER() {
-        return OPERATER.getIme() + " " + OPERATER.getPrezime() + " (" + OPERATER.getUloga() + ")";
-    }
+   // public static String getOPERATER() {
+   //     return OPERATER.getIme() + " " + OPERATER.getPrezime() + " (" + OPERATER.getUloga() + ")";
+   // }
 
    
     
