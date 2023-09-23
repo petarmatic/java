@@ -59,6 +59,11 @@ public class ObradaOperater extends Obrada<Operater> {
         }
         
     }
+      private void kontrolaEmail() throws AutokucaException {
+        if (!entitet.getEmail().contains("@")) {
+            throw new AutokucaException("Email operatera mora sadržavati @");
+        }
+      }
 
     @Override
     protected void kontrolaPromjena() throws AutokucaException {

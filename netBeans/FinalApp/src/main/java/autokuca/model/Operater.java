@@ -4,12 +4,16 @@
  */
 package autokuca.model;
 
+import jakarta.persistence.Entity;
+
 
 
 /**
  *
  * @author petar
  */
+
+@Entity
 public class Operater extends Entitet{
     
     private String ime;
@@ -17,6 +21,9 @@ public class Operater extends Entitet{
     private String email;
     private String lozinka;
     private String uloga;
+    
+    
+    
 
     public String getIme() {
         return ime;
