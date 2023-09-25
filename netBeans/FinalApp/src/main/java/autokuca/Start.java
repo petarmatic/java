@@ -22,12 +22,14 @@ public class Start {
     public static void main(String[] args) {
         
        new SplashScreen().setVisible(true);
+      // lozinka();
+       //new PocetniInsert();
       // new Autorizacija().setVisible(true);
        // HibernateUtil.getSession();
         ///new PocetniInsert();
     }
     
-    private void lozinka(){
+    private static void lozinka(){
         Argon2 argon2 =  Argon2Factory.create(); 
         String hash = argon2.hash(10, 65536, 1, "oper".toCharArray());
         
