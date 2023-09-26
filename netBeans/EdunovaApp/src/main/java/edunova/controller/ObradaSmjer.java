@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Katedra
+ * @author Petar
  */
 public class ObradaSmjer extends Obrada<Smjer>{
 
@@ -35,13 +35,15 @@ public class ObradaSmjer extends Obrada<Smjer>{
     @Override
     protected void kontrolaUnos() throws EdunovaException {
         kontrolaNaziv();
+        nadopunaNaziva();
         kontrolaCijena();
-        // DZ: napisati kontrole za trajanje i upisninu
+        
     }
 
     @Override
     protected void kontrolaPromjena() throws EdunovaException {
-       kontrolaUnos();
+      kontrolaCijena();
+      kontrolaNaziv();
     }
 
     @Override
@@ -83,6 +85,16 @@ public class ObradaSmjer extends Obrada<Smjer>{
             throw new EdunovaException("Ako je cijena postavljena mora biti veća od 0 i manja ili jednaka 10000");
         }
         
+    }
+    
+    private void nadopunaNaziva(){
+         List<Smjer> lista = session.createQuery("from Smjer s where s.naziv like :uvjet",Smjer.class)
+                .setParameter("uvjet", entitet.getNaziv() + "%")
+                .list();
+        
+        if(lista!=null && !lista.isEmpty()){
+            entitet.setNaziv(entitet.getNaziv() + " (" + (lista.size()) + ")");
+        }
     }
     
 }

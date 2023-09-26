@@ -82,6 +82,10 @@ public class Smjer extends Entitet {
         this.grupe = grupe;
     }
     
+    @Override
+    public String toString() {
+        return naziv;
+    }
     
 
 }

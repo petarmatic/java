@@ -5,6 +5,7 @@
 package autokuca.view;
 
 import autokuca.util.Alati;
+import edunova.view.ProzorSmjer;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -88,6 +89,7 @@ public class Izbornik extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
