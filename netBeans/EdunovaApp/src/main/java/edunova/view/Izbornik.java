@@ -25,7 +25,7 @@ public class Izbornik extends javax.swing.JFrame {
     public Izbornik() {
         initComponents();
         setTitle(Alati.NAZIV_APP + " | Izbornik");
-//        lblOperater.setText(Alati.getOperater());
+        lblOperater.setText(Alati.getOperater());
     }
 
     /**
@@ -42,6 +42,8 @@ public class Izbornik extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -60,6 +62,22 @@ public class Izbornik extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("Predavači");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
+        jMenuItem5.setText("Polaznici");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
@@ -126,6 +144,14 @@ public class Izbornik extends javax.swing.JFrame {
         new ProzorSmjer().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+         new ProzorPredavac().setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        new ProzorPolaznik().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -135,6 +161,8 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JLabel lblOperater;
     private javax.swing.JToolBar toolbar;
     // End of variables declaration//GEN-END:variables

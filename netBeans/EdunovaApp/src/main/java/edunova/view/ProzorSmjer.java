@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author petar
  */
-public class ProzorSmjer extends javax.swing.JFrame {
+public class ProzorSmjer extends javax.swing.JFrame implements EdunovaViewSucelje{
 
     private ObradaSmjer obrada;
     private DecimalFormat df;
@@ -34,6 +34,14 @@ public class ProzorSmjer extends javax.swing.JFrame {
 
         setTitle(Alati.NAZIV_APP + " | SMJEROVI");
         ucitaj();
+    }
+    
+      @Override
+     public void ucitaj() {
+        DefaultListModel<Smjer> m = new DefaultListModel<>();
+        m.addAll(obrada.read());
+        lstPodaci.setModel(m);
+        lstPodaci.repaint();
     }
 
     /**
@@ -298,35 +306,11 @@ public class ProzorSmjer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
         }
     }//GEN-LAST:event_btnObrisi1ActionPerformed
-
-     private void popuniModel() {
-        var e = obrada.getEntitet();
-        e.setNaziv(txtNaziv.getText());
-        
-        try {
-            e.setTrajanje(Integer.parseInt(txtTrajanje.getText()));
-        } catch (Exception ex) {
-            e.setTrajanje(0);
-        }
-        
-        try {
-            e.setCijena(BigDecimal.valueOf(df.parse(txtCijena.getText()).doubleValue()));
-        } catch (Exception ex) {
-            e.setCijena(null);
-        }
-        
-        try {
-            e.setUpisnina(BigDecimal.valueOf(df.parse(txtUpisnina.getText()).doubleValue()));
-        } catch (Exception ex) {
-            e.setUpisnina(BigDecimal.ZERO);
-        }
-        
-        e.setVerificiran(chkVerificiran.isSelected());
-        
-    }
     
-     private void popuniView() {
-        var e = obrada.getEntitet();
+     
+     @Override
+     public void popuniView() {
+          var e = obrada.getEntitet();
 
         txtNaziv.setText(e.getNaziv());
 
@@ -371,10 +355,31 @@ public class ProzorSmjer extends javax.swing.JFrame {
     private javax.swing.JTextField txtUpisnina;
     // End of variables declaration//GEN-END:variables
 
-    private void ucitaj() {
-       DefaultListModel<Smjer> m = new DefaultListModel<>();
-        m.addAll(obrada.read());
-        lstPodaci.setModel(m);
-        lstPodaci.repaint();
+   
+
+    @Override
+    public void popuniModel() {
+        var e = obrada.getEntitet();
+        e.setNaziv(txtNaziv.getText());
+        
+        try {
+            e.setTrajanje(Integer.parseInt(txtTrajanje.getText()));
+        } catch (Exception ex) {
+            e.setTrajanje(0);
+        }
+        
+        try {
+            e.setCijena(BigDecimal.valueOf(df.parse(txtCijena.getText()).doubleValue()));
+        } catch (Exception ex) {
+            e.setCijena(null);
+        }
+        
+        try {
+            e.setUpisnina(BigDecimal.valueOf(df.parse(txtUpisnina.getText()).doubleValue()));
+        } catch (Exception ex) {
+            e.setUpisnina(BigDecimal.ZERO);
+        }
+        
+        e.setVerificiran(chkVerificiran.isSelected());
     }
 }

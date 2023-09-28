@@ -28,9 +28,32 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
     @Override
     protected void kontrolaUnos() throws EdunovaException {
         super.kontrolaUnos(); 
+         if(entitet.getOib()!=null && !entitet.getOib().isEmpty()){
+            kontrolaOib();
+        }
         kontrolaBrojUgovora();
     }
 
+     @Override
+    protected void kontrolaPromjena() throws EdunovaException {
+        kontrolaUnos();
+    }
+    
+      @Override
+    protected void kontrolaOib() throws EdunovaException {
+        super.kontrolaOib(); 
+
+        // ako postoji isti oib u bazi ne može se dodjeliti ovoj osobi
+        List<Polaznik> lista = session.createQuery("from Polaznik p where p.oib =:uvjet "
+                + " and p.sifra!=:sifra",Polaznik.class)
+                .setParameter("uvjet", entitet.getOib())
+                .setParameter("sifra", entitet.getSifra())
+                .list();
+        
+        if(lista!=null && !lista.isEmpty()){
+            throw new EdunovaException("OIB je zauzet!");
+        }       
+    }
     
     
 
