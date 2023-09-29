@@ -152,13 +152,14 @@ public class Autorizacija extends javax.swing.JFrame {
              return;
         }
         
+        
         if(txtLozinka.getPassword().length==0){
             postaviGresku(txtLozinka);
             return;
         }
         
-        
         /*
+        
         Operater o = obrada.autoriziraj(email, new String(txtLozinka.getPassword()));
 
         if (o == null) {
@@ -166,18 +167,16 @@ public class Autorizacija extends javax.swing.JFrame {
                     "Neispravna kombinacija email i lozinka");
             return;
         }
-
+        
         Operater logiran = new Operater();
         logiran.setIme(o.getIme());
         logiran.setPrezime(o.getPrezime());
         logiran.setUloga(o.getUloga());
-
+        
         Alati.OPERATER = logiran;
         */
-        
-        
-        
         new Izbornik().setVisible(true);
+        
         dispose();
         
     }//GEN-LAST:event_btnAutorizirajActionPerformed

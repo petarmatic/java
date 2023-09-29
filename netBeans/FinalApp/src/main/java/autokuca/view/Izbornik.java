@@ -5,7 +5,6 @@
 package autokuca.view;
 
 import autokuca.util.Alati;
-import edunova.view.ProzorSmjer;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
@@ -23,7 +22,7 @@ public class Izbornik extends javax.swing.JFrame {
     public Izbornik() {
         initComponents();
         setTitle(Alati.NAZIV_APP + " | Izbornik");
-       // lblOperater.setText(Alati.getOperater());
+//        lblOperater.setText(Alati.getOperater());
     }
 
     /**
@@ -39,6 +38,7 @@ public class Izbornik extends javax.swing.JFrame {
         lblOperater = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -49,6 +49,15 @@ public class Izbornik extends javax.swing.JFrame {
         toolbar.add(lblOperater);
 
         jMenu1.setText("Programi");
+
+        jMenuItem4.setText("Kupac");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem4);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Ostalo");
@@ -103,6 +112,11 @@ public class Izbornik extends javax.swing.JFrame {
                 "Moja prva aplikacija", JOptionPane.INFORMATION_MESSAGE, ii);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new ProzorKupac().setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -111,6 +125,7 @@ public class Izbornik extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JLabel lblOperater;
     private javax.swing.JToolBar toolbar;
     // End of variables declaration//GEN-END:variables

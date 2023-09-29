@@ -15,6 +15,7 @@ import java.util.List;
  * @author petar
  */
 public class ObradaOperater extends ObradaOsoba<Operater>{
+    
     @Override
     public List<Operater> read() {
         return session.createQuery("from Operater",Operater.class).list();
