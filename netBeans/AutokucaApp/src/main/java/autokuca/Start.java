@@ -23,14 +23,15 @@ public class Start {
         
        new SplashScreen().setVisible(true);
       // lozinka();
-       //new PocetniInsert();
+       
       // new Autorizacija().setVisible(true);
        // HibernateUtil.getSession();
-        ///new PocetniInsert();
+        //new PocetniInsert();
     }
     
     private static void lozinka(){
         Argon2 argon2 =  Argon2Factory.create(); 
+        
         String hash = argon2.hash(10, 65536, 1, "oper".toCharArray());
         
         ObradaOperater oo= new ObradaOperater();
@@ -38,7 +39,7 @@ public class Start {
         o.setIme("Petar");
         o.setPrezime("Matić");
         o.setEmail("pero@import.com");
-        o.setLozinka("peroimport");
+        o.setLozinka(hash);
         o.setUloga("oper");
         
         oo.setEntitet(o);

@@ -9,10 +9,11 @@ import autokuca.model.ProdajnoMjesto;
 import autokuca.model.Prodavac;
 import autokuca.model.Racun;
 import autokuca.model.Vozilo;
-import com.github.javafaker.Faker;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import net.datafaker.Faker;
 import org.hibernate.Session;
 
 
@@ -30,6 +31,7 @@ public class PocetniInsert {
     private static final int BROJ_RACUNA=10000;
     
     private Faker faker;
+   
     private Session session;
     private List<Prodavac> prodavaci;
     private List<ProdajnoMjesto> prodajno;
@@ -60,6 +62,7 @@ public class PocetniInsert {
             k.setBudzet(new BigDecimal(faker.number().numberBetween(1, 999999)));
             k.setIme(faker.name().firstName());
             k.setPrezime(faker.name().lastName());
+            k.setBroj_telefona(faker.phoneNumber().cellPhone());
             session.persist(k);
             kupci.add(k);
    
@@ -102,6 +105,8 @@ public class PocetniInsert {
         v = new Vozilo();
         v.setCijena(new BigDecimal(faker.number().numberBetween(1, 999999)));
         v.setProdajnomjesto(prodajno.get(faker.number().numberBetween(0, BROJ_PRODAJNIHMJESTA - 1)));
+        v.setProizvodac(faker.vehicle().make());
+        v.setModel(faker.vehicle().model());
         session.persist(v);
         vozilo.add(v);
     }

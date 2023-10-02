@@ -37,13 +37,25 @@ public class ObradaOperater extends Obrada<Operater> {
         }
     }
 
+    
+      
+
+    @Override
+    protected void kontrolaPromjena() throws AutokucaException {
+        kontrolaUnos();
+    }
+
+    @Override
+    protected void kontrolaBrisanja() throws AutokucaException {
+    }
+
     @Override
     protected void kontrolaUnos() throws AutokucaException {
         if (entitet.getIme() == null || entitet.getIme().isEmpty()) {
             throw new AutokucaException("Ime obavezno");
         }
         if (entitet.getPrezime() == null || entitet.getPrezime().isEmpty()) {
-            throw new AutokucaException("Prezimeobavezno");
+            throw new AutokucaException("Prezime obavezno");
         }
         if (entitet.getEmail() == null || entitet.getEmail().isEmpty()) {
             throw new AutokucaException("Email obavezno");
@@ -58,16 +70,6 @@ public class ObradaOperater extends Obrada<Operater> {
             throw new AutokucaException("Uloga obavezno");
         }
         
-    }
-      
-
-    @Override
-    protected void kontrolaPromjena() throws AutokucaException {
-        kontrolaUnos();
-    }
-
-    @Override
-    protected void kontrolaBrisanja() throws AutokucaException {
     }
 
 }

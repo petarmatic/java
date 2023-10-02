@@ -12,6 +12,8 @@ public class Vozilo extends Entitet{
 	private BigDecimal cijena;
         @ManyToOne
 	private ProdajnoMjesto prodajnomjesto;
+        private String proizvodac;
+        private String model;
 	
 	 @OneToMany(mappedBy = "vozilo")
         private List<Racun> racuni = new ArrayList<>();
@@ -23,16 +25,16 @@ public class Vozilo extends Entitet{
         public void setRacuni(List<Racun> racuni) {
             this.racuni = racuni;
         }
+
+    public Vozilo(BigDecimal cijena, ProdajnoMjesto prodajnomjesto, String proizvodac, String model, Integer sifra) {
+        super(sifra);
+        this.cijena = cijena;
+        this.prodajnomjesto = prodajnomjesto;
+        this.proizvodac = proizvodac;
+        this.model = model;
+    }
 	
-
-	
-
-
-	public Vozilo(Integer sifra, BigDecimal cijena, ProdajnoMjesto prodajnomjesto) {
-		super(sifra);
-		this.cijena = cijena;
-		this.prodajnomjesto = prodajnomjesto;
-	}
+        
 
 
 	public Vozilo() {
@@ -59,7 +61,23 @@ public class Vozilo extends Entitet{
 		this.prodajnomjesto = prodajnomjesto;
 	}
 
+        public String getProizvodac() {
+            return proizvodac;
+        }
 
+        public void setProizvodac(String proizvodac) {
+            this.proizvodac = proizvodac;
+        }
+
+        public String getModel() {
+            return model;
+        }
+
+        public void setModel(String model) {
+            this.model = model;
+        }
+
+        
 	
 
 	

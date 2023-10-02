@@ -15,10 +15,12 @@ public class Alati {
     public static final String NAZIV_APP = "Final APP";
     public static Operater OPERATER;
 
-   /* public static String getOperater(){
-        return OPERATER.getIme() + " " + OPERATER.getPrezime() + " (" + OPERATER.getUloga() + ")";
+    public static String getOperater() {
+        return OPERATER.getIme()+ " "+OPERATER.getPrezime()+ " ("+OPERATER.getUloga()+ ")";
     }
-*/
+
+    
+
    
     
     

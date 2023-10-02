@@ -15,6 +15,7 @@ public class Kupac extends Entitet {
 	private BigDecimal budzet;
 	private String ime;
 	private String prezime;
+        private String broj_telefona;
         
 	 @OneToMany(mappedBy = "kupac")
         private List<Racun> racuni = new ArrayList<>();
@@ -35,14 +36,18 @@ public class Kupac extends Entitet {
 		super();
 	}
 
-	
-	public Kupac(Integer sifra, BigDecimal budzet, String ime, String prezime) {
-		super(sifra);
-		this.budzet = budzet;
-		this.ime = ime;
-		this.prezime = prezime;
-	}
+    public Kupac(BigDecimal budzet, String ime, String prezime, String broj_telefona, Integer sifra) {
+        super(sifra);
+        this.budzet = budzet;
+        this.ime = ime;
+        this.prezime = prezime;
+        this.broj_telefona = broj_telefona;
+    }
 
+        
+
+	
+	
 
 	public BigDecimal getBudzet() {
 		return budzet;
@@ -67,7 +72,16 @@ public class Kupac extends Entitet {
 	public void setPrezime(String prezime) {
 		this.prezime = prezime;
 	}
+
+    public String getBroj_telefona() {
+        return broj_telefona;
+    }
+
+    public void setBroj_telefona(String broj_telefona) {
+        this.broj_telefona = broj_telefona;
+    }
     
+        
         
 	
 

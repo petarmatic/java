@@ -24,8 +24,8 @@ import java.util.List;
 public class Start {
     public static void main(String[] args) {
         
-          new SplashScreen().setVisible(true);
-       // lozinka();
+          //new SplashScreen().setVisible(true);
+        lozinka();
          //new Autorizacija().setVisible(true);
         // new SplashScreen().setVisible(true);
         
@@ -55,7 +55,7 @@ public class Start {
         o.setUloga("oper");
         o.setOib("81425134722");
         o.setLozinka(hash);
-        
+        System.out.println(hash);
         oo.setEntitet(o);
         
         try {
