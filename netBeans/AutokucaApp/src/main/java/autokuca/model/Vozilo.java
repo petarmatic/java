@@ -77,6 +77,12 @@ public class Vozilo extends Entitet{
             this.model = model;
         }
 
+    @Override
+    public String toString() {
+        return getProizvodac() + " " + getModel() + " " + getProdajnomjesto();
+    }
+
+        
         
 	
 

@@ -89,7 +89,7 @@ public class PocetniInsert {
         List<Prodavac> p;
         for(int i=0;i<BROJ_PRODAJNIHMJESTA;i++){
             pm=new ProdajnoMjesto();
-            pm.setNaziv(faker.name().name());
+            pm.setNaziv(faker.company().name());
             pm.setAdresa(faker.address().fullAddress());
             pm.setProdavac(prodavaci.get(faker.number().numberBetween(0, BROJ_PRODAVACA-1)));
            session.persist(pm);

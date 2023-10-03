@@ -360,6 +360,7 @@ public class ProzorSmjer extends javax.swing.JFrame implements EdunovaViewSucelj
     @Override
     public void popuniModel() {
         var e = obrada.getEntitet();
+        
         e.setNaziv(txtNaziv.getText());
         
         try {

@@ -22,7 +22,7 @@ public class Start {
     public static void main(String[] args) {
         
        new SplashScreen().setVisible(true);
-      // lozinka();
+       //lozinka();
        
       // new Autorizacija().setVisible(true);
        // HibernateUtil.getSession();
@@ -32,7 +32,7 @@ public class Start {
     private static void lozinka(){
         Argon2 argon2 =  Argon2Factory.create(); 
         
-        String hash = argon2.hash(10, 65536, 1, "oper".toCharArray());
+        String hash = argon2.hash(10, 65536, 1, "peroimport".toCharArray());
         
         ObradaOperater oo= new ObradaOperater();
         Operater o = new Operater();

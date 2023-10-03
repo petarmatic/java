@@ -7,10 +7,13 @@ package autokuca.view;
 import autokuca.controller.ObradaKupac;
 import autokuca.model.Kupac;
 import autokuca.util.Alati;
+import autokuca.util.AutokucaException;
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -60,9 +63,12 @@ public class ProzorKupac extends javax.swing.JFrame implements AutokucaViewSucel
         jLabel3 = new javax.swing.JLabel();
         txtBudzet = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
-        btnObrisi = new javax.swing.JButton();
+        btnPromjena = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        btnObrisi1 = new javax.swing.JButton();
+        txtBrojtelefona = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lstPodaci.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         lstPodaci.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -85,10 +91,19 @@ public class ProzorKupac extends javax.swing.JFrame implements AutokucaViewSucel
             }
         });
 
-        btnObrisi.setText("Obriši");
-        btnObrisi.addActionListener(new java.awt.event.ActionListener() {
+        btnPromjena.setText("Promjena");
+        btnPromjena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnObrisiActionPerformed(evt);
+                btnPromjenaActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Broj telefona");
+
+        btnObrisi1.setText("Obriši");
+        btnObrisi1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisi1ActionPerformed(evt);
             }
         });
 
@@ -107,37 +122,53 @@ public class ProzorKupac extends javax.swing.JFrame implements AutokucaViewSucel
                             .addComponent(txtIme)
                             .addComponent(jLabel2)
                             .addComponent(txtPrezime)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDodaj)
-                            .addComponent(btnObrisi))
-                        .addGap(85, 85, 85))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnDodaj)
+                                    .addComponent(btnPromjena))
+                                .addGap(85, 85, 85))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnObrisi1)
+                                .addGap(39, 39, 39))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtBudzet, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBudzet, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBrojtelefona, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDodaj))
-                .addGap(40, 40, 40)
-                .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnObrisi))
-                .addGap(26, 26, 26)
-                .addComponent(jLabel3)
-                .addGap(28, 28, 28)
-                .addComponent(txtBudzet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDodaj)
+                            .addComponent(txtIme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)
+                        .addGap(13, 13, 13)
+                        .addComponent(txtPrezime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnPromjena))
+                        .addGap(3, 3, 3)
+                        .addComponent(txtBudzet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(btnObrisi1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtBrojtelefona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -161,23 +192,72 @@ public class ProzorKupac extends javax.swing.JFrame implements AutokucaViewSucel
     
     
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-        // TODO add your handling code here:
+        obrada.setEntitet(new Kupac());
+        popuniModel();
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (AutokucaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+               
     }//GEN-LAST:event_btnDodajActionPerformed
 
-    private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnObrisiActionPerformed
+    private void btnPromjenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjenaActionPerformed
+         if(lstPodaci.getSelectedValue()==null){
+            return;
+        }
+        
+        var e = lstPodaci.getSelectedValue();
+        
+        obrada.setEntitet(e);
+        popuniModel();
+        
+        try {
+            obrada.update();
+            ucitaj();
+        } catch(AutokucaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getMessage());
+        }
+        
+    }//GEN-LAST:event_btnPromjenaActionPerformed
+
+    private void btnObrisi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisi1ActionPerformed
+        if(lstPodaci.getSelectedValue()==null){
+            return;
+        }
+        
+        var e = lstPodaci.getSelectedValue();
+        
+        
+        if (JOptionPane.showConfirmDialog(getRootPane(), e.getIme(), "Sigurno obrisati?",
+                JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION){
+            return;
+        }
+        
+        obrada.setEntitet(e);
+        
+        try {
+            obrada.delete();
+            ucitaj();
+        } catch (AutokucaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+    }//GEN-LAST:event_btnObrisi1ActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
-    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnObrisi1;
+    private javax.swing.JButton btnPromjena;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Kupac> lstPodaci;
+    private javax.swing.JTextField txtBrojtelefona;
     private javax.swing.JTextField txtBudzet;
     private javax.swing.JTextField txtIme;
     private javax.swing.JTextField txtPrezime;
@@ -187,7 +267,20 @@ public class ProzorKupac extends javax.swing.JFrame implements AutokucaViewSucel
 
     @Override
     public void popuniModel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        var e=obrada.getEntitet();
+        
+         e.setIme(txtIme.getText());
+         e.setPrezime(txtPrezime.getText());
+         try {
+           e.setBudzet(BigDecimal.valueOf(df.parse(txtBudzet.getText()).doubleValue()));   
+        } catch (Exception ex) {
+            e.setBudzet(null);
+           
+        }
+         
+         e.setBroj_telefona(txtBrojtelefona.getText());
+         
+         
     }
 
     @Override
@@ -202,6 +295,8 @@ public class ProzorKupac extends javax.swing.JFrame implements AutokucaViewSucel
         } catch (Exception ex) {
             txtBudzet.setText(df.format(0));
         }
+        
+            txtBrojtelefona.setText(e.getBroj_telefona());
           
            
            

@@ -17,7 +17,28 @@ public class ProdajnoMjesto extends Entitet {
 	
 	@OneToMany(mappedBy = "prodajnomjesto")
 	private List<Vozilo> vozilo=new ArrayList<>();
+                
+                
+                
+                
+        public ProdajnoMjesto() {
+            super();
+        }
 
+        public ProdajnoMjesto(String adresa, String naziv, Prodavac prodavac, Integer sifra) {
+            super(sifra);
+            this.adresa = adresa;
+            this.naziv = naziv;
+            this.prodavac = prodavac;
+        }
+
+    
+
+    
+
+   
+
+        
         public List<Vozilo> getVozilo() {
             return vozilo;
         }
@@ -25,20 +46,7 @@ public class ProdajnoMjesto extends Entitet {
         public void setVozilo(List<Vozilo> vozilo) {
             this.vozilo = vozilo;
         }
-	
-	
-	
-	
-	public ProdajnoMjesto(Integer sifra, String adresa, String naziv, Prodavac prodavac) {
-		super(sifra);
-		this.adresa = adresa;
-		this.naziv = naziv;
-		this.prodavac = prodavac;
-	}
 
-	public ProdajnoMjesto() {
-		super();
-	}
 
 	public String getAdresa() {
 		return adresa;
@@ -63,6 +71,11 @@ public class ProdajnoMjesto extends Entitet {
 	public void setProdavac(Prodavac prodavac) {
 		this.prodavac = prodavac;
 	}
+
+    @Override
+    public String toString() {
+        return getNaziv()+ " " + getAdresa();
+    }
 	
 	
 

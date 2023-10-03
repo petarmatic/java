@@ -80,6 +80,12 @@ public class Kupac extends Entitet {
     public void setBroj_telefona(String broj_telefona) {
         this.broj_telefona = broj_telefona;
     }
+
+    @Override
+    public String toString() {
+        return getIme() +" " + getPrezime() + " "+ getBroj_telefona();
+    }
+    
     
         
         
