@@ -14,6 +14,7 @@ public class Vozilo extends Entitet{
 	private ProdajnoMjesto prodajnomjesto;
         private String proizvodac;
         private String model;
+        private String VIN;
 	
 	 @OneToMany(mappedBy = "vozilo")
         private List<Racun> racuni = new ArrayList<>();
@@ -26,17 +27,24 @@ public class Vozilo extends Entitet{
             this.racuni = racuni;
         }
 
-    public Vozilo(BigDecimal cijena, ProdajnoMjesto prodajnomjesto, String proizvodac, String model, Integer sifra) {
-        super(sifra);
-        this.cijena = cijena;
-        this.prodajnomjesto = prodajnomjesto;
-        this.proizvodac = proizvodac;
-        this.model = model;
-    }
-	
+        public Vozilo(BigDecimal cijena, ProdajnoMjesto prodajnomjesto, String proizvodac, String model, String VIN, Integer sifra) {
+            super(sifra);
+            this.cijena = cijena;
+            this.prodajnomjesto = prodajnomjesto;
+            this.proizvodac = proizvodac;
+            this.model = model;
+            this.VIN = VIN;
+        }
+
+        public String getVIN() {
+            return VIN;
+        }
+
+        public void setVIN(String VIN) {
+            this.VIN = VIN;
+        }
+
         
-
-
 	public Vozilo() {
 		// TODO Auto-generated constructor stub
 	}
@@ -79,7 +87,7 @@ public class Vozilo extends Entitet{
 
     @Override
     public String toString() {
-        return getProizvodac() + " " + getModel() + " " + getProdajnomjesto();
+        return getProizvodac() + " " + getModel() + " " + getVIN();
     }
 
         

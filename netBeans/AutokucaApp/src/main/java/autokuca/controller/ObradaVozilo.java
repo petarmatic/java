@@ -56,5 +56,30 @@ public class ObradaVozilo extends Obrada<Vozilo>{
         
     }
     
+    private void kontrolaProizvodac() throws AutokucaException{
+        if(entitet.getProizvodac()==null) {
+            throw new AutokucaException("Proizvođač obavezno");
+        }
+
+    }
+    
+    private void kontrolaModel() throws AutokucaException{
+        if(entitet.getModel()==null){
+            throw new AutokucaException("Model obavezno");
+        }
+        
+    }
+    
+    private void kontorlaVIN() throws AutokucaException{
+        if(entitet.getVIN()==null){
+            throw new AutokucaException("VIN obavezno");
+        }
+        if(entitet.getVIN().isEmpty())
+            throw new AutokucaException("VIN obavezno");
+        
+    }
+    
+    
+    
     
 }

@@ -107,6 +107,7 @@ public class PocetniInsert {
         v.setProdajnomjesto(prodajno.get(faker.number().numberBetween(0, BROJ_PRODAJNIHMJESTA - 1)));
         v.setProizvodac(faker.vehicle().make());
         v.setModel(faker.vehicle().model());
+        v.setVIN(faker.vehicle().vin());
         session.persist(v);
         vozilo.add(v);
     }

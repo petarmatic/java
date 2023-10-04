@@ -100,10 +100,20 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
-        // TODO add your handling code here:
+        if(evt.getValueIsAdjusting()){
+            return;
+        }
+        if(lstPodaci.getSelectedValue()==null){
+            return;
+        }
+        obrada.setEntitet(lstPodaci.getSelectedValue());
+        popuniView();
+        
+
     }//GEN-LAST:event_lstPodaciValueChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -133,6 +143,9 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
 
     @Override
     public void popuniView() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        var e=obrada.getEntitet();
+        
+       
+        
     }
 }

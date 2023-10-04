@@ -123,6 +123,7 @@ public class ProzorProdavac extends javax.swing.JFrame implements AutokucaViewSu
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged

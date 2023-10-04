@@ -172,6 +172,7 @@ public class ProzorKupac extends javax.swing.JFrame implements AutokucaViewSucel
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstPodaciValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lstPodaciValueChanged
