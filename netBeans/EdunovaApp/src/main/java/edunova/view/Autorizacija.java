@@ -121,6 +121,7 @@ public class Autorizacija extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -150,6 +151,7 @@ public class Autorizacija extends javax.swing.JFrame {
         }
         
         // tu sam spreman ići provjeravati
+        
         Operater o = obrada.autoriziraj(email, new String(txtLozinka.getPassword()));
         
         if(o==null){
@@ -165,6 +167,7 @@ public class Autorizacija extends javax.swing.JFrame {
         logiran.setUloga(o.getUloga());
         
         Alati.OPERATER=logiran;
+
         
         new Izbornik().setVisible(true);
         dispose();    }//GEN-LAST:event_btnAutorizirajActionPerformed

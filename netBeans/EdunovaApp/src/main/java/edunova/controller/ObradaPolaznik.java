@@ -6,7 +6,9 @@ package edunova.controller;
 
 import edunova.model.Polaznik;
 import edunova.util.EdunovaException;
+import java.text.Collator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -17,6 +19,25 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
     @Override
     public List<Polaznik> read() {
        return session.createQuery("from Polaznik",Polaznik.class).list();
+    }
+     public List<Polaznik> read(String uvjet) {
+        uvjet = uvjet==null ? "" : uvjet;
+        uvjet = uvjet.trim();
+        uvjet = "%" + uvjet + "%";
+        
+        List<Polaznik> lista = session.createQuery("from Polaznik p "
+               + " where concat(p.ime,' ', p.prezime,' ',p.ime,' ',coalesce(p.oib,'')) like :uvjet"
+               + " order by p.prezime, p.ime",Polaznik.class)
+               .setParameter("uvjet", uvjet)
+               .setMaxResults(20)
+               .list();
+        
+        // sloganje po hrvatskoj abecedi
+        Collator spCollator = Collator.getInstance(Locale.of("hr", "HR"));
+        
+        lista.sort((e1, e2)-> spCollator.compare(e1.getPrezime(), e2.getPrezime()));
+        
+       return lista;
     }
     
     public Polaznik readBySifra(int sifra){

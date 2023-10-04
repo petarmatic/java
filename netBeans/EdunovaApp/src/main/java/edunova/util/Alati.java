@@ -28,6 +28,7 @@ public class Alati {
     }
     
     
+    
     public static String getOib(){
          try {
             //https://stackoverflow.com/questions/8616781/how-to-get-a-web-pages-source-code-from-java

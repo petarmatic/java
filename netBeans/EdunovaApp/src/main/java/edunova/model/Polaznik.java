@@ -22,9 +22,6 @@ public class Polaznik extends Osoba {
     }
 
     
-    
-    
-    
     public Polaznik() {
 
     }
@@ -40,6 +37,23 @@ public class Polaznik extends Osoba {
 
     public void setBrojUgovora(String brojUgovora) {
         this.brojUgovora = brojUgovora;
+    }
+      @Override
+    public String toString() {
+        
+        StringBuilder sb = new StringBuilder();
+        sb.append(getPrezime());
+        sb.append(" ");
+        sb.append(getIme());
+        
+        if(getOib()!=null){
+            sb.append(" [");
+            sb.append(getOib());
+            sb.append("]");
+        }
+        
+        return sb.toString();
+                
     }
 
 }

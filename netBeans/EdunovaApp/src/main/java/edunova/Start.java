@@ -13,6 +13,7 @@ import edunova.model.Operater;
 import edunova.model.Smjer;
 import edunova.util.EdunovaException;
 import edunova.util.PocetniInsert;
+import edunova.view.Autorizacija;
 import edunova.view.SplashScreen;
 import java.util.List;
 
@@ -24,10 +25,10 @@ import java.util.List;
 public class Start {
     public static void main(String[] args) {
         
-          //new SplashScreen().setVisible(true);
-        lozinka();
+          new SplashScreen().setVisible(true);
+        //lozinka();
          //new Autorizacija().setVisible(true);
-        // new SplashScreen().setVisible(true);
+        //new PocetniInsert();
         
         // HibernateUtil.getSession();
          ////Operater o = oo.autoriziraj("oper@edunova.hr", "oper");
