@@ -25,7 +25,7 @@ import java.util.List;
 public class Start {
     public static void main(String[] args) {
         
-          new SplashScreen().setVisible(true);
+         new SplashScreen().setVisible(true);
         //lozinka();
          //new Autorizacija().setVisible(true);
         //new PocetniInsert();
