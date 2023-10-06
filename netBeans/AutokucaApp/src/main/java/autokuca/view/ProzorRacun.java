@@ -13,8 +13,10 @@ import autokuca.model.Prodavac;
 import autokuca.model.Racun;
 import autokuca.model.Vozilo;
 import autokuca.util.Alati;
+import autokuca.util.AutokucaException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -101,6 +103,9 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         cmbKupac = new javax.swing.JComboBox<>();
         cmbVozilo = new javax.swing.JComboBox<>();
         cmbProdavac = new javax.swing.JComboBox<>();
+        btnDodaj = new javax.swing.JButton();
+        btnPromjeni = new javax.swing.JButton();
+        btnObrisi = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -129,6 +134,27 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
             }
         });
 
+        btnDodaj.setText("Dodaj");
+        btnDodaj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDodajActionPerformed(evt);
+            }
+        });
+
+        btnPromjeni.setText("Promjeni");
+        btnPromjeni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromjeniActionPerformed(evt);
+            }
+        });
+
+        btnObrisi.setText("Obriši");
+        btnObrisi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnObrisiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,7 +172,12 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(cmbProdavac, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
                         .addComponent(cmbVozilo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addGap(124, 124, 124)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPromjeni)
+                    .addComponent(btnObrisi)
+                    .addComponent(btnDodaj))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,17 +186,29 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbKupac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbKupac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(btnDodaj)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(btnPromjeni)))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(btnObrisi))
                         .addGap(18, 18, 18)
                         .addComponent(cmbProdavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 166, Short.MAX_VALUE))
+                        .addGap(0, 162, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -195,7 +238,65 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbVoziloActionPerformed
 
+    private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed
+        if(lstPodaci.getSelectedValue()==null){
+            return;
+        }
+
+        var e = lstPodaci.getSelectedValue();
+
+        if (JOptionPane.showConfirmDialog(getRootPane(), e , "Sigurno obrisati?",
+            JOptionPane.YES_NO_OPTION)!=JOptionPane.YES_OPTION){
+        return;
+        }
+
+        obrada.setEntitet(e);
+
+        try {
+            obrada.delete();
+            ucitaj();
+        } catch (AutokucaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+        }
+
+    }//GEN-LAST:event_btnObrisiActionPerformed
+
+    private void btnPromjeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromjeniActionPerformed
+        if(lstPodaci.getSelectedValue()==null){
+            return;
+        }
+
+        var e = lstPodaci.getSelectedValue();
+
+        obrada.setEntitet(e);
+        popuniModel();
+
+        try {
+            obrada.update();   
+            ucitaj();
+        } catch (AutokucaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getMessage());
+            // napraviti refresh
+            obrada.refresh();
+        }
+    }//GEN-LAST:event_btnPromjeniActionPerformed
+
+    private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
+        obrada.setEntitet(new Racun());
+        popuniModel();
+        try {
+            obrada.create();
+            ucitaj();
+        } catch (AutokucaException ex) {
+            JOptionPane.showMessageDialog(getRootPane(), ex.getPoruka());
+            
+        }
+    }//GEN-LAST:event_btnDodajActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnPromjeni;
     private javax.swing.JComboBox<Kupac> cmbKupac;
     private javax.swing.JComboBox<Prodavac> cmbProdavac;
     private javax.swing.JComboBox<Vozilo> cmbVozilo;
@@ -217,12 +318,24 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
 
     @Override
     public void popuniModel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        var e = obrada.getEntitet();
+        
+        e.setKupac((Kupac)cmbKupac.getSelectedItem());
+        e.setProdavac((Prodavac)cmbProdavac.getSelectedItem());
+        e.setVozilo((Vozilo)cmbVozilo.getSelectedItem());
+        
+        
     }
+      
 
     @Override
     public void popuniView() {
-        var e=obrada.getEntitet();
+        var e = obrada.getEntitet();
+        
+        cmbKupac.setSelectedItem(e.getKupac());
+        cmbProdavac.setSelectedItem(e.getProdavac());
+        cmbVozilo.setSelectedItem(e.getVozilo());
+        
         
        
         

@@ -166,6 +166,7 @@ public class ProzorProdavac extends javax.swing.JFrame implements AutokucaViewSu
         } catch(AutokucaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getMessage());
         }
+        obrada.refresh();
     }//GEN-LAST:event_btnPromjeniActionPerformed
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed

@@ -68,9 +68,11 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
             throw new AutokucaException("Adresa mora imati barem 5 znakova");
         }
         
-        if (!Character.isUpperCase(adresa.charAt(0))) {
-            throw new AutokucaException("Prvo slovo adrese mora biti veliko");
-}
+        char prvoSlovo = adresa.charAt(0);
+        if (!Character.isUpperCase(prvoSlovo) && !Character.isDigit(prvoSlovo)) {
+            throw new AutokucaException("Prvo slovo adrese mora biti veliko ili brojka");
+    }
+
         
     }
 

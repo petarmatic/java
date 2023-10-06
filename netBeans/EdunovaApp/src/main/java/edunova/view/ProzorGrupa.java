@@ -328,7 +328,7 @@ public class ProzorGrupa extends javax.swing.JFrame implements EdunovaViewSucelj
     }//GEN-LAST:event_lstPodaciValueChanged
 
     private void btnDodajActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDodajActionPerformed
-         obrada.setEntitet(new Grupa());
+        obrada.setEntitet(new Grupa());
         popuniModel();
         try {
             obrada.create();

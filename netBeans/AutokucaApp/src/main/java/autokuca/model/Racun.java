@@ -49,8 +49,15 @@ public class Racun extends Entitet{
         
         if(getVozilo()==null){
             sb.append("Vozilo bez naziva");
-            sb.append(String.valueOf(getVozilo()));
-            
+
+        }else{
+            sb.append(getVozilo());
+        }
+        
+         if(getProdavac()!=null && getProdavac().getIme()!=null && !getProdavac().getIme().isEmpty()){
+            sb.append(" [");
+            sb.append(getProdavac().getIme());
+            sb.append("]");
         }
         
         return sb.toString();
