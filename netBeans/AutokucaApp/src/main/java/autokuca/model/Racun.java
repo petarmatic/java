@@ -42,6 +42,27 @@ public class Racun extends Entitet{
 	public void setVozilo(Vozilo vozilo) {
 		this.vozilo = vozilo;
 	}
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        
+        if(getVozilo()==null){
+            sb.append("Vozilo bez naziva");
+            sb.append(String.valueOf(getVozilo()));
+            
+        }
+        
+        return sb.toString();
+    }
+
+        
+        
+   
+    }
+        
+        
+        
 	
 	
 	
@@ -59,4 +80,4 @@ public class Racun extends Entitet{
 	
 	
 
-}
+

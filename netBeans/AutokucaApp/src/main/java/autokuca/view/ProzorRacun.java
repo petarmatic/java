@@ -4,9 +4,16 @@
  */
 package autokuca.view;
 
+import autokuca.controller.ObradaKupac;
+import autokuca.controller.ObradaProdavac;
 import autokuca.controller.ObradaRacun;
+import autokuca.controller.ObradaVozilo;
+import autokuca.model.Kupac;
+import autokuca.model.Prodavac;
 import autokuca.model.Racun;
+import autokuca.model.Vozilo;
 import autokuca.util.Alati;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
 /**
@@ -24,9 +31,59 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         initComponents();
         obrada=new ObradaRacun();
         setTitle(Alati.NAZIV_APP + " |RAČUN ");
+        ucitajKupca();
+        ucitajProdavaca();
+        ucitajVozilo();
         ucitaj();
     }
 
+    
+    private void ucitajVozilo(){
+        DefaultComboBoxModel<Vozilo>m= new DefaultComboBoxModel<>();
+        
+        Vozilo v= new Vozilo();
+        v.setSifra(0);
+        v.setModel("Odaberite vozilo");
+        m.addElement(v);
+        m.addAll(new ObradaVozilo().read());
+        
+        cmbVozilo.setModel(m);
+        cmbVozilo.repaint();
+        
+        
+    }
+    
+    private void ucitajProdavaca(){
+        DefaultComboBoxModel<Prodavac>m=new DefaultComboBoxModel<>();
+        
+        Prodavac p=new Prodavac();
+        p.setSifra(0);
+        p.setIme("Odaberite prodavača");
+        m.addElement(p);
+        m.addAll(new ObradaProdavac().read());
+        
+        cmbProdavac.setModel(m);
+        cmbProdavac.repaint();
+    }
+    private void ucitajKupca(){
+        DefaultComboBoxModel<Kupac> m= new DefaultComboBoxModel<>();
+        
+        Kupac k= new Kupac();
+        k.setSifra(0);
+        k.setIme("Odaberite kupca");
+        m.addElement(k);
+        
+        m.addAll(new ObradaKupac().read());
+        
+        cmbKupac.setModel(m);
+        cmbKupac.repaint();
+  
+    }
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,11 +96,11 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         jScrollPane1 = new javax.swing.JScrollPane();
         lstPodaci = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
-        txtKupac = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtVozilo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtProdavac = new javax.swing.JTextField();
+        cmbKupac = new javax.swing.JComboBox<>();
+        cmbVozilo = new javax.swing.JComboBox<>();
+        cmbProdavac = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,7 +115,19 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
 
         jLabel2.setText("Vozilo");
 
-        jLabel3.setText("Prodavac");
+        jLabel3.setText("Prodavač");
+
+        cmbKupac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbKupacActionPerformed(evt);
+            }
+        });
+
+        cmbVozilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbVoziloActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,13 +137,15 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtKupac, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(txtVozilo, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(txtProdavac, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbKupac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(cmbProdavac, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
+                        .addComponent(cmbVozilo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(335, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,16 +156,16 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtKupac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbKupac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProdavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 178, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbProdavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 166, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -116,15 +187,23 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
 
     }//GEN-LAST:event_lstPodaciValueChanged
 
+    private void cmbKupacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbKupacActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbKupacActionPerformed
+
+    private void cmbVoziloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVoziloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbVoziloActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<Kupac> cmbKupac;
+    private javax.swing.JComboBox<Prodavac> cmbProdavac;
+    private javax.swing.JComboBox<Vozilo> cmbVozilo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList<Racun> lstPodaci;
-    private javax.swing.JTextField txtKupac;
-    private javax.swing.JTextField txtProdavac;
-    private javax.swing.JTextField txtVozilo;
     // End of variables declaration//GEN-END:variables
 
     @Override
