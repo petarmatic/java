@@ -4,12 +4,15 @@
  */
 package autokuca.view;
 
+import autokuca.controller.ObradaProdajnoMjesto;
 import autokuca.controller.ObradaVozilo;
+import autokuca.model.ProdajnoMjesto;
 import autokuca.model.Vozilo;
 import autokuca.util.Alati;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 
 /**
@@ -28,9 +31,26 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
         initComponents();
         obrada= new ObradaVozilo();
         setTitle(Alati.NAZIV_APP + " |VOZILO ");
+        ucitajProdajnoMjesto();
         DecimalFormatSymbols dfs = new DecimalFormatSymbols(Locale.of("hr", "HR"));
         df = new DecimalFormat("###,##0.00", dfs);
         ucitaj();
+    }
+    
+    
+    
+    
+    private void ucitajProdajnoMjesto(){
+        
+        DefaultComboBoxModel<ProdajnoMjesto>m= new DefaultComboBoxModel<>();
+        ProdajnoMjesto pm= new ProdajnoMjesto();
+        pm.setSifra(0);
+        pm.setNaziv("Odaberite prodajno mjesto");
+        m.addElement(pm);
+        m.addAll(new ObradaProdajnoMjesto().read());
+        
+        cmbProdajnoMjesto.setModel(m);
+        cmbProdajnoMjesto.repaint();
     }
 
     /**
@@ -46,14 +66,13 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
         lstPodaci = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         txtCijena = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtProdajnoMjesto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtProizvodac = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtModel = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtVIN = new javax.swing.JTextField();
+        cmbProdajnoMjesto = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,13 +85,17 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
 
         jLabel1.setText("Cijena");
 
-        jLabel2.setText("Prodajno Mjesto");
-
         jLabel3.setText("Proizvođač");
 
         jLabel4.setText("Model");
 
         jLabel5.setText("VIN");
+
+        cmbProdajnoMjesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbProdajnoMjestoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,17 +106,15 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtCijena)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtProdajnoMjesto, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtProizvodac, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtModel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVIN, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtVIN, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbProdajnoMjesto, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(66, 66, 66))
         );
         layout.setVerticalGroup(
@@ -103,11 +124,9 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtCijena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtProdajnoMjesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(cmbProdajnoMjesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtProizvodac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,11 +158,15 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
         popuniView();
     }//GEN-LAST:event_lstPodaciValueChanged
 
+    private void cmbProdajnoMjestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbProdajnoMjestoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbProdajnoMjestoActionPerformed
+
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<ProdajnoMjesto> cmbProdajnoMjesto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -151,7 +174,6 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
     private javax.swing.JList<Vozilo> lstPodaci;
     private javax.swing.JTextField txtCijena;
     private javax.swing.JTextField txtModel;
-    private javax.swing.JTextField txtProdajnoMjesto;
     private javax.swing.JTextField txtProizvodac;
     private javax.swing.JTextField txtVIN;
     // End of variables declaration//GEN-END:variables
@@ -168,10 +190,7 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
     public void popuniModel() {
        var e=obrada.getEntitet();
        
-      //cijena
-           
-        
-       //e.setProdajnomjesto(txtProdajnoMjesto.getText());
+       e.setProdajnomjesto((ProdajnoMjesto)cmbProdajnoMjesto.getSelectedItem());
        e.setProizvodac(txtProizvodac.getText());
        e.setModel(txtModel.getText());
        e.setVIN(txtVIN.getText());
@@ -187,7 +206,7 @@ public class ProzorVozilo extends javax.swing.JFrame implements AutokucaViewSuce
             txtCijena.setText(df.format(0));
         }
          
-         //txtProdajnoMjesto.setText(e.getProdajnomjesto());
+         cmbProdajnoMjesto.setSelectedItem(e.getProdajnomjesto());
          txtProizvodac.setText(e.getProizvodac());
          txtModel.setText(e.getModel());
          txtVIN.setText(e.getVIN());

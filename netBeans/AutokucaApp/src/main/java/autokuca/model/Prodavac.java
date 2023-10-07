@@ -75,8 +75,10 @@ public class Prodavac extends Entitet {
 	@Override
 	public String toString() {
 
-		return sifra + " " + ime + " " + prezime;
+		return ime + " " + prezime;
 	}
+        
+        
 
 }
 

@@ -6,7 +6,9 @@ package autokuca.controller;
 
 import autokuca.model.Prodavac;
 import autokuca.util.AutokucaException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -14,6 +16,8 @@ import java.util.List;
  */
 public class ObradaProdavac extends Obrada<Prodavac>{
 
+    private Set<Prodavac> uneseneOsobe = new HashSet<>();
+    
     @Override
     public List<Prodavac> read() {
         return session.createQuery("from Prodavac", Prodavac.class).list();
@@ -23,6 +27,8 @@ public class ObradaProdavac extends Obrada<Prodavac>{
     protected void kontrolaUnos() throws AutokucaException {
         kontrolaIme();
         kontrolaPrezime();
+        kontrolaDuplikata();
+    
     }
 
     @Override
@@ -61,6 +67,19 @@ public class ObradaProdavac extends Obrada<Prodavac>{
         throw new AutokucaException("Prvo slovo prezimena mora biti veliko");
     }
     }
+    private void kontrolaDuplikata() throws AutokucaException{
+      
+        List<Prodavac> osobe = session.createQuery("SELECT p FROM Prodavac p WHERE p.ime = :ime AND p.prezime = :prezime", Prodavac.class)
+                .setParameter("ime", entitet.getIme())
+                .setParameter("prezime", entitet.getPrezime())
+                .getResultList();
+
+        if (!osobe.isEmpty()) {
+            throw new AutokucaException("Ime i prezime već postoje u bazi podataka.");
+        }
+    }
+    
+    }
     
     
-}
+
