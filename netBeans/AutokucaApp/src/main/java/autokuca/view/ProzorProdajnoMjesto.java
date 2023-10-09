@@ -5,9 +5,12 @@
 package autokuca.view;
 
 import autokuca.controller.ObradaProdajnoMjesto;
+import autokuca.controller.ObradaProdavac;
 import autokuca.model.ProdajnoMjesto;
+import autokuca.model.Prodavac;
 import autokuca.util.Alati;
 import autokuca.util.AutokucaException;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -24,8 +27,23 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
     public ProzorProdajnoMjesto() {
         initComponents();
         obrada = new ObradaProdajnoMjesto();
+        ucitajProdavaca();
         setTitle(Alati.NAZIV_APP + " |PRODAJNO MJESTO ");
         ucitaj();
+        
+    }
+    
+    
+    private void ucitajProdavaca(){
+        DefaultComboBoxModel<Prodavac> m= new DefaultComboBoxModel<>();
+        Prodavac p= new Prodavac();
+        p.setSifra(0);
+        p.setIme("Odaberite prodavaca");
+        m.addElement(p);
+        m.addAll(new ObradaProdavac().read());
+        
+        cmbProdavac.setModel(m);
+        cmbProdavac.repaint();
         
     }
 
@@ -44,11 +62,11 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNaziv = new javax.swing.JTextField();
-        txtProdavac = new javax.swing.JTextField();
         txtAdresa = new javax.swing.JTextField();
         btnDodaj = new javax.swing.JButton();
         btnObrisi = new javax.swing.JButton();
         btnPromjena = new javax.swing.JButton();
+        cmbProdavac = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,9 +117,9 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(txtProdavac, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                    .addComponent(txtAdresa)
-                    .addComponent(txtNaziv))
+                    .addComponent(txtAdresa, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                    .addComponent(txtNaziv)
+                    .addComponent(cmbProdavac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnDodaj)
@@ -135,11 +153,11 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
                 .addComponent(jLabel3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtProdavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(btnPromjena)))
+                        .addComponent(btnPromjena))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbProdavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -220,6 +238,7 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjena;
+    private javax.swing.JComboBox<Prodavac> cmbProdavac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -227,7 +246,6 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
     private javax.swing.JList<ProdajnoMjesto> lstPodaci;
     private javax.swing.JTextField txtAdresa;
     private javax.swing.JTextField txtNaziv;
-    private javax.swing.JTextField txtProdavac;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -244,7 +262,7 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
         
         e.setNaziv(txtNaziv.getText());
         e.setAdresa(txtAdresa.getText());
-        //e.setProdavac(txtProdavac.getText());
+        e.setProdavac((Prodavac)cmbProdavac.getSelectedItem());
     }
 
     @Override
@@ -253,6 +271,7 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
         
         txtNaziv.setText(e.getNaziv());
         txtAdresa.setText(e.getAdresa());
-        txtProdavac.setText(e.getProdavac().toString());
+        cmbProdavac.setSelectedItem(e.getProdavac());
+        
     }
 }

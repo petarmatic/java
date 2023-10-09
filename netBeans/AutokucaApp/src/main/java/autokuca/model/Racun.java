@@ -24,6 +24,8 @@ public class Racun extends Entitet{
 		this.prodavac = prodavac;
 		this.vozilo = vozilo;
 	}
+
+    
 	public Kupac getKupac() {
 		return kupac;
 	}

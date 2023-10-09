@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class ObradaProdavac extends Obrada<Prodavac>{
 
-    private Set<Prodavac> uneseneOsobe = new HashSet<>();
+    
     
     @Override
     public List<Prodavac> read() {

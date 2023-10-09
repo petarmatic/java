@@ -25,6 +25,7 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
         kontrolaNaziv();
         kontrolaAdresa();
         kontrolaProdavac();
+        kontrolaDuplikata();
         
     }
 
@@ -79,6 +80,18 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
     private void kontrolaProdavac() throws AutokucaException{
         if (entitet.getProdavac() == null) {
         throw new AutokucaException("Prodavac mora biti definiran za prodajno mjesto");
+        }
+    }
+
+    private void kontrolaDuplikata() throws AutokucaException {
+        List<ProdajnoMjesto> mjesta= session.createQuery
+        ("Select pm from ProdajnoMjesto where pm.naziv=:naziv and pm.adresa=:adresa and pm.prodavac=:prodavac", ProdajnoMjesto.class)
+                .setParameter("naziv", entitet.getNaziv())
+                .setParameter("adresa", entitet.getAdresa())
+                .setParameter("prodavac", entitet.getProdavac())
+                .getResultList();
+        if(!mjesta.isEmpty()){
+            throw new AutokucaException("Prodajno mjesto već postoji u bazi podataka");
         }
     }
 }

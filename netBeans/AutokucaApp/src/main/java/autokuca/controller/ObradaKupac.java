@@ -25,6 +25,7 @@ public class ObradaKupac extends Obrada<Kupac>{
         kontrolaBudzet();
         kontrolaIme();
         kontrolaPrezime();
+        kontorlaDuplikata();
     }
 
     @Override
@@ -65,5 +66,18 @@ public class ObradaKupac extends Obrada<Kupac>{
         if(entitet.getPrezime().isEmpty()){
             throw new AutokucaException("Prezime kupca ne smije biti prazno");
         }
+    }
+
+    private void kontorlaDuplikata() throws AutokucaException {
+        List<Kupac> osobe= session.createQuery("Select k from Kupac k where k.ime = :ime AND k.prezime = :prezime and k.broj_telefona = :broj_telefona", Kupac.class)
+                .setParameter("ime", entitet.getIme())
+                .setParameter("prezime", entitet.getPrezime())
+                .setParameter("broj_telefona", entitet.getBroj_telefona())
+                .getResultList();
+        if(!osobe.isEmpty()){
+            throw new AutokucaException("Kupac postoji u bazi podataka");
+        }
+                     
+                
     }
 }
