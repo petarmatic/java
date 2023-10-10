@@ -69,10 +69,13 @@ public class ObradaKupac extends Obrada<Kupac>{
     }
 
     private void kontorlaDuplikata() throws AutokucaException {
-        List<Kupac> osobe= session.createQuery("Select k from Kupac k where k.ime = :ime AND k.prezime = :prezime and k.broj_telefona = :broj_telefona", Kupac.class)
+        List<Kupac> osobe= session.createQuery
+        ("Select k from Kupac k where k.ime = :ime and k.prezime = :prezime and k.broj_telefona = :broj_telefona and k.budzet=:budzet"
+                , Kupac.class)
                 .setParameter("ime", entitet.getIme())
                 .setParameter("prezime", entitet.getPrezime())
                 .setParameter("broj_telefona", entitet.getBroj_telefona())
+                .setParameter("budzet", entitet.getBudzet())
                 .getResultList();
         if(!osobe.isEmpty()){
             throw new AutokucaException("Kupac postoji u bazi podataka");

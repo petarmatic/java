@@ -74,14 +74,50 @@ public class ProdajnoMjesto extends Entitet {
 
     @Override
     public String toString() {
-        return getNaziv()+ " " + getAdresa();
+        StringBuilder sb = new StringBuilder();
+        
+        if (getNaziv().length() > 10) {
+                sb.append(getNaziv().substring(0, 10));
+                sb.append("...");
+            } else {
+                sb.append(getNaziv());
+            }
+
+            if (getAdresa().length() > 20) {
+                sb.append(" [");
+                sb.append(getAdresa().substring(0, 20));
+                sb.append("...]");
+            } else {
+                sb.append(" [");
+                sb.append(getAdresa());
+                sb.append("]");
+            }
+
+            return sb.toString();
     }
-	
-	
-
-	
-	
-	
-
-	
 }
+   
+      
+
+
+
+
+
+
+            
+    
+        
+     
+       
+       
+               
+    
+
+	
+    
+
+	
+	
+	
+
+	

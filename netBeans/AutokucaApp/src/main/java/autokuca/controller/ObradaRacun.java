@@ -6,7 +6,9 @@ package autokuca.controller;
 
 import autokuca.model.Racun;
 import autokuca.util.AutokucaException;
+import java.text.Collator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -16,8 +18,29 @@ public class ObradaRacun extends Obrada<Racun>{
 
     @Override
     public List<Racun> read() {
-        return session.createQuery("from Racun", Racun.class).list();
+        return session.createQuery("from Racun r order by r.sifra desc", Racun.class)
+                .setMaxResults(50)
+                .list();
     }
+    
+    public List<Racun> read(String uvjet) {
+    uvjet = uvjet == null ? "" : uvjet;
+    uvjet = uvjet.trim();
+    uvjet = "%" + uvjet + "%";
+
+    List<Racun> lista = session.createQuery("from Racun r"
+            + " where concat(r.kupac, ' ', r.prodavac, ' ', r.vozilo) like :uvjet"
+            + " order by r.vozilo, r.kupac", Racun.class)
+            .setParameter("uvjet", uvjet)
+            .setMaxResults(50)
+            .list();
+    Collator spCollator = Collator.getInstance(Locale.of("hr", "HR"));
+        
+    lista.sort((e1, e2)-> spCollator.compare(e1.getVozilo(), e2.getVozilo()));
+
+    return lista;
+}
+
 
     @Override
     protected void kontrolaUnos() throws AutokucaException {
