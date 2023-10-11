@@ -16,11 +16,18 @@ import java.util.Locale;
  */
 public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
 
-    @Override
+     @Override
     public List<Polaznik> read() {
-       return session.createQuery("from Polaznik",Polaznik.class).list();
+       return session.createQuery("from Polaznik p order by p.sifra desc",Polaznik.class)
+               .setMaxResults(20)
+               .list();
     }
-     public List<Polaznik> read(String uvjet) {
+    
+    public List<Polaznik> read(String uvjet) {
+        return read(uvjet, 20);
+    }
+    
+     public List<Polaznik> read(String uvjet, int brojRezultata) {
         uvjet = uvjet==null ? "" : uvjet;
         uvjet = uvjet.trim();
         uvjet = "%" + uvjet + "%";
@@ -29,6 +36,7 @@ public class ObradaPolaznik extends ObradaOsoba<Polaznik>{
                + " where concat(p.ime,' ', p.prezime,' ',p.ime,' ',coalesce(p.oib,'')) like :uvjet"
                + " order by p.prezime, p.ime",Polaznik.class)
                .setParameter("uvjet", uvjet)
+               .setMaxResults(brojRezultata)
                .setMaxResults(20)
                .list();
         
