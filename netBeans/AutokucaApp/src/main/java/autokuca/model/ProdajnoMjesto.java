@@ -71,30 +71,39 @@ public class ProdajnoMjesto extends Entitet {
 	public void setProdavac(Prodavac prodavac) {
 		this.prodavac = prodavac;
 	}
-
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
         
-        if (getNaziv().length() > 10) {
-                sb.append(getNaziv().substring(0, 10));
-                sb.append("...");
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+
+            if (getNaziv() != null) {
+                if (getNaziv().length() > 10) {
+                    sb.append(getNaziv().substring(0, 10));
+                    sb.append("...");
+                } else {
+                    sb.append(getNaziv());
+                }
             } else {
-                sb.append(getNaziv());
+                sb.append(""); 
             }
 
-            if (getAdresa().length() > 20) {
-                sb.append(" [");
-                sb.append(getAdresa().substring(0, 20));
-                sb.append("...]");
+            sb.append(" [");
+
+            if (getAdresa() != null) {
+                if (getAdresa().length() > 20) {
+                    sb.append(getAdresa().substring(0, 20));
+                    sb.append("...]");
+                } else {
+                    sb.append(getAdresa());
+                    sb.append("]");
+                }
             } else {
-                sb.append(" [");
-                sb.append(getAdresa());
-                sb.append("]");
+                sb.append(""); 
             }
 
             return sb.toString();
-    }
+}
+
 }
    
       
