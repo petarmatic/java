@@ -6,7 +6,9 @@ package autokuca.controller;
 
 import autokuca.model.Kupac;
 import autokuca.util.AutokucaException;
+import java.text.Collator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  *
@@ -14,10 +16,35 @@ import java.util.List;
  */
 public class ObradaKupac extends Obrada<Kupac>{
     
-     
-    public List<Kupac> read() {
-        return session.createQuery("from Kupac", Kupac.class).list();
+    @Override
+    public List<Kupac> read(){
+        return session.createQuery("from Kupac k order by k.sifra desc",Kupac.class)
+                .setMaxResults(10)
+                .list();
+    }
     
+    public List<Kupac> read(String uvjet) {
+        return read(uvjet,20);
+    }
+    
+    public List<Kupac> read(String uvjet, int brojRezultata) {
+        uvjet = uvjet==null ? "" : uvjet;
+        uvjet = uvjet.trim();
+        uvjet = "%" + uvjet + "%";
+        
+        List<Kupac> lista = session.createQuery("from Kupac k "
+               + " where concat(k.ime,' ', k.prezime,' ') like :uvjet"
+               + " order by k.prezime, k.ime",Kupac.class)
+               .setParameter("uvjet", uvjet)
+               .setMaxResults(brojRezultata)
+               .list();
+        
+        // sloganje po hrvatskoj abecedi
+        Collator spCollator = Collator.getInstance(Locale.of("hr", "HR"));
+        
+        lista.sort((e1, e2)-> spCollator.compare(e1.getPrezime(), e2.getPrezime()));
+        
+       return lista;
     }
 
     @Override

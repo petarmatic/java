@@ -45,7 +45,9 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         
         Vozilo v= new Vozilo();
         v.setSifra(0);
-        v.setModel("Odaberite vozilo");
+        v.setProizvodac("Odaberite");
+        v.setModel("vozilo");
+        v.setVIN("");
         m.addElement(v);
         m.addAll(new ObradaVozilo().read());
         
@@ -60,8 +62,10 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         
         Prodavac p=new Prodavac();
         p.setSifra(0);
-        p.setIme("Odaberite prodavača");
+        p.setIme("Odaberite");
+        p.setPrezime("prodavača");
         m.addElement(p);
+        
         m.addAll(new ObradaProdavac().read());
         
         cmbProdavac.setModel(m);
@@ -72,7 +76,9 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         
         Kupac k= new Kupac();
         k.setSifra(0);
-        k.setIme("Odaberite kupca");
+        k.setIme("Odaberite");
+        k.setPrezime("kupca");
+        k.setBroj_telefona("");
         m.addElement(k);
         
         m.addAll(new ObradaKupac().read());
@@ -310,7 +316,6 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
             ucitaj();
         } catch (AutokucaException ex) {
             JOptionPane.showMessageDialog(getRootPane(), ex.getMessage());
-            // napraviti refresh
             obrada.refresh();
         }
     }//GEN-LAST:event_btnPromjeniActionPerformed
@@ -332,7 +337,7 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
     }//GEN-LAST:event_txtUvjetActionPerformed
 
     private void btnTraziActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraziActionPerformed
-        DefaultListModel m= new DefaultListModel();
+        DefaultListModel<Racun> m= new DefaultListModel<>();
         m.addAll(obrada.read(txtUvjet.getText()));
         lstPodaci.setModel(m);
         lstPodaci.repaint();

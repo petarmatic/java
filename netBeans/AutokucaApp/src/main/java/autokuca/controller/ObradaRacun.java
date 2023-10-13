@@ -23,20 +23,32 @@ public class ObradaRacun extends Obrada<Racun>{
                 .list();
     }
     
-    public List<Racun> read(String uvjet) {
+    public List<Racun> read(String uvjet){
+        return read(uvjet,50);
+        
+    }
+    
+    public List<Racun> read(String uvjet, int brojRezultata) {
     uvjet = uvjet == null ? "" : uvjet;
     uvjet = uvjet.trim();
     uvjet = "%" + uvjet + "%";
+    
+    
 
     List<Racun> lista = session.createQuery("from Racun r"
             + " where concat(r.kupac, ' ', r.prodavac, ' ', r.vozilo) like :uvjet"
             + " order by r.vozilo, r.kupac", Racun.class)
             .setParameter("uvjet", uvjet)
-            .setMaxResults(50)
+            .setMaxResults(brojRezultata)
             .list();
-    Collator spCollator = Collator.getInstance(Locale.of("hr", "HR"));
+
+    
+    //Collator spCollator = Collator.getInstance(Locale.of("hr", "HR"));
         
-    lista.sort((e1, e2)-> spCollator.compare(e1.getVozilo(), e2.getVozilo()));
+    //lista.sort((e1, e2)-> spCollator.compare(e1.getVozilo(), e2.getVozilo()));
+    
+        
+   
 
     return lista;
 }
