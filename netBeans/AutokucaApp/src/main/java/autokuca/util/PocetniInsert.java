@@ -27,8 +27,8 @@ public class PocetniInsert {
     private static final int BROJ_KUPCA=2;
     private static final int BROJ_PRODAJNIHMJESTA=5;
     private static final int BROJ_PRODAVACA=2;
-    private static final int BROJ_VOZILA=10;
-    private static final int BROJ_RACUNA=10000;
+    private static final int BROJ_VOZILA=100;
+    private static final int BROJ_RACUNA=100;
     
     private Faker faker;
    
@@ -123,7 +123,7 @@ public class PocetniInsert {
         for(int i=0;i<BROJ_RACUNA;i++){
             r= new Racun();
             r.setKupac(kupci.get(faker.number().numberBetween(0, BROJ_KUPCA-1)));
-            r.setVozilo(vozilo.get(faker.number().numberBetween(0, BROJ_VOZILA-1)));
+            r.setVozilo(vozilo.get(i));
             r.setProdavac(prodavaci.get(faker.number().numberBetween(0, BROJ_PRODAVACA-1)));
             session.persist(r);
             

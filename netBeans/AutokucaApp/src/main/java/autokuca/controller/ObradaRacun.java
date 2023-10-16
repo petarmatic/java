@@ -36,8 +36,8 @@ public class ObradaRacun extends Obrada<Racun>{
     
 
     List<Racun> lista = session.createQuery("from Racun r"
-            + " where concat(r.kupac, ' ', r.prodavac, ' ', r.vozilo) like :uvjet"
-            + " order by r.vozilo, r.kupac", Racun.class)
+            + " where concat(r.kupac.ime, ' ', r.prodavac.ime, ' ', r.vozilo.proizvodac) like :uvjet"
+            + " order by r.vozilo.proizvodac", Racun.class)
             .setParameter("uvjet", uvjet)
             .setMaxResults(brojRezultata)
             .list();
