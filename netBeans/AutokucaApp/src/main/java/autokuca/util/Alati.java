@@ -12,7 +12,7 @@ import autokuca.model.Operater;
  * @author petar
  */
 public class Alati { 
-    public static final String NAZIV_APP = "Final APP";
+    public static final String NAZIV_APP = "Autokuca Import APP";
     public static Operater OPERATER;
 
     public static String getOperater() {

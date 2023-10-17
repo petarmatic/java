@@ -23,7 +23,7 @@ public class ObradaVozilo extends Obrada<Vozilo>{
     @Override
     protected void kontrolaUnos() throws AutokucaException {
         kontrolaCijena();
-        kontrolaProdajnoMjesto();
+       // kontrolaProdajnoMjesto();
     }
 
     @Override
@@ -33,9 +33,11 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 
     @Override
     protected void kontrolaBrisanja() throws AutokucaException {
-        if(entitet.getRacuni()==null){
-            throw new AutokucaException("Vozilo se ne može obrisati zato što je na računu");
-        }
+        if (entitet.getProdajnomjesto().getVozilo() !=null) {
+        throw new AutokucaException("Vozilo se ne može obrisati jer je povezano s prodajnim mjestom");
+    }
+        
+        
     }
 
     private void kontrolaCijena() throws AutokucaException{
@@ -49,7 +51,8 @@ public class ObradaVozilo extends Obrada<Vozilo>{
     }
 
     private void kontrolaProdajnoMjesto() throws AutokucaException{
-        if(entitet.getProdajnomjesto()==null){
+        if(entitet.getProdajnomjesto().getVozilo()==null ||
+                entitet.getProdajnomjesto().getVozilo().isEmpty()){
             throw new AutokucaException("Prodajno mjesto obavezno");
             
         }
@@ -57,14 +60,14 @@ public class ObradaVozilo extends Obrada<Vozilo>{
     }
     
     private void kontrolaProizvodac() throws AutokucaException{
-        if(entitet.getProizvodac()==null) {
+        if(entitet.getProizvodac()==null || entitet.getProizvodac().isEmpty()) {
             throw new AutokucaException("Proizvođač obavezno");
         }
 
     }
     
     private void kontrolaModel() throws AutokucaException{
-        if(entitet.getModel()==null){
+        if(entitet.getModel()==null || entitet.getModel().isEmpty()){
             throw new AutokucaException("Model obavezno");
         }
         

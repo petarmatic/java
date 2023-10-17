@@ -5,6 +5,7 @@
 package autokuca.controller;
 
 import autokuca.model.ProdajnoMjesto;
+import autokuca.model.Prodavac;
 import autokuca.util.AutokucaException;
 import java.util.List;
 
@@ -24,7 +25,6 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
     protected void kontrolaUnos() throws AutokucaException {
         kontrolaNaziv();
         kontrolaAdresa();
-        kontrolaProdavac();
         kontrolaDuplikata();
         
         
@@ -37,12 +37,14 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
 
     @Override
     protected void kontrolaBrisanja() throws AutokucaException {
-        if(entitet.getProdavac()==null){
+        Prodavac prodavac = entitet.getProdavac();
+        if (prodavac != null || !prodavac.getProdajnoMjesto().isEmpty()) {
             throw new AutokucaException("Prodajno mjesto se ne može obrisati iz razloga što sadrži prodavača");
-        }
+    }
+    }
        
         
-    }
+    
 
     private void kontrolaNaziv() throws AutokucaException{
         if(entitet.getNaziv()==null){
@@ -78,11 +80,7 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
         
     }
 
-    private void kontrolaProdavac() throws AutokucaException{
-        if (entitet.getProdavac() == null) {
-        throw new AutokucaException("Prodavac mora biti definiran za prodajno mjesto");
-        }
-    }
+   
     
      private void kontrolaDuplikata() throws AutokucaException {
         List<ProdajnoMjesto> mjesta= session.createQuery

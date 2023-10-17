@@ -38,7 +38,8 @@ public class ProzorProdajnoMjesto extends javax.swing.JFrame implements Autokuca
         DefaultComboBoxModel<Prodavac> m= new DefaultComboBoxModel<>();
         Prodavac p= new Prodavac();
         p.setSifra(0);
-        p.setIme("Odaberite prodavaca");
+        p.setIme("Odaberite");
+        p.setPrezime("prodavača");
         m.addElement(p);
         m.addAll(new ObradaProdavac().read());
         

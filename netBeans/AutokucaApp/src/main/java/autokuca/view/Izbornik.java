@@ -36,13 +36,14 @@ public class Izbornik extends javax.swing.JFrame {
 
         toolbar = new javax.swing.JToolBar();
         lblOperater = new javax.swing.JLabel();
+        btnKupac = new javax.swing.JButton();
+        btnProdajno = new javax.swing.JButton();
+        btnProdavac = new javax.swing.JButton();
+        btnVozilo = new javax.swing.JButton();
+        btnRacun = new javax.swing.JButton();
+        btnONama = new javax.swing.JButton();
+        btnIzlaz = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -52,49 +53,54 @@ public class Izbornik extends javax.swing.JFrame {
         toolbar.setRollover(true);
         toolbar.add(lblOperater);
 
-        jMenu1.setText("Programi");
-
-        jMenuItem4.setText("Kupac");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        btnKupac.setText("Kupci");
+        btnKupac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                btnKupacActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem4);
 
-        jMenuItem3.setText("Prodajno Mjesto");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        btnProdajno.setText("Prodajna Mjesta");
+        btnProdajno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                btnProdajnoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
 
-        jMenuItem5.setText("Prodavač");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        btnProdavac.setText("Prodavači");
+        btnProdavac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                btnProdavacActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
 
-        jMenuItem6.setText("Vozilo");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        btnVozilo.setText("Vozila");
+        btnVozilo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                btnVoziloActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem6);
 
-        jMenuItem7.setText("Račun");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        btnRacun.setText("Računi");
+        btnRacun.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                btnRacunActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem7);
 
-        jMenuBar1.add(jMenu1);
+        btnONama.setText("O nama");
+        btnONama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnONamaActionPerformed(evt);
+            }
+        });
+
+        btnIzlaz.setText("Izlaz");
+        btnIzlaz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIzlazActionPerformed(evt);
+            }
+        });
 
         jMenu2.setText("Ostalo");
 
@@ -124,12 +130,37 @@ public class Izbornik extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 396, Short.MAX_VALUE))
+                .addGap(0, 336, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnIzlaz)
+                    .addComponent(btnONama)
+                    .addComponent(btnRacun)
+                    .addComponent(btnVozilo)
+                    .addComponent(btnProdavac)
+                    .addComponent(btnProdajno)
+                    .addComponent(btnKupac))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 252, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(btnKupac)
+                .addGap(18, 18, 18)
+                .addComponent(btnProdajno)
+                .addGap(18, 18, 18)
+                .addComponent(btnProdavac)
+                .addGap(18, 18, 18)
+                .addComponent(btnVozilo)
+                .addGap(18, 18, 18)
+                .addComponent(btnRacun)
+                .addGap(18, 18, 18)
+                .addComponent(btnONama)
+                .addGap(18, 18, 18)
+                .addComponent(btnIzlaz)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(toolbar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -148,40 +179,52 @@ public class Izbornik extends javax.swing.JFrame {
                 "Moja prva aplikacija", JOptionPane.INFORMATION_MESSAGE, ii);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void btnProdajnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdajnoActionPerformed
+       new ProzorProdajnoMjesto().setVisible(true);
+    }//GEN-LAST:event_btnProdajnoActionPerformed
+
+    private void btnKupacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKupacActionPerformed
         new ProzorKupac().setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_btnKupacActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        new ProzorProdajnoMjesto().setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    private void btnProdavacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdavacActionPerformed
         new ProzorProdavac().setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+    }//GEN-LAST:event_btnProdavacActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-       new ProzorVozilo().setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    private void btnVoziloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoziloActionPerformed
+        new ProzorVozilo().setVisible(true);
+    }//GEN-LAST:event_btnVoziloActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-       new ProzorRacun().setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    private void btnRacunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRacunActionPerformed
+        new ProzorRacun().setVisible(true);
+    }//GEN-LAST:event_btnRacunActionPerformed
+
+    private void btnIzlazActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIzlazActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnIzlazActionPerformed
+
+    private void btnONamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnONamaActionPerformed
+        Image slika = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+        ImageIcon ii = new ImageIcon(slika);
+        JOptionPane.showMessageDialog(getRootPane(), "Autokuća Import pruža usluge uvoza i prodaje vozila",
+                "Autokuća Import", JOptionPane.INFORMATION_MESSAGE, ii);
+    }//GEN-LAST:event_btnONamaActionPerformed
 
     
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JButton btnIzlaz;
+    private javax.swing.JButton btnKupac;
+    private javax.swing.JButton btnONama;
+    private javax.swing.JButton btnProdajno;
+    private javax.swing.JButton btnProdavac;
+    private javax.swing.JButton btnRacun;
+    private javax.swing.JButton btnVozilo;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JLabel lblOperater;
     private javax.swing.JToolBar toolbar;
     // End of variables declaration//GEN-END:variables

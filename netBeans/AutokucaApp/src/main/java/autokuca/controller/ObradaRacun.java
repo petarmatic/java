@@ -70,14 +70,14 @@ public class ObradaRacun extends Obrada<Racun>{
     protected void kontrolaBrisanja() throws AutokucaException {
         
         if (!entitet.getKupac().getRacuni().isEmpty() || !entitet.getProdavac().getRacuni().isEmpty() ||
-                entitet.getVozilo().getRacuni().isEmpty()) {
+                !entitet.getVozilo().getRacuni().isEmpty()) {
             throw new AutokucaException("Ne može se obrisati račun koji sadrži kupca, prodavača ili vozilo");
         }
         
     }
 
     private void kontrolaKupac() throws AutokucaException{
-        if (entitet.getKupac() == null) {
+        if (entitet.getKupac().getRacuni() == null || entitet.getKupac().getRacuni().isEmpty()) {
             throw new AutokucaException("Kupac je obavezan.");
         }
     }
@@ -90,14 +90,14 @@ public class ObradaRacun extends Obrada<Racun>{
     }
 
     private void kontrolaVozilo() throws AutokucaException{
-        if(entitet.getVozilo()==null){
+        if(entitet.getVozilo().getRacuni()==null || entitet.getVozilo().getRacuni().isEmpty()){
             throw new AutokucaException("Vozilo obavezno");
        }
     }
 
     private void kontrolaProdavac() throws AutokucaException{
-        if (entitet.getProdavac() == null) {
-            throw new AutokucaException("Prodavac je obavezan.");
+        if (entitet.getProdavac().getRacuni() == null || entitet.getProdavac().getRacuni().isEmpty()) {
+            throw new AutokucaException("Prodavač je obavezan.");
         }
     }
     

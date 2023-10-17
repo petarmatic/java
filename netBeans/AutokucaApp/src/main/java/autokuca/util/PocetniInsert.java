@@ -4,11 +4,15 @@
  */
 package autokuca.util;
 
+import autokuca.controller.ObradaOperater;
 import autokuca.model.Kupac;
+import autokuca.model.Operater;
 import autokuca.model.ProdajnoMjesto;
 import autokuca.model.Prodavac;
 import autokuca.model.Racun;
 import autokuca.model.Vozilo;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -51,6 +55,7 @@ public class PocetniInsert {
         kreirajVozilo();
         kreirajRacun();
         session.getTransaction().commit();
+        lozinka();
         
         
     }
@@ -133,7 +138,29 @@ public class PocetniInsert {
         
     }
 
-   
+   private static void lozinka(){
+        Argon2 argon2 =  Argon2Factory.create(); 
+        
+        String hash = argon2.hash(10, 65536, 1, "peroimport".toCharArray());
+        
+        ObradaOperater oo= new ObradaOperater();
+        Operater o = new Operater();
+        o.setIme("Petar");
+        o.setPrezime("Matić");
+        o.setEmail("pero@import.com");
+        o.setLozinka(hash);
+        o.setUloga("oper");
+        
+        oo.setEntitet(o);
+        
+        try {
+            oo.create();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+      
+    }
 
     
     
