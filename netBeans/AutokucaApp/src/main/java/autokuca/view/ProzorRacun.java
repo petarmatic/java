@@ -14,24 +14,9 @@ import autokuca.model.Racun;
 import autokuca.model.Vozilo;
 import autokuca.util.Alati;
 import autokuca.util.AutokucaException;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.math.BigDecimal;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.event.DocumentListener;
-import javax.swing.event.UndoableEditListener;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import javax.swing.text.Element;
-import javax.swing.text.Position;
-import javax.swing.text.Segment;
-import net.datafaker.providers.base.File;
 
 /**
  *

@@ -15,6 +15,46 @@ import java.util.List;
  */
 public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
 
+    
+    @Override
+    public List<ProdajnoMjesto> read() {
+        return session.createQuery("from ProdajnoMjesto p order by p.sifra desc", ProdajnoMjesto.class)
+                .setMaxResults(50)
+                .list();
+    }
+    
+    public List<ProdajnoMjesto> read(String uvjet){
+        return read(uvjet,50);
+        
+    }
+    
+    public List<ProdajnoMjesto> read(String uvjet, int brojRezultata) {
+        uvjet = uvjet == null ? "" : uvjet;
+        uvjet = uvjet.trim();
+        uvjet = "%" + uvjet + "%";
+    
+        List<ProdajnoMjesto> lista = session.createQuery("from ProdajnoMjesto p"
+            + " where concat(p.naziv, ' ', p.adresa) like :uvjet"
+            + " order by p.naziv", ProdajnoMjesto.class)
+            .setParameter("uvjet", uvjet)
+            .setMaxResults(brojRezultata)
+            .list();
+
+    
+    //Collator spCollator = Collator.getInstance(Locale.of("hr", "HR"));
+        
+    //lista.sort((e1, e2)-> spCollator.compare(e1.getVozilo(), e2.getVozilo()));
+    
+        
+   
+
+    return lista;
+
+               
+}
+    
+    
+    /*
     @Override
     public List<ProdajnoMjesto> read() {
         
@@ -30,6 +70,17 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
         
     }
 
+*/
+     @Override
+    protected void kontrolaUnos() throws AutokucaException {
+        kontrolaNaziv();
+        kontrolaAdresa();
+        kontrolaDuplikata();
+        
+        
+    }
+    
+    
     @Override
     protected void kontrolaPromjena() throws AutokucaException {
         kontrolaUnos();
@@ -93,6 +144,8 @@ public class ObradaProdajnoMjesto extends Obrada<ProdajnoMjesto>{
             throw new AutokucaException("Prodajno mjesto već postoji u bazi podataka");
         }
     }
+
+    
 
     
 }

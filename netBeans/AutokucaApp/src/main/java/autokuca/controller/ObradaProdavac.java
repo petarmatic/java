@@ -18,10 +18,52 @@ public class ObradaProdavac extends Obrada<Prodavac>{
 
     
     
+    
+    
+    @Override
+    public List<Prodavac> read() {
+        return session.createQuery("from Prodavac p order by p.sifra desc", Prodavac.class)
+                .setMaxResults(50)
+                .list();
+    }
+    
+    public List<Prodavac> read(String uvjet){
+        return read(uvjet,50);
+        
+    }
+    
+    public List<Prodavac> read(String uvjet, int brojRezultata) {
+        uvjet = uvjet == null ? "" : uvjet;
+        uvjet = uvjet.trim();
+        uvjet = "%" + uvjet + "%";
+    
+        List<Prodavac> lista = session.createQuery("from Prodavac p"
+            + " where concat(p.ime, ' ', p.prezime) like :uvjet"
+            + " order by p.ime, p.prezime", Prodavac.class)
+            .setParameter("uvjet", uvjet)
+            .setMaxResults(brojRezultata)
+            .list();
+
+    
+    //Collator spCollator = Collator.getInstance(Locale.of("hr", "HR"));
+        
+    //lista.sort((e1, e2)-> spCollator.compare(e1.getVozilo(), e2.getVozilo()));
+    
+        
+   
+
+    return lista;
+
+               
+}
+    
+    
+    /*
     @Override
     public List<Prodavac> read() {
         return session.createQuery("from Prodavac", Prodavac.class).list();
     }
+*/
 
     @Override
     protected void kontrolaUnos() throws AutokucaException {

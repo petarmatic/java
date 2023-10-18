@@ -17,8 +17,41 @@ public class ObradaVozilo extends Obrada<Vozilo>{
 
     @Override
     public List<Vozilo> read() {
+        return session.createQuery("from Vozilo v order by v.sifra desc", Vozilo.class)
+                .setMaxResults(50)
+                .list();
+    }
+    
+    public List<Vozilo> read(String uvjet){
+        return read(uvjet,50);
+        
+    }
+    
+    public List<Vozilo> read(String uvjet, int brojRezultata) {
+    uvjet = uvjet == null ? "" : uvjet;
+    uvjet = uvjet.trim();
+    uvjet = "%" + uvjet + "%";
+    
+    
+
+    List<Vozilo> lista = session.createQuery("from Vozilo v"
+            + " where concat(v.proizvodac, ' ', v.model) like :uvjet"
+            + " order by v.proizvodac", Vozilo.class)
+            .setParameter("uvjet", uvjet)
+            .setMaxResults(brojRezultata)
+            .list();
+    return lista;
+    }
+
+    
+    
+    
+   /* 
+    @Override
+    public List<Vozilo> read() {
         return session.createQuery("from Vozilo", Vozilo.class).list();
     }
+*/
 
     @Override
     protected void kontrolaUnos() throws AutokucaException {
