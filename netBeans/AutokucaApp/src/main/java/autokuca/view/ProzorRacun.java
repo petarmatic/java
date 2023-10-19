@@ -14,9 +14,25 @@ import autokuca.model.Racun;
 import autokuca.model.Vozilo;
 import autokuca.util.Alati;
 import autokuca.util.AutokucaException;
+import java.awt.HeadlessException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
+import net.datafaker.providers.base.File;
+import static org.apache.commons.math3.stat.inference.TestUtils.g;
+import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
 
 /**
  *
@@ -115,6 +131,7 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         txtUvjet = new javax.swing.JTextField();
         btnTrazi = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btnIspisRacuna = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -184,6 +201,13 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
 
         jLabel4.setText("Pretraži");
 
+        btnIspisRacuna.setText("Ispiši račun");
+        btnIspisRacuna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIspisRacunaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,51 +222,53 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                             .addComponent(txtUvjet, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
                         .addGap(33, 33, 33)
                         .addComponent(btnTrazi)))
-                .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbKupac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(cmbProdavac, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
-                        .addComponent(cmbVozilo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(124, 124, 124)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPromjeni)
-                    .addComponent(btnObrisi)
-                    .addComponent(btnDodaj))
-                .addContainerGap(133, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbKupac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cmbProdavac, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
+                                .addComponent(cmbVozilo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(btnDodaj)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnObrisi)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnPromjeni))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(btnIspisRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbKupac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(btnDodaj)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(btnPromjeni)))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(btnObrisi))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbKupac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(cmbProdavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnObrisi)
+                    .addComponent(btnDodaj)
+                    .addComponent(btnPromjeni))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnIspisRacuna)
+                .addGap(38, 38, 38))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -347,11 +373,90 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         btnTraziActionPerformed(null);
     }//GEN-LAST:event_txtUvjetKeyPressed
 
+    private void btnIspisRacunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIspisRacunaActionPerformed
+       
+       var e = obrada.getEntitet();
+    if (e == null) {
+        return;
+    }
+        
+    XWPFDocument document = new XWPFDocument();
+        
+    
+    XWPFParagraph title = document.createParagraph();
+    title.setAlignment(ParagraphAlignment.CENTER);
+    XWPFRun titleRun = title.createRun();
+    titleRun.setText("Autokuća Import");
+    titleRun.setColor("009933");
+    titleRun.setBold(true);
+    titleRun.setFontFamily("Courier");
+    titleRun.setFontSize(20);
+
+    
+    XWPFParagraph racun = document.createParagraph();
+    XWPFRun racunRun = racun.createRun();
+    racunRun.setText("Račun:");
+    racunRun.setBold(true);
+    racunRun.setFontSize(18);
+    
+    XWPFParagraph customerInfo = document.createParagraph();
+    XWPFRun customerRun = customerInfo.createRun();
+    customerRun.setText("Kupac: " + e.getKupac().getIme() + " " + e.getKupac().getPrezime());
+
+    
+    XWPFParagraph prodavac=document.createParagraph();
+    XWPFRun prodavacRun=prodavac.createRun();
+    prodavacRun.setText("Prodavač: " + e.getProdavac().getIme()+ " " +e.getProdavac().getPrezime());
+    
+    Prodavac odabraniProdavac = (Prodavac) cmbProdavac.getSelectedItem();
+
+       
+    if (odabraniProdavac.getProdajnoMjesto() != null && !odabraniProdavac.getProdajnoMjesto().isEmpty()) {
+            XWPFParagraph mjesto = document.createParagraph();
+            XWPFRun mjestoRun = mjesto.createRun();
+            mjestoRun.setText("Prodajno mjesto: " + odabraniProdavac.getProdajnoMjesto().get(0).getNaziv());
+        }
+
+    
+    XWPFParagraph vozilo=document.createParagraph();
+    XWPFRun voziloRun=vozilo.createRun();
+    voziloRun.setText("Vozilo: "+ e.getVozilo().getProizvodac()+ " "+e.getVozilo().getModel()+" "+e.getVozilo().getVIN()
+        );
+    
+    XWPFParagraph cijena=document.createParagraph();
+    XWPFRun cijenaRun=cijena.createRun();
+    cijenaRun.setText("Cijena vozila: "+  e.getVozilo().getCijena()+"€");
+
+    try {
+        JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getFileSystemView().getHomeDirectory());
+        jfc.setSelectedFile(new java.io.File("racun.docx"));
+        jfc.setFileFilter(new FileNameExtensionFilter("Word datoteka", "docx"));
+        int returnValue = jfc.showSaveDialog(getRootPane());
+
+        if (returnValue != JFileChooser.APPROVE_OPTION) {
+            return;
+        }
+
+        FileOutputStream out = new FileOutputStream(jfc.getSelectedFile());
+        document.write(out);
+        out.close();
+        document.close();
+
+        // Otvorite Word dokument za ispis
+        ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", jfc.getSelectedFile().getAbsolutePath());
+        builder.redirectErrorStream(true);
+        builder.start();
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+    }//GEN-LAST:event_btnIspisRacunaActionPerformed
+
 
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDodaj;
+    private javax.swing.JButton btnIspisRacuna;
     private javax.swing.JButton btnObrisi;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JButton btnTrazi;

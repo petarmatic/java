@@ -65,8 +65,6 @@ public class Racun extends Entitet{
         return sb.toString();
     }
 
-        
-        
    
     }
         
