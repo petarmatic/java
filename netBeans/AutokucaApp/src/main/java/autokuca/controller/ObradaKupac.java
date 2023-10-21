@@ -53,6 +53,7 @@ public class ObradaKupac extends Obrada<Kupac>{
         kontrolaIme();
         kontrolaPrezime();
         kontorlaDuplikata();
+        //kontrolaBroja();
     }
 
     @Override
@@ -68,6 +69,20 @@ public class ObradaKupac extends Obrada<Kupac>{
        
     }
     
+    private void kontrolaBroja() throws AutokucaException{
+        
+        String broj = entitet.getBroj_telefona();
+
+        if (broj == null || broj.isEmpty()) {
+            throw new AutokucaException("Broj telefona ne smije biti prazan.");
+        }
+
+        
+        if (!broj.matches("^[0-9-()]*$")) {
+            throw new AutokucaException("Broj telefona smije sadržavati samo brojeve, - i ()");
+        }
+    }
+    
     private void kontrolaIme() throws AutokucaException{
         if(entitet.getIme()==null){
             throw new AutokucaException("Ime kupca ne smije biti null");
@@ -78,10 +93,8 @@ public class ObradaKupac extends Obrada<Kupac>{
     }
     
     private void kontrolaBudzet() throws AutokucaException{
-      
-      
-           if (entitet.getBudzet() == null) {
-        throw new AutokucaException("Budžet mora biti definiran");
+        if (entitet.getBudzet() == null) {
+            throw new AutokucaException("Budžet mora biti definiran");
            }
         
     }

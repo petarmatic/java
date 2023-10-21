@@ -26,7 +26,7 @@ public class Start {
        
       // new Autorizacija().setVisible(true);
        // HibernateUtil.getSession();
-      //  new PocetniInsert();
+      // new PocetniInsert();
     }
     
     

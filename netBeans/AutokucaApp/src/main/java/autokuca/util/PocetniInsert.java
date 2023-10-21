@@ -28,9 +28,9 @@ import org.hibernate.Session;
  */
 public class PocetniInsert {
     
-    private static final int BROJ_KUPCA=2;
+    private static final int BROJ_KUPCA=5;
     private static final int BROJ_PRODAJNIHMJESTA=5;
-    private static final int BROJ_PRODAVACA=2;
+    private static final int BROJ_PRODAVACA=5;
     private static final int BROJ_VOZILA=100;
     private static final int BROJ_RACUNA=100;
     
@@ -96,7 +96,7 @@ public class PocetniInsert {
             pm=new ProdajnoMjesto();
             pm.setNaziv(faker.company().name());
             pm.setAdresa(faker.address().fullAddress());
-            pm.setProdavac(prodavaci.get(faker.number().numberBetween(0, BROJ_PRODAVACA-1)));
+            pm.setProdavac(prodavaci.get(faker.number().numberBetween(0, BROJ_PRODAVACA)));
            session.persist(pm);
            prodajno.add(pm);
         }
@@ -109,7 +109,7 @@ public class PocetniInsert {
     for (int i = 0; i < BROJ_VOZILA; i++) {
         v = new Vozilo();
         v.setCijena(new BigDecimal(faker.number().numberBetween(1, 999999)));
-        v.setProdajnomjesto(prodajno.get(faker.number().numberBetween(0, BROJ_PRODAJNIHMJESTA - 1)));
+        v.setProdajnomjesto(prodajno.get(faker.number().numberBetween(0, BROJ_PRODAJNIHMJESTA)));
         v.setProizvodac(faker.vehicle().make());
         v.setModel(faker.vehicle().model());
         v.setVIN(faker.vehicle().vin());
@@ -127,9 +127,9 @@ public class PocetniInsert {
         List<Prodavac> p;
         for(int i=0;i<BROJ_RACUNA;i++){
             r= new Racun();
-            r.setKupac(kupci.get(faker.number().numberBetween(0, BROJ_KUPCA-1)));
+            r.setKupac(kupci.get(faker.number().numberBetween(0, BROJ_KUPCA)));
             r.setVozilo(vozilo.get(i));
-            r.setProdavac(prodavaci.get(faker.number().numberBetween(0, BROJ_PRODAVACA-1)));
+            r.setProdavac(prodavaci.get(faker.number().numberBetween(0, BROJ_PRODAVACA)));
             session.persist(r);
             
             

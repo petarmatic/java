@@ -4,6 +4,8 @@
  */
 package autokuca.controller;
 
+import autokuca.model.Kupac;
+import autokuca.model.Prodavac;
 import autokuca.model.Racun;
 import autokuca.util.AutokucaException;
 import java.text.Collator;
@@ -76,10 +78,15 @@ public class ObradaRacun extends Obrada<Racun>{
         
     }
 
-    private void kontrolaKupac() throws AutokucaException{
-        if (entitet.getKupac().getRacuni() == null || entitet.getKupac().getRacuni().isEmpty()) {
-            throw new AutokucaException("Kupac je obavezan.");
+    private void kontrolaKupac() throws AutokucaException {
+        Kupac kupac = entitet.getKupac(); 
+        
+        if (kupac == null|| kupac.getSifra() == 0) {
+            throw new AutokucaException("Račun mora imati kupca.");
         }
+        
+
+        
     }
 
     private void kontrolaRacun() throws AutokucaException{
@@ -96,9 +103,11 @@ public class ObradaRacun extends Obrada<Racun>{
     }
 
     private void kontrolaProdavac() throws AutokucaException{
-        if (entitet.getProdavac().getRacuni() == null || entitet.getProdavac().getRacuni().isEmpty()) {
-            throw new AutokucaException("Prodavač je obavezan.");
-        }
+        Prodavac prodavac = entitet.getProdavac();
+        
+        if (prodavac == null || prodavac.getSifra() == 0) {
+            throw new AutokucaException("Prodavač u računu je obavezan i mora biti stvarno unesen.");
+    }
     }
     
 }
