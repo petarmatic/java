@@ -14,21 +14,13 @@ import autokuca.model.Racun;
 import autokuca.model.Vozilo;
 import autokuca.util.Alati;
 import autokuca.util.AutokucaException;
-import java.awt.HeadlessException;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
-import net.datafaker.providers.base.File;
-import static org.apache.commons.math3.stat.inference.TestUtils.g;
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -55,6 +47,9 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         ucitaj();
     }
 
+    public ObradaRacun getObradaRacun() {
+        return obrada;
+    }
     
     private void ucitajVozilo(){
         DefaultComboBoxModel<Vozilo>m= new DefaultComboBoxModel<>();
@@ -132,6 +127,7 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
         btnTrazi = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btnIspisRacuna = new javax.swing.JButton();
+        btnPVozilo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -144,7 +140,7 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
 
         jLabel1.setText("Kupac");
 
-        jLabel2.setText("Vozilo");
+        jLabel2.setText("Pretraži ili odaberi vozilo");
 
         jLabel3.setText("Prodavač");
 
@@ -208,6 +204,13 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
             }
         });
 
+        btnPVozilo.setText("Pretraži vozilo");
+        btnPVozilo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPVoziloActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,9 +234,12 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmbKupac, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(cmbProdavac, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
-                                .addComponent(cmbVozilo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cmbProdavac, javax.swing.GroupLayout.Alignment.LEADING, 0, 160, Short.MAX_VALUE)
+                                    .addComponent(cmbVozilo, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnPVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(80, 80, 80)
                         .addComponent(btnDodaj)
@@ -244,7 +250,7 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(91, 91, 91)
                         .addComponent(btnIspisRacuna, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -256,8 +262,10 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
                 .addGap(32, 32, 32)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbVozilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPVozilo))
+                .addGap(32, 32, 32)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(cmbProdavac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -451,6 +459,10 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
     }
     }//GEN-LAST:event_btnIspisRacunaActionPerformed
 
+    private void btnPVoziloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPVoziloActionPerformed
+        new ProzorOdabirVozila(this).setVisible(true);
+    }//GEN-LAST:event_btnPVoziloActionPerformed
+
 
     
     
@@ -458,6 +470,7 @@ public class ProzorRacun extends javax.swing.JFrame implements AutokucaViewSucel
     private javax.swing.JButton btnDodaj;
     private javax.swing.JButton btnIspisRacuna;
     private javax.swing.JButton btnObrisi;
+    private javax.swing.JButton btnPVozilo;
     private javax.swing.JButton btnPromjeni;
     private javax.swing.JButton btnTrazi;
     private javax.swing.JComboBox<Kupac> cmbKupac;
