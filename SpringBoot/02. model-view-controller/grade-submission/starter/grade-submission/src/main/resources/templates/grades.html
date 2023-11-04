@@ -115,10 +115,10 @@
           <th>Subject</th>
           <th>Score</th>
         </tr>
-        <tr>
-          <td th:text="${grade.name}"></td>
-          <td th:text="${grade.subject}"></td>
-          <td th:text="${grade.score}"></td>
+        <tr th:object="${grade}">
+          <td th:text="*{name}"></td>
+          <td th:text="*{subject}"></td>
+          <td th:text="*{score}"></td>
         </tr>
 
         <tr>
