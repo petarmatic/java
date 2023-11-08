@@ -1,15 +1,18 @@
 package com.ltp.gradesubmission;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.tomcat.util.bcel.classfile.Constant;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.ltp.Constants;
 
 @Controller
 public class GradeController {
@@ -21,7 +24,7 @@ public class GradeController {
         
   
     @GetMapping("/")
-    public String getForm(Model model, @RequestParam(required =false) String name){
+    public String getForm(Model model, @RequestParam(required =false) String id){
        /* 
         Grade grade;
         if(getGradeIndex(name) == -1000){
@@ -30,15 +33,16 @@ public class GradeController {
             grade=studentGrades.get(getGradeIndex(name));
         }
        */ 
-        model.addAttribute("grade", getGradeIndex(name) == -1000 ? new Grade() : studentGrades.get(getGradeIndex(name)));
+        int index=getGradeIndex(id);
+       model.addAttribute("grade", index == Constants.NOT_FOUND ? new Grade() : studentGrades.get(index));
         return "form";
     }
 
 
     @PostMapping("/handleSubmit")
     public String submitForm(Grade grade){
-        int index=getGradeIndex(grade.getName());
-        if(index == -1000){
+        int index=getGradeIndex(grade.getId());
+        if(index == Constants.NOT_FOUND){
             studentGrades.add(grade);
         }else{
             studentGrades.set(index, grade);
@@ -55,11 +59,11 @@ public class GradeController {
 
     }
 
-    public Integer getGradeIndex(String name){
+    public Integer getGradeIndex(String id){
         for (int i=0;i<studentGrades.size();i++){
-            if(studentGrades.get(i).equals(name)) return i;
+            if(studentGrades.get(i).getId().equals(id)) return i;
         }
-        return -1000;
+        return Constants.NOT_FOUND;
     }
 
 
