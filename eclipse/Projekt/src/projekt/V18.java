@@ -24,7 +24,7 @@ public class V18 {
             map.put(nums[i], i);
         }
 
-        // If no solution is found
+       
         return new int[]{};
 		
 	}
