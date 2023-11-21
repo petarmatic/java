@@ -10,12 +10,28 @@ public class P21 {
 	
 	public static void main(String[] args) {
 		
-		Scanner scanner= new Scanner(System.in);
-		System.out.println("unesi neki broj:");
-		int broj=scanner.nextInt();
 		
+		Scanner scanner= new Scanner(System.in);
+		
+		boolean ponovno=true;
+		while(ponovno) {
+		
+			System.out.println("unesi neki broj:");
+			int broj=scanner.nextInt();
+			ocijeniBroj(broj);
+			System.out.println("zelis li unijeti jos neki broj? (da/ne)");
+			String odgovor=scanner.next();
+			ponovno=odgovor.equalsIgnoreCase("da");
+			
+		}
+		System.out.println("Hvala na korištenju programa!");
+		scanner.close();
+	}
+		
+		
+		private static void ocijeniBroj(int broj) {
 		if (broj % 2 == 0) {
-		    if (broj > 50) {
+		    if (broj >= 50) {
 		        System.out.println("Odličan");
 		    } else if (broj >= 40) {
 		        System.out.println("Vrlo dobar");
@@ -27,7 +43,7 @@ public class P21 {
 		    	System.out.println("Broj je manji od 20");
 		    }
 		} else {
-		    if (broj > 50) {
+		    if (broj >= 50) {
 		        System.out.println("Neparni od 50 pa na više");
 		    } else if (broj >= 40) {
 		        System.out.println("Neparni oko 40");
