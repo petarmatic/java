@@ -28,7 +28,7 @@ public class P21 {
 		scanner.close();
 	}
 		
-		
+	/*	
 		private static void ocijeniBroj(int broj) {
 		if (broj % 2 == 0) {
 		    if (broj >= 50) {
@@ -55,7 +55,53 @@ public class P21 {
 		        System.out.println("Neparni manji od 20");
 		    }
 		}
+		*/
 		
+		
+	// use switch case BETTER
+	private static void ocijeniBroj(int broj) {
+	    switch (broj) {
+	        case 20:
+	            System.out.println("Dovoljan");
+	            break;
+	        case 30:
+	            System.out.println("Dobar");
+	            break;
+	        case 40:
+	            System.out.println("Vrlo dobar");
+	            break;
+	        case 50:
+	            System.out.println("Odličan");
+	            break;
+	        default:
+	            if (broj % 2 == 0) {
+	                // Dodana nova provjera paran/neparan broj
+	                System.out.println("Broj je paran, ali nije naveden u slučajevima 20, 30, 40, 50");
+	            } else {
+	                switch ((broj / 10) * 10) {
+	                    case 20:
+	                        System.out.println("Neparni oko 20");
+	                        break;
+	                    case 30:
+	                        System.out.println("Neparni oko 30");
+	                        break;
+	                    case 40:
+	                        System.out.println("Neparni oko 40");
+	                        break;
+	                    case 50:
+	                        System.out.println("Neparni oko 50");
+	                        break;
+	                    default:
+	                        System.out.println("Neparni manji od 20");
+	                        break;
+	                }
+	            }
+	            break;
+	    }
 	}
 
-}
+
+	
+	}
+
+
