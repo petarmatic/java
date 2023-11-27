@@ -58,7 +58,7 @@ public class P21 {
 		*/
 		
 		
-	// use switch case BETTER
+	
 	private static void ocijeniBroj(int broj) {
 	    switch (broj) {
 	        case 20:
