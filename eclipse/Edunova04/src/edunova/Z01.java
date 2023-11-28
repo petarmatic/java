@@ -13,9 +13,12 @@ public class Z01 {
 		
 		int p=Integer.parseInt(JOptionPane.showInputDialog("prvi"));
 		int d=Integer.parseInt(JOptionPane.showInputDialog("Drugi"));
+		
+		int manji= p < d ? p:d;
+		int veci=p > d ? p:d;
 		int zbroj=0;
 		
-		for(int i=p;i<=d;i++) {
+		for(int i=manji;i<=veci;i++) {
 			if(i %2 !=0) {
 				zbroj +=i;
 			}
