@@ -9,18 +9,30 @@ public class Z03 {
 		// Unose se brojevi s while petljom u niz
 		// ispisuju se uneseni brojevi iz niza s foreach petljom
 		
-		int velicinaNiza=Integer.parseInt(JOptionPane.showInputDialog("unesi niz"));
+	
+		int velicinaNiza=Integer.parseInt(JOptionPane.showInputDialog("unesi velicinu niza"));
+		
 		int [] nizBrojeva= new int [velicinaNiza];
+		
+		
 		int brojac=0;
 		
+		while(brojac<velicinaNiza) {
+			nizBrojeva[brojac]= Integer.parseInt(JOptionPane.showInputDialog("unesi brojeve niza"));
+			brojac +=1;
+			//if(brojac == velicinaNiza) {
+			//	break;
+			//}
+			}
 		
-		while(brojac < velicinaNiza) {
-			nizBrojeva[brojac++]=Integer.parseInt(JOptionPane.showInputDialog("unesi vrijednosti u niz"));
 			
+			for(int en:nizBrojeva) {
+				System.out.println(en);
+			}
+				
+			}
+		}
 		
-	}
-		for( int en : nizBrojeva) {
-			System.out.println(en);
-		}
-		}
-}
+		
+		
+

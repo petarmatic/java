@@ -11,41 +11,50 @@ public class Z02 {
 		// između unesenih brojeva unazad (od većeg prema manjem)
 		// koristiti do while petlju
 
-		int prvi;
-		do {
-			prvi = Integer.parseInt(JOptionPane.showInputDialog("unesi prvi broj"));
-			if (prvi >= 20 && prvi <= 80)
-				;
-			{
+		
+		int prviBroj;
+		int drugiBroj;
+		
+		do{
+			prviBroj=Integer.parseInt(JOptionPane.showInputDialog("Unesi prvi broj"));
+			
+			if(prviBroj>=20 && prviBroj<=80) {
 				break;
-			}
-
-		} while (true);
-
-		int drugi;
-		do {
-			drugi = Integer.parseInt(JOptionPane.showInputDialog("Unesi drugi broj"));
-			if (drugi >= 20 && drugi <= 80)
-				;
-			{
-				break;
-			}
-
-		} while (true);
+			} else {
+                JOptionPane.showMessageDialog(null, "Broj nije valjan! Unesite broj između 20 i 80.");
+            }
+		}while(true);
 		
 		
-		int manji= prvi<drugi ? prvi:drugi;
-		int veci= prvi>drugi ? prvi:drugi;
+		
+		do{
+			drugiBroj=Integer.parseInt(JOptionPane.showInputDialog("Unesi drugi broj"));
+			
+			if(drugiBroj>=20 && drugiBroj<=80) {
+				break;
+			} else {
+                JOptionPane.showMessageDialog(null, "Broj nije valjan! Unesite broj između 20 i 80.");
+            }
+		}while(true);
+		
+		int manji=prviBroj<drugiBroj ? prviBroj : drugiBroj;
+		int veci=prviBroj<drugiBroj ? drugiBroj : prviBroj;
+		
+		//int manji = Math.min(prviBroj, drugiBroj);
+        //int veci = Math.max(prviBroj, drugiBroj);
 		
 		int broj=veci;
-		
 		do {
 			if(broj%2==1) {
 				System.out.println(broj);
-			}
+			
+            }
+		}while(--broj>=manji);
+		
+	}
+			
+		
+		
 		
 
-
-	} while(--broj>=manji);
-}
 }

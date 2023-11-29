@@ -9,20 +9,17 @@ public class Z01 {
 		// broj je u rasponu 20 do 50 i nije 30
 		// koristiti while petlju
 		
-		int x1;
-		do { 
-			
-			x1=Integer.parseInt(JOptionPane.showInputDialog("Unesi broj"));
-			if(x1>=20 && x1<=50 && x1!=30) {
+		
+		int broj;
+		while(true) {
+			broj=Integer.parseInt(JOptionPane.showInputDialog("Unesi broj"));
+			if(broj>=20 && broj <=50 & broj!=30) {
 				break;
 			}
-			
-			JOptionPane.showInputDialog("Nije dobro");
-				
-			
-		}while(true);
+			JOptionPane.showMessageDialog(null, "nije dobro");
+		}
+		System.out.println(broj);
 		
-		System.out.println(x1);
 	}
 
 }
