@@ -18,8 +18,10 @@ public class Z03 {
 		int brojac=0;
 		
 		while(brojac<velicinaNiza) {
-			nizBrojeva[brojac]= Integer.parseInt(JOptionPane.showInputDialog("unesi brojeve niza"));
-			brojac +=1;
+			nizBrojeva[brojac++]= Integer.parseInt(JOptionPane.showInputDialog("unesi brojeve niza"));
+			//brojac +=1;
+			
+			
 			//if(brojac == velicinaNiza) {
 			//	break;
 			//}
