@@ -3,12 +3,18 @@ package com.ltp.globalsuperstore;
 import java.util.Date;
 import java.util.UUID;
 
+import javax.validation.constraints.NotBlank;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class Item {
+    @NotBlank(message="Please choose a category")
     private String category;
+    @NotBlank(message = "Name cannot be blank")
     private String name;
+    @NotBlank(message ="Price cannot be negative")
     private Double price;
+    @NotBlank(message = "Date must be in the past")
     private Double discount;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
