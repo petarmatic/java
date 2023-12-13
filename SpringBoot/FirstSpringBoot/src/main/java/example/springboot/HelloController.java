@@ -6,7 +6,6 @@ package example.springboot;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 /**
  *
  * @author petar
