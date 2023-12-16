@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ContactsApplication",
+            "request": "launch",
+            "mainClass": "com.ltp.contacts.ContactsApplication",
+            "projectName": "contacts"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ContactsApplication<com.ltp-contacts>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ltp.contacts.ContactsApplication",
+            "projectName": "com.ltp-contacts",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=51332 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=com.ltp-contacts"
+        }
+    ]
+}
