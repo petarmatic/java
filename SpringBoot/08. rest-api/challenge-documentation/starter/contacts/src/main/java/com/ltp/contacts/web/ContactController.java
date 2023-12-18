@@ -2,7 +2,7 @@ package com.ltp.contacts.web;
 
 import java.util.List;
 
-import javax.validation.Valid;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ltp.contacts.pojo.Contact;
 import com.ltp.contacts.service.ContactService;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class ContactController {
