@@ -31,7 +31,7 @@ public class GradeController {
 
     @PostMapping("/student/{studentId}/course/{courseId}")
     public ResponseEntity<Grade> saveGrade(@RequestBody Grade grade, @PathVariable Long studentId, @PathVariable Long courseId) {
-        return new ResponseEntity<>(grade, HttpStatus.CREATED);
+        return new ResponseEntity<>(gradeService.saveGrade(grade, studentId, courseId), HttpStatus.CREATED);
     }
 
     @PutMapping("/student/{studentId}/course/{courseId}")
