@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ltp.gradesubmission.entity.Grade;
 import com.ltp.gradesubmission.service.GradeService;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 @RestController
 @RequestMapping("/grade")
 public class GradeController {
 
-    @Autowired
+    
     GradeService gradeService;
     
     @GetMapping("/student/{studentId}/course/{courseId}")
