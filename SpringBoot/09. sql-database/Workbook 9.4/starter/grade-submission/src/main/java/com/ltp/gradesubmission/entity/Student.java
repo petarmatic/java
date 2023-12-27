@@ -3,17 +3,12 @@ package com.ltp.gradesubmission.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -29,10 +24,12 @@ public class Student {
     @Column(name = "id")
     private Long id;
 
+    @NotBlank(message = "Name cannot be blank")
     @NonNull
     @Column(name = "name", nullable = false)
     private String name;
 
+    @NotBlank(message = "The birth date must be in the past")
     @NonNull
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;

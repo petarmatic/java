@@ -2,10 +2,11 @@ package com.ltp.gradesubmission.entity;
 
 import java.util.List;
 
-import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Getter
@@ -21,14 +22,17 @@ public class Course {
     @Column(name = "id")
     private Long id;
 
+    @NotBlank(message = "Subject cannot be blank")
     @NonNull
     @Column(name = "subject", nullable = false)
     private String subject;
 
+    @NotBlank(message = "Course code cannot be blank")
     @NonNull
     @Column(name = "code", nullable = false, unique = true)
     private String code;
 
+    @NotBlank(message = "Description cannot be blank")
     @NonNull
     @Column(name = "description", nullable = false)
     private String description;

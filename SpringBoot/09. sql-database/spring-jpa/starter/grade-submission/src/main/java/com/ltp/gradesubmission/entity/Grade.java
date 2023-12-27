@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.*;
 
 
@@ -19,7 +20,9 @@ import lombok.*;
 @EqualsAndHashCode
 
 @Entity
-@Table(name ="grade")
+@Table(name ="grade", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"studentid", "course_id"})
+} )
 public class Grade {
 
     @Id
