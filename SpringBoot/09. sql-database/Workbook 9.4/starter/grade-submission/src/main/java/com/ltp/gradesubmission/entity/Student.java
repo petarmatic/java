@@ -3,13 +3,14 @@ package com.ltp.gradesubmission.entity;
 import java.time.LocalDate;
 import java.util.List;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
 import lombok.*;
+
+
 
 @Getter
 @Setter
@@ -29,13 +30,13 @@ public class Student {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotBlank(message = "The birth date must be in the past")
+    @Past(message = "The birth date must be in the past")
     @NonNull
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
-
+    
     @JsonIgnore
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Grade> grades;
-    
+
 }
