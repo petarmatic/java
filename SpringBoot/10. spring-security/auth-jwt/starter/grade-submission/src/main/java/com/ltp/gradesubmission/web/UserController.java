@@ -1,6 +1,6 @@
 package com.ltp.gradesubmission.web;
 
-import javax.validation.Valid;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ltp.gradesubmission.entity.User;
 import com.ltp.gradesubmission.service.UserService;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
