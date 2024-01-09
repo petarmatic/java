@@ -9,6 +9,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 import com.ltp.gradesubmission.security.filter.AuthenticationFilter;
+import com.ltp.gradesubmission.security.filter.FilterOne;
+import com.ltp.gradesubmission.security.filter.FilterTwo;
+
+import jakarta.servlet.Filter;
 
 @Configuration
 @EnableWebSecurity
@@ -30,7 +34,9 @@ public class SecurityConfig {
                     .anyRequest().authenticated()
                     
             )
+            .addFilterBefore(new FilterOne(), AuthenticationFilter.class)
             .addFilter(new AuthenticationFilter())
+            .addFilterAfter(new FilterTwo(),AuthenticationFilter.class)
             .sessionManagement(sessionManagement ->
                 sessionManagement
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
