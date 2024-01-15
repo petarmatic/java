@@ -4,8 +4,8 @@ package com.ltp.gradesubmission.security.filter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -38,8 +38,9 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         .build()
         .verify(token)
         .getSubject();
-      UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, Arrays.asList());
-      authentication.setAuthenticated(true);
+
+
+      Authentication authentication= new UsernamePasswordAuthenticationToken(user, null, Arrays.asList());
       SecurityContextHolder.getContext().setAuthentication(authentication);  
         filterChain.doFilter(request, response);
    
