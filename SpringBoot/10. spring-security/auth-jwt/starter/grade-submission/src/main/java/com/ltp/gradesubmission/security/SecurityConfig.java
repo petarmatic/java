@@ -1,5 +1,6 @@
 package com.ltp.gradesubmission.security;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -27,24 +28,16 @@ public class SecurityConfig {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(customAuthenticationManager);
         authenticationFilter.setFilterProcessesUrl("/authenticate");
         http
-            .headers(headers -> headers
-                .frameOptions().disable() // Disable frame options
-            )
-            .csrf().disable()
-            .authorizeRequests(authorizeRequests ->
-                authorizeRequests
-                    .requestMatchers("/h2/**").permitAll() // Allow access to h2 console without authentication
-                    .requestMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()
-                    .anyRequest().authenticated()
-                    
-            )
-            .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
-            .addFilter(new AuthenticationFilter(customAuthenticationManager))
-            .addFilterAfter(new JWTAuthorizationFilter(), AuthenticationFilter.class)
-            .sessionManagement(sessionManagement ->
-                sessionManagement
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            );
+    .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable()))
+    .csrf(csrf -> csrf.disable())
+    .authorizeHttpRequests(authorize -> authorize  
+        .requestMatchers("/h2/**").permitAll()
+        .requestMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()
+        .anyRequest().authenticated())
+    .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
+    .addFilter(authenticationFilter)
+    .addFilterAfter(new JWTAuthorizationFilter(), AuthenticationFilter.class)
+    .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         return http.build();
     }
