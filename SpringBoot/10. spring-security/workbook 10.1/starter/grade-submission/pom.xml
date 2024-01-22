@@ -65,6 +65,12 @@
 	
 		
 
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>10.6.0</version>
+		</dependency>
 
 
 		
