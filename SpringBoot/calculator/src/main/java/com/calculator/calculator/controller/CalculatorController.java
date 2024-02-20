@@ -6,11 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.calculator.calculator.model.Calculator;
+
 
 
 @Controller
 public class CalculatorController {
     
+
     @GetMapping("/")
     public String index(Model model) {
 		model.addAttribute("operator", "+");
@@ -18,37 +21,45 @@ public class CalculatorController {
 		return "base-layout";
 	}
 
-    @PostMapping("/")
-    public String calculate(@RequestParam double leftOperand,
-                            @RequestParam double rightOperand,
-                            @RequestParam String operator) {
-        double result = 0;
+   @PostMapping("/calculator")
+	public String index(
+			@RequestParam String leftOperand,
+			@RequestParam String operator,
+			@RequestParam String rightOperand,
+			Model model
+	) {
+		double leftNumber;
+		double rightNumber;
 
-        
-        switch (operator) {
-            case "+":
-                result = leftOperand + rightOperand;
-                break;
-            case "-":
-                result = leftOperand - rightOperand;
-                break;
-            case "*":
-                result = leftOperand * rightOperand;
-                break;
-            case "/":
-                if (rightOperand != 0) {
-                    result = leftOperand / rightOperand;
-                } else {
-                    throw new ArithmeticException("Cannot divide by zero");
-                }
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid operator: " + operator);
-        }
+		try {
+			leftNumber = Double.parseDouble(leftOperand);
+		}
+		catch (NumberFormatException ex) {
+			leftNumber = 0;
+		}
 
-        // Vratite ime predloška za prikaz rezultata
-        return "result";
-    }
+		try {
+			rightNumber = Double.parseDouble(rightOperand);
+		}
+		catch (NumberFormatException ex) {
+			rightNumber = 0;
+		}
+		
+		Calculator calculator = new Calculator(
+				leftNumber,
+				rightNumber,
+				operator
+		);
+		
+		double result = calculator.calculateResult();
+		model.addAttribute("leftOperand", leftNumber);
+		model.addAttribute("operator", operator);
+		model.addAttribute("rightOperand", rightNumber);
+		model.addAttribute("result", result);
+
+		model.addAttribute("view", "views/calculatorForm");
+		return "base-layout";
+	}
 }
     
                             

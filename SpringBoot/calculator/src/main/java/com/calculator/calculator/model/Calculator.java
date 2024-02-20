@@ -1,46 +1,64 @@
 package com.calculator.calculator.model;
 
+
 public class Calculator {
+    private double leftOperand;
+    private double rightOperand;
+    private String operator;
 
-        
-        private double left_operant;
-        private double right_operant;
-        private String operant;
-        
-        
-
-    public Calculator(double left_operant, double right_operant, String operant) {
-        this.left_operant = left_operant;
-        this.right_operant = right_operant;
-        this.operant = operant;
+    public Calculator(double leftOperand, double rightOperand, String operator) {
+        this.leftOperand = leftOperand;
+        this.rightOperand = rightOperand;
+        this.operator = operator;
     }
 
-    public Calculator() {
+
+    public double getLeftOperand() {
+        return leftOperand;
     }
 
-    public double getLeft_operant() {
-        return this.left_operant;
+    public void setLeftOperand(double leftOperand) {
+        this.leftOperand = leftOperand;
     }
 
-    public void setLeft_operant(double left_operant) {
-        this.left_operant = left_operant;
+    public double getRightOperand() {
+        return rightOperand;
     }
 
-    public double getRight_operant() {
-        return this.right_operant;
+    public void setRightOperand(double rightOperand) {
+        this.rightOperand = rightOperand;
     }
 
-    public void setRight_operant(double right_operant) {
-        this.right_operant = right_operant;
+    public String getOperator() {
+        return operator;
     }
 
-    public String getOperant() {
-        return this.operant;
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
-    public void setOperant(String operant) {
-        this.operant = operant;
-    }
+    public double calculateResult() {
+        double result = 0;
+        switch(this.operator) {
+            case "+":
+                result = this.leftOperand + this.rightOperand;
+                break;
+            case "-":
+                result = this.leftOperand - this.rightOperand;
+                break;
+            case "*":
+                result = this.leftOperand * this.rightOperand;
+                break;
+            case "/":
+                result = this.leftOperand / this.rightOperand;
+                break;
+            case "^":
+                result = Math.pow(this.leftOperand,this.rightOperand);
+                break;
+            default:
+                    result = 0;
+        }
 
-    
+        return result;
+    }
 }
