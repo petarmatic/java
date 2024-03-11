@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #c75b5b;
+    color: #fff; /* Dodani stil za tekst */
+}
+
+h1 {
+    color: blue;
+    text-transform: uppercase; /* Dodani stil za h1 element */
+}
+
+span {
+    font-weight: bold; /* Dodani stil za span elemente */
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #fff; /* Promijenjen stil granica tablice */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #333; /* Promijenjena boja zaglavlja tablice */
+    color: #fff; /* Promijenjena boja teksta zaglavlja */
+}
+
+ol {
+    color: blue; /* Dodani stil za uređenu listu */
+}
+
+form {
+    background-color: #fff; /* Dodani stil za pozadinu forme */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: blue;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
