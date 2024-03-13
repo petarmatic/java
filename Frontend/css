@@ -1,12 +1,23 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #c75b5b;
+    background-color: #5bc77f;
     color: #fff; /* Dodani stil za tekst */
 }
 
 h1 {
     color: blue;
     text-transform: uppercase; /* Dodani stil za h1 element */
+    text-align: center;
+}
+h2{
+    color: #5bc77f;
+    text-transform: lowercase;
+    text-align: left;
+}
+h3{
+    color: aqua;
+    text-transform: initial;
+    text-align: right;
 }
 
 span {
@@ -34,7 +45,7 @@ ol {
 }
 
 form {
-    background-color: #fff; /* Dodani stil za pozadinu forme */
+    background-color: #be2222; /* Dodani stil za pozadinu forme */
     padding: 20px;
     border-radius: 5px;
 }
