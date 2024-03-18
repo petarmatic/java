@@ -25,7 +25,8 @@ public class P27 {
 	            System.out.println("Riječ ima 6 ili manje znakova.");
 	        }
 		
-		
 	}
+	
+	
 
 }
