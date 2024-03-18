@@ -5,6 +5,9 @@ body {
 }
 
 h1 {
+    margin: 0;
+    padding: 20px 0;
+    text-shadow: 3px 3px 1px black;
     color: blue;
     text-transform: uppercase; /* Dodani stil za h1 element */
     text-align: center;
