@@ -10,26 +10,28 @@ import java.math.BigDecimal;
  *
  * @author petar
  */
-public class Groundbaits {
+public class Bags {
     
-    
-    private String type;
+    private String name;
     private BigDecimal price;
 
-    public Groundbaits() {
+    public Bags() {
     }
 
-    public Groundbaits(String type, BigDecimal price) {
-        this.type = type;
+    
+    
+    
+    public Bags(String name, BigDecimal price) {
+        this.name = name;
         this.price = price;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public BigDecimal getPrice() {
@@ -39,6 +41,9 @@ public class Groundbaits {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
+    
+    
+    
     
     
     
