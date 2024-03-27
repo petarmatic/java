@@ -22,6 +22,16 @@ public abstract class Processing<T extends Entity> {
       public Processing(){
         session=HibernateUtil.getSession();
       }
+      
+      
+      
+      
+      
+       private void persist(){
+        session.beginTransaction();
+        session.persist(entity);
+        session.getTransaction().commit();
+    }
 
     public T getEntity() {
         return entity;

@@ -4,10 +4,23 @@
  */
 package fishingstore.controller;
 
+import fishingstore.model.Bags;
+import java.util.List;
+
 /**
  *
  * @author petar
  */
-public class PBags {
+public class PBags extends Processing<Bags>{
+
+    @Override
+    public List<Bags> read() {
+        return session.createQuery("from Bags b order by b.id desc",Bags.class)
+                .setMaxResults(10)
+                .list();
+                
+                }
+
+    
     
 }

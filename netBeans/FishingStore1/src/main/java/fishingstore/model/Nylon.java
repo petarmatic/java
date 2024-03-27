@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  *
  * @author petar
  */
-public class Nylon {
+public class Nylon extends Entity{
     
     
     private String name;

@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  *
  * @author petar
  */
-public class Reels {
+public class Reels extends Entity{
     
     private String name;
     private BigDecimal price;

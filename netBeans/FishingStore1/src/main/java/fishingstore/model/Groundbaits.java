@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  *
  * @author petar
  */
-public class Groundbaits {
+public class Groundbaits extends Entity{
     
     
     private String type;
