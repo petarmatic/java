@@ -4,6 +4,8 @@
 
 package fishingstore;
 
+import fishingstore.view.SplashScreen;
+
 /**
  *
  * @author petar
@@ -11,6 +13,7 @@ package fishingstore;
 public class FishingStore1 {
 
     public static void main(String[] args) {
+        new SplashScreen().setVisible(true);
        
     }
 }
