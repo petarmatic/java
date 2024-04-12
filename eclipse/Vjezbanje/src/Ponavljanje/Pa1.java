@@ -5,8 +5,14 @@ import java.util.Scanner;
 public class Pa1 {
 
 	public static void main(String[] args) {
-		System.out.println("unesi neki broj");
-		Scanner unos = new Scanner(System.in);
+		
+		 boolean ponovi = true; 
+	     Scanner unos = new Scanner(System.in); 
+	
+
+		
+		while(ponovi) {
+		System.out.println("unesi prvi broj");
         double prviBroj = unos.nextDouble(); 
 
        
@@ -19,6 +25,7 @@ public class Pa1 {
 
 		
         double rezultat = 0;
+		
 
         
         switch (operacija) {
@@ -43,14 +50,24 @@ public class Pa1 {
                 System.out.println("Nepodržana operacija.");
                 return; 
         }
-
+        System.out.println("Rezultat je:" + rezultat);
         
-        System.out.println("Rezultat: " + rezultat);
+        System.out.println("Želite li ponovno izračunati? (da/ne):");
+        String odgovor = unos.next();
+
+       
+        if (!odgovor.equalsIgnoreCase("da")) {
+            ponovi = false;
+        }
+        
+		}
 
         
         unos.close();
+		
 	}
 }
+
 		
 
 	
