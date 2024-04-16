@@ -45,7 +45,32 @@ public class Pa1 {
                     System.out.println("Greška: dijeljenje s nulom nije moguće.");
                     return; 
                 }
+                break; 
+            case "^":
+                System.out.println("Unesi eksponent:");
+                int eksponent = unos.nextInt();
+                rezultat = Math.pow(prviBroj, eksponent);
                 break;
+            case "!":
+                if (prviBroj >= 0 && prviBroj == (int) prviBroj) {
+                    int faktorijel = 1;
+                    for (int i = 1; i <= prviBroj; i++) {
+                        faktorijel *= i;
+                    }
+                    rezultat = faktorijel;
+                } else {
+                    System.out.println("Greška: faktorijel se može izračunati samo za pozitivne cijele brojeve.");
+                    continue;
+                }
+                break;
+            case "%":
+                System.out.println("Unesi drugi broj:");
+                drugiBroj = unos.nextDouble();
+                rezultat = prviBroj % drugiBroj;
+                break;
+            
+        
+
             default:
                 System.out.println("Nepodržana operacija.");
                 return; 
