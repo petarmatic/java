@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GradeSubmissionApplication<grade-submission>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ltp.gradesubmission.GradeSubmissionApplication",
+            "projectName": "grade-submission",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
