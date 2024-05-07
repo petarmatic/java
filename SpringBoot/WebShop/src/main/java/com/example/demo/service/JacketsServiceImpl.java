@@ -1,8 +1,11 @@
 package com.example.demo.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Jackets;
+import com.example.demo.exception.JacketsNotFoundException;
 import com.example.demo.repository.JacketsRepository;
 
 import lombok.AllArgsConstructor;
@@ -18,23 +21,25 @@ public class JacketsServiceImpl implements JacketsService{
 
     @Override
     public Jackets getJackets(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getJackets'");
+        Optional<Jackets> jackets= jacketsRepository.findById(id);
+        return unwrapJackets(jackets,id);
     }
+    
 
     @Override
     public Jackets saveJackets(Jackets jackets) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveJackets'");
+        return jacketsRepository.save(jackets);
     }
 
     @Override
     public void deleteJackets(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteJackets'");
+        jacketsRepository.deleteById(id);
     }
 
-    
+    static Jackets unwrapJackets(Optional<Jackets> entity, Long id){
+        if(entity.isPresent()) return entity.get();
+        else throw new JacketsNotFoundException(id);
+    }
 
 
     
