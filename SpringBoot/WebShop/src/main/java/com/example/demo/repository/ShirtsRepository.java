@@ -1,5 +1,11 @@
 package com.example.demo.repository;
 
-public class ShirtsRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.demo.entity.Shirts;
+
+public interface ShirtsRepository extends CrudRepository<Shirts, Long> {
+
+
     
 }
