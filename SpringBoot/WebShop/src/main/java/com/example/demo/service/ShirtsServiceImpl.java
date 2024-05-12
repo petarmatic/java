@@ -13,20 +13,19 @@ public class ShirtsServiceImpl implements ShirtsService {
     @Override
     public Shirts getShirts(Long id) {
         Optional<Shirts> shirts= shirtsRepository.findById(id);
-        return un
+        return unwrapShirts(shirts, id);
     }
 
     @Override
     public Shirts saveShirts(Shirts shirts) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveShirts'");
+        return shirtsRepository.save(shirts);
     }
 
     @Override
     public void deleteShirts(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteShirts'");
+        shirtsRepository.deleteById(id);
     }
+
 
     static Shirts unwrapShirts(Optional<Shirts> entity,Long id){
         if(entity.isPresent()) return entity.get();
