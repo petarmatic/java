@@ -27,13 +27,13 @@ public class PantsService implements PantsServiceImpl{
 
     @Override
     public Pants savePants(Pants pants) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'savePants'");
     }
 
     @Override
     public void deletePants(Long id) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'deletePants'");
     }
 
