@@ -8,12 +8,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="jackets")
 
@@ -29,9 +31,14 @@ public class Pants {
     @Column(name = "name", nullable = false)
     private String name;
     
-    @NotBlank(message = "Price cannot be blank")
+    @NotNull(message = "Price cannot be blank")
     @NonNull
     @Column(name = "price", nullable = false)
     private double price;
     
+
+
+   
+
+
 }

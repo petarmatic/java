@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.entity.Pants;
 import com.example.demo.repository.JacketsRepository;
 import com.example.demo.repository.PantsRepository;
 import com.example.demo.repository.ShirtsRepository;
@@ -32,9 +33,21 @@ public class WebShopApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
+	Pants[] pants= new Pants[]{
+		new Pants("blue pants", 2)
+	};
+
+	for(int i=0; i < pants.length; i++){
+		pantsRepository.save(pants[i]);
 	}
-
-	
-	
-
 }
+}
+
+
+	
+
+	
+	
+
+
