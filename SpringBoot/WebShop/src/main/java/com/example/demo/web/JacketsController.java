@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @AllArgsConstructor
 @RestController
+@RequestMapping("/jackets")
+
+
+
+
 public class JacketsController {
     JacketsService jacketsService;
 
@@ -31,13 +36,13 @@ public class JacketsController {
         return new ResponseEntity<>(jacketsService.getJackets(id), HttpStatus.OK);
     }
     
-    @PostMapping("/jackets")
+    @PostMapping
     public ResponseEntity <Jackets> saveJackets (@Valid @RequestBody Jackets jackets) {
     
         return new ResponseEntity<>(jacketsService.saveJackets(jackets), HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/jackets")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteJackets(@PathVariable Long id) {
         jacketsService.deleteJackets(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

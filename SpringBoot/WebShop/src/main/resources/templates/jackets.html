@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jackets</title>
-    <link th:href="@{/jackets.css}" rel="stylesheet">
-</head>    
-
+    <link th:href="@{/css/jackets.css}" rel="stylesheet">
+</head>
 <body>
     <div class="topnav">
         <a th:href="@{/jackets}">Jackets</a>
-      </div> 
+    </div>
     <div class="table-container">
         <div class="table-title">Jackets</div>
         <table>
@@ -20,10 +19,15 @@
                     <th>Name</th>
                     <th>Price</th>
                 </tr>
-
             </thead>
+            <tbody>
+                <tr th:each="jacket : ${jackets}">
+                    <td th:text="${jacket.id}"></td>
+                    <td th:text="${jacket.name}"></td>
+                    <td th:text="${jacket.price}"></td>
+                </tr>
+            </tbody>
         </table>
-        </div>
-        
+    </div>
 </body>
 </html>
