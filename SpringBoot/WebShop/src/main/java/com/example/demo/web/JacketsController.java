@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.Jackets;
 import com.example.demo.service.JacketsService;
 
-import ch.qos.logback.core.model.Model;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
@@ -18,30 +16,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-
-
-
-
 
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("/jackets")
-
-
-
-
 public class JacketsController {
-    JacketsService jacketsService;
+    private final JacketsService jacketsService;
 
-    /* 
-    @GetMapping("/jackets")
+    @GetMapping("/{id}")
     public ResponseEntity <Jackets> getJackets(@PathVariable Long id) {
         return new ResponseEntity<>(jacketsService.getJackets(id), HttpStatus.OK);
     }
-    */
-    @PostMapping
+    
+    @PostMapping("/{id}")
     public ResponseEntity <Jackets> saveJackets (@Valid @RequestBody Jackets jackets) {
     
         return new ResponseEntity<>(jacketsService.saveJackets(jackets), HttpStatus.CREATED);
@@ -52,15 +40,5 @@ public class JacketsController {
         jacketsService.deleteJackets(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-    @GetMapping("/jackets")
-    public String getGrades(Model model,HttpServletRequest request) {
-       model.addAttribute("jackets", jacketsService.getJackets(null));
-       return "jackets";
-    }
-    
-
-
-
-
 }
+

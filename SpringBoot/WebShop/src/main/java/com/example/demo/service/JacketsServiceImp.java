@@ -15,9 +15,8 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Service
-public class JacketsServiceImpl implements JacketsService{
-
-    JacketsRepository jacketsRepository;
+public class JacketsServiceImp implements JacketsService{
+    private final JacketsRepository jacketsRepository;
 
     @Override
     public Jackets getJackets(Long id) {
@@ -40,7 +39,4 @@ public class JacketsServiceImpl implements JacketsService{
         if(entity.isPresent()) return entity.get();
         else throw new JacketsNotFoundException(id);
     }
-
-
-    
 }
