@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -25,13 +25,17 @@ public class JacketsController {
     private final JacketsService jacketsService;
 
     @GetMapping("/{id}")
-    public ResponseEntity <Jackets> getJackets(@PathVariable Long id) {
+    public ResponseEntity<Jackets> getJackets(@PathVariable Long id) {
         return new ResponseEntity<>(jacketsService.getJackets(id), HttpStatus.OK);
     }
-    
-    @PostMapping("/{id}")
-    public ResponseEntity <Jackets> saveJackets (@Valid @RequestBody Jackets jackets) {
-    
+
+    @GetMapping
+    public ResponseEntity<List<Jackets>> getAllJackets() {
+        return new ResponseEntity<>(jacketsService.getAllJackets(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Jackets> saveJackets(@Valid @RequestBody Jackets jackets) {
         return new ResponseEntity<>(jacketsService.saveJackets(jackets), HttpStatus.CREATED);
     }
 
@@ -41,4 +45,3 @@ public class JacketsController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
-
