@@ -1,0 +1,16 @@
+version: '4.26.1'
+services:
+  db:
+    image: mysql/mysql-server:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'webshop'
+      MYSQL_USER: 'petar'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+volumes:
+  my-db:

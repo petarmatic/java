@@ -50,9 +50,12 @@ public class WebShopApplication implements CommandLineRunner {
         for (Jackets jacket : jackets) {
             jacketsRepository.save(jacket);
         }
+            
+
+    }
 	
 }
-}
+
 
 
 	
