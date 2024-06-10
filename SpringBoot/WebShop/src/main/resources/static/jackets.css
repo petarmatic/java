@@ -1,56 +1,77 @@
-/* Globalni stil za tijelo stranice */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
-
-/* Kontejner za tablicu */
-.table-container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-/* Stil za samu tablicu */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-/* Stil za zaglavlja tablice */
-th {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Stil za redove tablice */
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Stil za hover efekt na redovima tablice */
-tr:hover {
-    background-color: #ddd;
-}
-
-/* Stil za naslov tablice */
-.table-title {
+.container {
+    position: absolute;
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
+    border-style: solid;
+    left: 50%;
+    top: 50%;
+    width: 25%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-width: 2px;
+    border-color: white;
+    background-color: #263238;
+} 
+
+body {
+  background: #263238;
+}
+
+
+input[type=text], select, textarea {
+  width: 100%; 
+  padding: 12px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; 
+  margin-top: 6px; 
+  margin-bottom: 16px; 
+  resize: vertical;
+  font-size: 18px;
+} 
+
+input[type=submit] {
+  background-color: #04AA6D;
+  width: 100%;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size:16px;
+}
+
+h2 {
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: 600;    
+}
+
+input[type=submit]:hover {
+  background-color: red; 
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+  
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
 }

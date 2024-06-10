@@ -24,15 +24,17 @@ import java.util.List;
 public class JacketsController {
     private final JacketsService jacketsService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Jackets> getJackets(@PathVariable Long id) {
-        return new ResponseEntity<>(jacketsService.getJackets(id), HttpStatus.OK);
-    }
 
     @GetMapping
     public ResponseEntity<List<Jackets>> getAllJackets() {
         return new ResponseEntity<>(jacketsService.getAllJackets(), HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Jackets> getJackets(@PathVariable Long id) {
+        return new ResponseEntity<>(jacketsService.getJackets(id), HttpStatus.OK);
+    }
+
 
     @PostMapping
     public ResponseEntity<Jackets> saveJackets(@Valid @RequestBody Jackets jackets) {

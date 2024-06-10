@@ -22,14 +22,17 @@ public class JacketsServiceImp implements JacketsService {
     public Jackets getJackets(Long id) {
         Optional<Jackets> jackets = jacketsRepository.findById(id);
         return unwrapJackets(jackets, id);
-    }
 
+    }
+  
+ 
     @Override
     public List<Jackets> getAllJackets() {
         Iterable<Jackets> jacketsIterable = jacketsRepository.findAll();
         return StreamSupport.stream(jacketsIterable.spliterator(), false)
                             .collect(Collectors.toList());  
     }
+
 
     @Override
     public Jackets saveJackets(Jackets jackets) {
