@@ -1,5 +1,8 @@
 package webshop_swagger;
 
-public class MyConfiguration {
+public class MyConfiguration{
     
+
+    
+  
 }
