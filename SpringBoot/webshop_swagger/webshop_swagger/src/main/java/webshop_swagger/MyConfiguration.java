@@ -17,7 +17,7 @@ public class MyConfiguration {
     devServer.setDescription("Razvoj (DEV)");
 
     Server prodServer = new Server();
-    prodServer.setUrl("https://jsb.unixoidi.xyz");
+    prodServer.setUrl("https://jsb.unixoiidi.xyz");
     prodServer.setDescription("Produkcija (PROD)");
 
     
