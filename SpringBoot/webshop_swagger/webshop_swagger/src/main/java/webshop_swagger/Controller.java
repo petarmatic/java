@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/v1/primjer")
 public class Controller {
 
      @GetMapping("/get")

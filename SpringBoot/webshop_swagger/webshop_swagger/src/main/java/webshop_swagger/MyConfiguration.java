@@ -14,10 +14,10 @@ public class MyConfiguration {
   public OpenAPI myOpenAPI() {
     Server devServer = new Server();
     devServer.setUrl("http://localhost:8080");
-    devServer.setDescription("Razvoj (DEV)");
+    devServer.setDescription("Moj razvonji (DEV)");
 
     Server prodServer = new Server();
-    prodServer.setUrl("https://jsb.unixoiidi.xyz");
+    prodServer.setUrl("https://jsb.webshop.xyz");
     prodServer.setDescription("Produkcija (PROD)");
 
     
