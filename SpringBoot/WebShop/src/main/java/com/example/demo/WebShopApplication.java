@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.entity.Jackets;
-import com.example.demo.entity.Pants;
 import com.example.demo.repository.JacketsRepository;
 import com.example.demo.repository.PantsRepository;
 import com.example.demo.repository.ShirtsRepository;
