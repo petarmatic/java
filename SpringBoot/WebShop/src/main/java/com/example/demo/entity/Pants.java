@@ -32,7 +32,6 @@ public class Pants {
     private String name;
     
     @NotNull(message = "Price cannot be blank")
-    @NonNull
     @Column(name = "price", nullable = false)
     private double price;
     

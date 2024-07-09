@@ -34,7 +34,6 @@ public class Shirts {
     private String name;
 
     @NotBlank(message = "Price cannot be blank")
-    @NonNull
     @Column(name = "price", nullable = false)
     private double price;
 }
